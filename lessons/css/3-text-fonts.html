@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 3: Текст и Шрифты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .boring-text {
+            width: 100%;
+        }
+        .awesome-text {
+            width: 100%;
+            font-family: 'Pacifico', cursive;
+            font-size: 28px;
+            font-weight: 400;
+            text-align: center;
+            text-transform: capitalize;
+            color: #FF006E;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link active"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 3: Текст и Шрифты 🔠</h1>
+            <p>Учимся управлять размером, красивыми шрифтами и выравниванием.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Как менять буквы?</h3>
+            <p>У CSS есть целая группа свойств, начинающихся на <code class="code-inline">font-</code> и <code class="code-inline">text-</code>:</p>
+            <ul>
+                <li><code class="code-inline">font-size</code> — размер шрифта (например, 24px).</li>
+                <li><code class="code-inline">font-family</code> — название шрифта (например, Arial или красивый Pacifico).</li>
+                <li><code class="code-inline">font-weight</code> — толщина (bold для жирного).</li>
+                <li><code class="code-inline">text-align</code> — выравнивание текста по центру (center), слева (left) или справа (right).</li>
+            </ul>
+        </div>
+
+        <div class="code-block">
+            <code>
+p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Pacifico', cursive;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 28px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: #FF006E;<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Размер по умолчанию)</div>
+                <div class="box-content">
+                    <div class="boring-text">
+                        я люблю программировать
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (Красивый шрифт по центру)</div>
+                <div class="box-content">
+                    <div class="awesome-text">
+                        я люблю программировать
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Подготовка заголовка</h3>
+            <p>Как сделать тег <code class="code-inline">&lt;h1&gt;</code> огромным (размером 50px) и выровнять его строго по центру экрана?</p>
+            
+            <button class="answer-toggle" data-target="task3-answer">Показать ответ</button>
+            <div id="task3-answer" class="answer-content">
+                <code>
+h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 50px;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="2-colors-bg.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="4-box-model.html" class="btn-primary">Следующий: Границы и Отступы ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

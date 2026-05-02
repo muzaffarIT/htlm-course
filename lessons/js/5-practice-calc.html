@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Урок 5: Практика</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .calc-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            border: 2px solid #E2E8F0;
+        }
+
+        .calc-input {
+            width: 80px;
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #A6ACCD;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .calc-btn {
+            background-color: #3A86FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: #FF006E;
+            transform: scale(1.1);
+        }
+
+        #result-display {
+            font-size: 32px;
+            font-weight: 800;
+            color: #8338EC;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>JS – Логика (Уровни)</h3>
+            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
+            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
+            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
+            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
+            <a href="5-practice-calc.html" class="nav-link active"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 5: Финальный проект 🏆</h1>
+            <p>Объединяем HTML, CSS и JS для создания рабочего калькулятора.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Как получить то, что ввел человек?</h3>
+            <p>В HTML есть специальные поля для ввода — <code class="code-inline">&lt;input&gt;</code>. Через JS мы можем взять то, что человек туда написал, используя <code class="code-inline">.value</code>.</p>
+            <p>Давай построим простой калькулятор! Попробуй ввести числа и нажать на плюс.</p>
+        </div>
+
+        <div class="calc-container">
+            <h2>Мини-Калькулятор</h2>
+            <input type="number" id="num1" class="calc-input" value="0">
+            <span style="font-size: 24px; font-weight: bold;">?</span>
+            <input type="number" id="num2" class="calc-input" value="0">
+            <br>
+            <button class="calc-btn" onclick="calculate('+')">+</button>
+            <button class="calc-btn" onclick="calculate('-')">-</button>
+            <button class="calc-btn" onclick="calculate('*')">×</button>
+            
+            <div id="result-display">= 0</div>
+        </div>
+
+        <script>
+            // Это код нашего калькулятора
+            function calculate(operation) {
+                // Number() превращает текст из ввода в настоящее число
+                let a = Number(document.getElementById('num1').value);
+                let b = Number(document.getElementById('num2').value);
+                let result = 0;
+
+                // Условия (if / else if)
+                if (operation === '+') {
+                    result = a + b;
+                } else if (operation === '-') {
+                    result = a - b;
+                } else if (operation === '*') {
+                    result = a * b;
+                }
+
+                // Вывод результата на экран
+                document.getElementById('result-display').innerHTML = "= " + result;
+            }
+        </script>
+
+        <div class="code-block" style="margin-top: 3rem;">
+            <code>
+// Главный секрет калькулятора сверху:<br>
+function calculate(operation) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let a = Number(document.getElementById('num1').value);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;let b = Number(document.getElementById('num2').value);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            </code>
+        </div>
+
+
+        <div class="task-section">
+            <h3>🎉 Поздравляем! Ты прошел курс</h3>
+            <p>Ты научился стилизовать (CSS) и программировать (JavaScript). Твой прогресс теперь должен быть на 100%.</p>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="../../index.html" class="btn-primary" style="background: var(--success);">Вернуться на Главную</a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

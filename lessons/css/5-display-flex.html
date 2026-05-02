@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 5: Сетка и Flexbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .box {
+            background-color: #8338EC;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .no-flex {
+            /* По умолчанию элементы <div> идут друг под другом (block) */
+            background-color: #E2E8F0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .with-flex {
+            display: flex;
+            justify-content: space-around; /* Распределяем свободное место */
+            align-items: center; /* Выравниваем по центру по вертикали */
+            background-color: #E2E8F0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link active"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 5: Flexbox — Расставляем по местам 🧱</h1>
+            <p>Учимся строить элементы в ряд и делать модные сетки.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Блоки или Строки?</h3>
+            <p>По умолчанию все блоки на сайте (например, <code class="code-inline">&lt;div&gt;</code>) выстраиваются один под другим. Но что, если мы хотим поставить их в один ряд, как меню сверху сайта?</p>
+            <p>Для этого мы делаем их родительский контейнер гибким: <code class="code-inline">display: flex;</code>. Теперь все элементы внутри начинают строиться в цепочку как вагончики!</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex; /* Включаем магию Flexbox */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around; /* Делаем между ними одинаковые отступы */<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Блоки выстроены вниз)</div>
+                <div class="box-content">
+                    <div class="no-flex">
+                        <div class="box">Блок 1</div>
+                        <div class="box">Блок 2</div>
+                        <div class="box">Блок 3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (display: flex)</div>
+                <div class="box-content">
+                    <div class="with-flex">
+                        <div class="box">Блок 1</div>
+                        <div class="box">Блок 2</div>
+                        <div class="box">Блок 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Сила Flexbox</h3>
+            <p>Благодаря <code class="code-inline">justify-content: space-around;</code> блоки не просто выстроились в ряд, но и равномерно распределили свободное пространство между собой. Flexbox — это самый популярный инструмент в современном веб-дизайне!</p>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Выравниваем по центру</h3>
+            <p>Свойство <code class="code-inline">justify-content</code> отвечает за то, где стоят наши блоки по горизонтали. Какое значение (вместо <code class="code-inline">space-around</code>) нужно использовать, чтобы скомкать все блоки четко по центру?</p>
+            
+            <button class="answer-toggle" data-target="task5-answer">Показать ответ</button>
+            <div id="task5-answer" class="answer-content">
+                <code>
+.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center; /* Центрирует элементы */<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="4-box-model.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="6-position-hover.html" class="btn-primary">Следующий: Позиция и Эффекты ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

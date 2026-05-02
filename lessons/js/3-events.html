@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Урок 3: События</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>JS – Логика (Уровни)</h3>
+            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
+            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
+            <a href="3-events.html" class="nav-link active"><span class="status-icon"></span> 3. События и Кнопки</a>
+            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
+            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 3: Нажми на меня! 🖱️</h1>
+            <p>Узнаем, как JS может слушать пользователя с помощью событий.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Что такое события (Events)?</h3>
+            <p>Событие — это любое действие пользователя. Например: клик мышкой (<strong>click</strong>), перемещение мыши, нажатие кнопки на клавиатуре.</p>
+            <p>Чтобы заставить HTML-элемент (допустим, кнопку) выполнить JS код при клике, мы добавляем ему атрибут <code class="code-inline">onclick</code>.</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+&lt;!-- HTML код --&gt;<br>
+&lt;button onclick="alert('Ауч, ты на меня нажал!')"&gt;Кликни!&lt;/button&gt;
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Скучная кнопка без onclick)</div>
+                <div class="box-content">
+                    <button class="interactive-btn" style="background: #A6ACCD; color: white;">Я ничего не делаю</button>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (Рабочая кнопка)</div>
+                <div class="box-content">
+                    <button class="interactive-btn" style="background: #3A86FF; color: white;" onclick="alert('Привет! Я работаю!')">Нажми и получи сюрприз</button>
+                    <p style="font-size:12px; margin-top:10px">Попробуй нажать её!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Твоя кнопка</h3>
+            <p>Как бы выглядел HTML код кнопки, на которой написано "Выиграть миллион", и при клике на которую появляется всплывающее окошко с текстом: "Шутка!"?</p>
+            
+            <button class="answer-toggle" data-target="task3-js-answer">Показать ответ</button>
+            <div id="task3-js-answer" class="answer-content">
+                <code>
+&lt;button onclick="alert('Шутка!')"&gt;Выиграть миллион&lt;/button&gt;
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="2-conditions.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="4-dom.html" class="btn-primary">Следующий: Изменяем страницу ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 6: Позиция и Эффекты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .hover-btn-boring {
+            background-color: #A6ACCD;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .hover-btn-cool {
+            background-color: #38B000;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s; /* Делает изменение плавным */
+        }
+
+        .hover-btn-cool:hover {
+            background-color: #FF006E; /* Меняем цвет при наведении */
+            transform: scale(1.1); /* Делаем чуть больше */
+            box-shadow: 0 10px 15px rgba(255, 0, 110, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link active"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 6: Вау-Эффекты при наведении ✨</h1>
+            <p>Делаем сайт живым: как реагировать на мышку.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Псевдокласс :hover</h3>
+            <p>В CSS есть способ узнать, когда курсор мыши находится поверх элемента (например, кнопки). Для этого к названию элемента в CSS приписывают <code class="code-inline">:hover</code> (наведение).</p>
+            <p>Еще есть классное свойство <code class="code-inline">transition</code>. Если мы просто поменяем цвет, он изменится резко. <code class="code-inline">transition</code> делает так, что цвет перетекает плавно, как в кино!</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+button {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: green;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.3s; /* Плавность эффекта занимает 0.3 секунды */<br>
+}<br>
+<br>
+button:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: pink; /* При наведении меняем на розовый */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform: scale(1.1); /* Немного увеличиваем размер */<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Скучная кнопка)</div>
+                <div class="box-content">
+                    <button class="hover-btn-boring">Наведи на меня</button>
+                    <p style="font-size: 12px; margin-top: 10px;">Ничего не происходит :(</p>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (Крутая кнопка :hover)</div>
+                <div class="box-content">
+                    <button class="hover-btn-cool">Наведи на меня</button>
+                    <p style="font-size: 12px; margin-top: 10px;">Смотри, она живая!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Почему это важно?</h3>
+            <p>Hover-эффекты подсказывают пользователю: "Сюда можно нажать!". Это делает сайт приятным и понятным.</p>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Подсвечиваем ссылки</h3>
+            <p>Как сделать так, чтобы при наведении мыши на любую ссылку (<code class="code-inline">&lt;a&gt;</code>) на сайте, её текст становился оранжевым (orange)?</p>
+            
+            <button class="answer-toggle" data-target="task6-answer">Показать ответ</button>
+            <div id="task6-answer" class="answer-content">
+                <code>
+a:hover {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: orange;<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="5-display-flex.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="7-animations.html" class="btn-primary">Следующий: Анимации ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

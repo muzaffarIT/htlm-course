@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4: Границы и Отступы (Box Model)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .no-spacing {
+            background-color: #3A86FF;
+            color: white;
+            /* No padding, no border, no margin */
+        }
+        
+        .with-spacing {
+            background-color: #3A86FF;
+            color: white;
+            padding: 20px; /* Внутренний отступ */
+            border: 5px solid #FF006E; /* Граница */
+            margin: 20px; /* Внешний отступ */
+            border-radius: 12px;
+        }
+
+        .demo-container {
+            background-color: #E2E8F0;
+            border: 1px dashed #A6ACCD;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link active"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 4: Коробки и Отступы 📦</h1>
+            <p>Узнаем про магию Margin, Padding и Border (Box Model).</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Все элементы — это коробки</h3>
+            <p>Чтобы элементы на сайте не слипались друг с другом, у нас есть три волшебных свойства:</p>
+            <ul>
+                <li><code class="code-inline">padding</code> (внутренний отступ) — пространство внутри коробки, между текстом и стенками.</li>
+                <li><code class="code-inline">border</code> (рамка/граница) — стенки самой коробки.</li>
+                <li><code class="code-inline">margin</code> (внешний отступ) — пространство снаружи коробки, до соседних элементов.</li>
+            </ul>
+        </div>
+
+        <div class="code-block">
+            <code>
+div {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 20px; /* Текст не липнет к краю */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 5px solid red; /* Толстая красная сплошная рамка */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 20px; /* Отталкивает соседние элементы на 20px */<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Слипшийся блок)</div>
+                <div class="box-content demo-container">
+                    <div class="no-spacing">
+                        Я задыхаюсь в своей коробке!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (С Padding, Border и Margin)</div>
+                <div class="box-content demo-container">
+                    <div class="with-spacing">
+                        О, теперь мне свободно!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Что тут произошло?</h3>
+            <p>Серый фон с пунктиром — это контейнер. В левом примере синий блок прилип к его краям, а текст внутри блока — к его стенкам. В правом примере блок "дышит": у него появились внутренние отступы (padding), красивые края (border) и внешние отступы (margin), которые отодвинули его от краев контейнера.</p>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Создаем рамку</h3>
+            <p>Напиши CSS для создания черной рамки толщиной 2 пикселя вокруг картинки (<code class="code-inline">&lt;img&gt;</code>). Стиль линии сделай сплошным (<code class="code-inline">solid</code>).</p>
+            
+            <button class="answer-toggle" data-target="task4-answer">Показать ответ</button>
+            <div id="task4-answer" class="answer-content">
+                <code>
+img {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid black;<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="3-text-fonts.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="5-display-flex.html" class="btn-primary">Следующий: Сетка и Flexbox ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 1: Что такое CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        /* Styles for the AFTER box */
+        .styled-example {
+            color: #3A86FF;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar will be loaded from a template in a real app, but here we just copy it for simplicity -->
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link active"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 1: Что такое CSS? 🎨</h1>
+            <p>Учимся красить и стилизовать наш скучный HTML-код.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Как макияж для сайта</h3>
+            <p>HTML — это как кирпичи и стены дома. А <strong>CSS (Cascading Style Sheets)</strong> — это краска, обои и красивая мебель.</p>
+            <p>Чтобы добавить стиль, мы пишем имя элемента (например, <code class="code-inline">h1</code>), затем открываем фигурные скобки <code class="code-inline">{}</code> и внутри пишем правила. Правило состоит из названия свойства и значения.</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+/* Это комментарий в CSS. Он ничего не делает на странице, просто подсказка! */<br>
+h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: blue; /* Свойство color меняет цвет текста */<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Только HTML)</div>
+                <div class="box-content">
+                    <h1>Привет, мир!</h1>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (С добавлением CSS)</div>
+                <div class="box-content">
+                    <h1 class="styled-example">Привет, мир!</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Как мы это сделали?</h3>
+            <p>В примере "ПОСЛЕ" мы использовали CSS-правило: <code class="code-inline">color: #3A86FF;</code> (это красивый оттенок синего). Тег <code class="code-inline">&lt;h1&gt;</code> окрасился в этот цвет, стал больше и расположился по центру!</p>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Напиши свое первое правило</h3>
+            <p>Представь, что у тебя есть тег абзаца <code class="code-inline">&lt;p&gt;</code>. Напиши ниже код CSS, который сделает текст красным (red). Можешь просто написать это на бумажке или в голове, а потом проверить себя.</p>
+            
+            <button class="answer-toggle" data-target="task1-answer">Показать ответ</button>
+            <div id="task1-answer" class="answer-content">
+                <code>
+p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: red;<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="text-align: right;">
+            <a href="2-colors-bg.html" class="btn-primary">Следующий урок: Цвета и Фон ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

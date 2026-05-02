@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Урок 1: Введение и Переменные</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>JS – Логика (Уровни)</h3>
+            <a href="1-intro-vars.html" class="nav-link active"><span class="status-icon"></span> 1. Переменные JS</a>
+            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
+            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
+            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
+            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 1: Привет, JavaScript! 🧠</h1>
+            <p>Делаем сайт умным. Учимся сохранять данные в переменные.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Что такое JavaScript (JS)?</h3>
+            <p>Если HTML — это дом, а CSS — покраска стен, то JavaScript у нас отвечает за проводку и электричество. Именно JS заставляет кнопки нажиматься, всплывать окнам и двигаться объектам от действий пользователя!</p>
+            <p>В JS мы пишем код внутри тега <code class="code-inline">&lt;script&gt;</code> прямо перед закрывающимся тегом <code class="code-inline">&lt;/body&gt;</code> в нашей HTML странице.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Переменные - это коробочки</h3>
+            <p>В программировании нам часто нужно что-то запомнить: имя игрока, количество кликов или цвет. Для этого мы создаем "переменные" (коробочки с именами). Мы создаем их с помощью слова <code class="code-inline">let</code>.</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+// Создаем переменную для имени<br>
+let myName = "Максим";<br>
+<br>
+// Переменная для очков в игре (числа пишем без кавычек)<br>
+let score = 100;<br>
+<br>
+// Если мы хотим вывести это на экран (всплывающее окно), мы используем alert()<br>
+alert(myName);<br>
+            </code>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Домашнее задание 1 уровня</h3>
+            <p>Создай переменную <code class="code-inline">age</code> (возраст) и положи в неё число 12. После этого используй команду <code class="code-inline">alert(age);</code> чтобы показать это число в окошке.</p>
+            
+            <button class="answer-toggle" data-target="task1-js-answer">Показать ответ</button>
+            <div id="task1-js-answer" class="answer-content">
+                <code>
+let age = 12;<br>
+alert(age);
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="../css/7-animations.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад к CSS</a>
+            <a href="2-conditions.html" class="btn-primary">Следующий: Условия ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

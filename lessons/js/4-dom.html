@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Урок 4: Работа с DOM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>JS – Логика (Уровни)</h3>
+            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
+            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
+            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
+            <a href="4-dom.html" class="nav-link active"><span class="status-icon"></span> 4. Изменение страницы</a>
+            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 4: Властелин Страницы (DOM) 🧙‍♂️</h1>
+            <p>Учимся менять текст и цвета на лету, не перезагружая сайт!</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Что такое DOM?</h3>
+            <p>До этого мы писали <code class="code-inline">alert(...)</code>. Но всплывающие окна раздражают! Лучше менять текст прямо на самой странице.</p>
+            <p>Для этого мы раздаем HTML-элементам уникальные Имена — <strong>ID</strong> (например <code class="code-inline">id="title"</code>). А затем с помощью JS находим их командой: <code class="code-inline">document.getElementById('title')</code>.</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+// HTML:<br>
+// &lt;p id="magic-text"&gt;Обычный текст&lt;/p&gt;<br>
+<br>
+// Внутри JS скрипта или внутри onclick:<br>
+document.getElementById('magic-text').innerHTML = "Теперь я магический!";<br>
+document.getElementById('magic-text').style.color = "red";<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">Эксперимент</div>
+                <div class="box-content">
+                    <h3 id="test-header">Я скучный заголовок</h3>
+                    <p id="test-paragraph">Ничего не происходит.</p>
+                    <button class="interactive-btn" style="background: #8338EC; color: white;" onclick="
+                        document.getElementById('test-header').innerHTML = 'Я СТАЛ КРУТЫМ!';
+                        document.getElementById('test-header').style.color = '#FF006E';
+                        document.getElementById('test-paragraph').innerHTML = 'Вот это да! Текст изменился с помощью JS!';
+                    ">Применить магию JS ✨</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Как это работает?</h3>
+            <ul>
+                <li><code class="code-inline">innerHTML</code> — меняет содержимое (текст) элемента.</li>
+                <li><code class="code-inline">style.color</code> — меняет CSS цвет этого элемента!</li>
+            </ul>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Сделай фон синим</h3>
+            <p>У нас есть блок <code class="code-inline">&lt;div id="box"&gt;&lt;/div&gt;</code>. Какая команда в JS сделает его цвет фона (<code class="code-inline">backgroundColor</code>) синим (blue)?</p>
+            
+            <button class="answer-toggle" data-target="task4-js-answer">Показать ответ</button>
+            <div id="task4-js-answer" class="answer-content">
+                <code>
+/* Заметь, в CSS мы пишем background-color, а в JS свойства пишутся слитно с большой буквы: backgroundColor */<br>
+document.getElementById('box').style.backgroundColor = "blue";
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="3-events.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="5-practice-calc.html" class="btn-primary">Следующий: Практика (Калькулятор) ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

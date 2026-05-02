@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Урок 2: Условия</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>JS – Логика (Уровни)</h3>
+            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
+            <a href="2-conditions.html" class="nav-link active"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
+            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
+            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
+            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 2: Если / Иначе (Условия) 🤔</h1>
+            <p>Учим компьютер принимать решения!</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Как работает if/else?</h3>
+            <p>Часто в играх или программах нам нужно спросить: <strong>ЕСЛИ</strong> человек ввел правильный пароль — пусти его, <strong>ИНАЧЕ</strong> (если неправильный) — покажи ошибку.</p>
+            <p>Для этого в JavaScript существует конструкция <code class="code-inline">if</code> (если) и <code class="code-inline">else</code> (иначе).</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+let score = 90;<br>
+<br>
+if (score >= 50) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Этот блок выполнится, если счет больше или равен 50<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Ты выиграл! 🎉");<br>
+} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Этот блок выполнится, если счет меньше 50<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Попробуй еще раз! 💔");<br>
+}<br>
+            </code>
+        </div>
+        
+        <div class="explanation">
+            <h3>Математика в JS</h3>
+            <p>Мы используем значки для сравнения:</p>
+            <ul>
+                <li><code class="code-inline">></code> — больше</li>
+                <li><code class="code-inline"><</code> — меньше</li>
+                <li><code class="code-inline">===</code> — строго равно (да, в JS нужно ставить сразу три "равно"!)</li>
+                <li><code class="code-inline">!==</code> — не равно</li>
+            </ul>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Пароль</h3>
+            <p>У тебя есть переменная <code class="code-inline">let password = "123";</code>. Напиши условие <code class="code-inline">if</code>: если <code class="code-inline">password</code> равен <code class="code-inline">"123"</code>, сказать <code class="code-inline">alert("Доступ открыт");</code>.</p>
+            
+            <button class="answer-toggle" data-target="task2-js-answer">Показать ответ</button>
+            <div id="task2-js-answer" class="answer-content">
+                <code>
+let password = "123";<br>
+<br>
+if (password === "123") {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Доступ открыт");<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="1-intro-vars.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="3-events.html" class="btn-primary">Следующий: События и Кнопки ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

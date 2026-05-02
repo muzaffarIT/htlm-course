@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 7: Практика Анимации</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #3A86FF;
+            text-align: center;
+            line-height: 80px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .animated-circle {
+            animation: bounce 2s infinite ease-in-out;
+            background-color: #FF006E;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🚀 WebSchool</div>
+        
+        <div class="nav-section">
+            <h3>Главная</h3>
+            <a href="../../index.html" class="nav-link">
+                <span class="status-icon"></span> Панель управления
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <h3>CSS – Стилизация (Уровни)</h3>
+            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
+            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
+            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
+            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
+            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
+            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
+            <a href="7-animations.html" class="nav-link active"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Часть 7: Анимации 🎬</h1>
+            <p>Учим элементы прыгать, крутиться и танцевать.</p>
+        </div>
+
+        <div class="explanation">
+            <h3>Магия @keyframes</h3>
+            <p>В CSS можно делать настоящие мультики! Для этого используется правило <code class="code-inline">@keyframes</code>. В нем мы прописываем кадры нашей анимации: что происходит на <code class="code-inline">0%</code> (начало), <code class="code-inline">50%</code> (середина) и <code class="code-inline">100%</code> (конец).</p>
+            <p>Чтобы запустить анимацию, элементу нужно добавить свойство <code class="code-inline">animation: название время infinite;</code>. <strong>infinite</strong> означает, что анимация будет повторяться бесконечно!</p>
+        </div>
+
+        <div class="code-block">
+            <code>
+@keyframes bounce {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: translateY(0); } /* Внизу */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;50% { transform: translateY(-40px); } /* Подпрыгнул вверх на 40px */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;100% { transform: translateY(0); } /* Вернулся вниз */<br>
+}<br>
+<br>
+.ball {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation: bounce 2s infinite;<br>
+}<br>
+            </code>
+        </div>
+
+        <div class="comparison-container">
+            <div class="comparison-box">
+                <div class="box-header">ДО (Статичный мяч)</div>
+                <div class="box-content" style="height: 250px;">
+                    <div class="circle">Грусть</div>
+                </div>
+            </div>
+            
+            <div class="comparison-box after">
+                <div class="box-header">ПОСЛЕ (Прыгающий мяч)</div>
+                <div class="box-content" style="height: 250px;">
+                    <div class="circle animated-circle">Радость!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h3>🔥 Мини-задание: Вращение</h3>
+            <p>Чтобы крутить элементы, мы используем внутри анимации команду <code class="code-inline">transform: rotate(...)</code>. Напиши анимацию <code class="code-inline">@keyframes spin</code>, которая начинает с <code class="code-inline">0deg</code> (градусов) на 0% и заканчивает на <code class="code-inline">360deg</code> в 100%.</p>
+            
+            <button class="answer-toggle" data-target="task7-answer">Показать ответ</button>
+            <div id="task7-answer" class="answer-content">
+                <code>
+@keyframes spin {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: rotate(0deg); }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;100% { transform: rotate(360deg); }<br>
+}
+                </code>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <a href="6-position-hover.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
+            <a href="../js/1-intro-vars.html" class="btn-primary">Приступить к JavaScript! 🧨 ➡️</a>
+        </div>
+    </main>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
