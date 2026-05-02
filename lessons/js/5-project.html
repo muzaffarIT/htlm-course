@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Урок 5: Финальный проект — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:100%"></div></div>
+  <span class="lesson-progress-label">19 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge js">⚡ JS</div>
+    <h1>🏆 Урок 5: Финальный проект — Мини-сайт</h1>
+    <div class="lesson-meta"><span>⏱ 60 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 5 из 5 (Финал!)</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎯 Чему ты научился за курс</h2>
+    <p>Поздравляем! Ты прошёл весь курс WebAcademy. Давай вспомним всё, что ты узнал:</p>
+    <ul>
+      <li>🌐 <strong>HTML</strong> — создание структуры страниц с тегами, формами, таблицами, семантикой</li>
+      <li>🎨 <strong>CSS</strong> — цвета, шрифты, Flexbox, анимации, hover-эффекты</li>
+      <li>⚡ <strong>JavaScript</strong> — переменные, условия, функции, DOM, события</li>
+    </ul>
+    <div class="success-box">🏆 В этом уроке ты создашь <strong>полноценный интерактивный мини-сайт</strong>, применив все знания вместе!</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔑 localStorage — данные между сессиями</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔑 localStorage</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// Сохранить данные в браузере
+localStorage.setItem("name", "Алишер");
+localStorage.setItem("score", "95");
+
+// Прочитать данные
+const name = localStorage.getItem("name");  // "Алишер"
+
+// Сохранить объект (через JSON)
+const user = { name: "Малика", grade: 8, score: 92 };
+localStorage.setItem("user", JSON.stringify(user));
+
+// Прочитать объект
+const savedUser = JSON.parse(localStorage.getItem("user"));
+console.log(savedUser.name);  // "Малика"
+
+// Удалить один ключ
+localStorage.removeItem("name");
+
+// Очистить всё
+localStorage.clear();</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>⏰ Таймеры</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">⏰ setTimeout и setInterval</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// setTimeout — выполнить один раз через N миллисекунд
+setTimeout(() => {
+  console.log("Прошло 2 секунды!");
+}, 2000);
+
+// setInterval — выполнять каждые N миллисекунд
+const timer = setInterval(() => {
+  console.log("Каждую секунду!");
+}, 1000);
+
+// Остановить интервал
+clearInterval(timer);
+
+// Пример — обратный отсчёт
+let countdown = 10;
+const interval = setInterval(() => {
+  console.log(countdown);
+  countdown--;
+  if (countdown < 0) {
+    clearInterval(interval);
+    console.log("Время вышло! 🎉");
+  }
+}, 1000);</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Финальный проект — Интерактивный тренажёр</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', Arial; background: #0D0D1A; color: white; min-height: 100vh; }
+
+  header {
+    background: rgba(13,13,26,0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .logo { font-weight: 900; font-size: 1.2rem; color: #A78BFA; }
+
+  .score-badge {
+    background: rgba(124,58,237,0.2);
+    border: 1px solid rgba(124,58,237,0.4);
+    padding: 6px 16px; border-radius: 50px;
+    font-weight: bold; color: #A78BFA;
+  }
+
+  main { padding: 25px; max-width: 700px; margin: 0 auto; }
+
+  h1 { font-size: 2rem; font-weight: 900; text-align: center; margin: 20px 0 8px;
+    background: linear-gradient(135deg, #A78BFA, #F59E0B);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle { text-align: center; color: #64748B; margin-bottom: 30px; }
+
+  /* Quiz */
+  .quiz-card {
+    background: #1A1A38;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 25px; margin-bottom: 20px;
+  }
+
+  .question-num { color: #7C3AED; font-size: 0.85em; font-weight: bold; margin-bottom: 8px; }
+  .question-text { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .option {
+    background: rgba(255,255,255,0.04); border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 12px; cursor: pointer; transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+  .option:hover { border-color: #7C3AED; background: rgba(124,58,237,0.1); }
+  .option.correct { border-color: #22C55E; background: rgba(34,197,94,0.1); }
+  .option.wrong   { border-color: #EF4444; background: rgba(239,68,68,0.1); }
+
+  .next-btn {
+    width: 100%; padding: 14px; background: linear-gradient(135deg, #7C3AED, #5B21B6);
+    color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: bold;
+    cursor: pointer; margin-top: 15px; display: none; transition: all 0.2s;
+  }
+  .next-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124,58,237,0.4); }
+
+  /* Progress */
+  .progress-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 50px; height: 8px; margin-bottom: 20px; }
+  .progress-bar { height: 8px; border-radius: 50px; background: linear-gradient(90deg, #7C3AED, #EC4899); transition: width 0.5s ease; }
+
+  /* Timer */
+  .timer { text-align: center; font-size: 1.5rem; font-weight: bold; color: #F59E0B; margin-bottom: 15px; }
+
+  /* Result */
+  #resultScreen { display: none; text-align: center; padding: 40px 20px; }
+  #resultScreen h2 { font-size: 2rem; margin: 20px 0; }
+  .star { font-size: 4rem; display: block; }
+  .final-score { font-size: 1.5rem; color: #A78BFA; margin: 15px 0; }
+  .restart-btn {
+    padding: 14px 32px; background: linear-gradient(135deg, #7C3AED, #EC4899);
+    color: white; border: none; border-radius: 50px; font-size: 1rem; font-weight: bold;
+    cursor: pointer; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🚀 WebAcademy Quiz</div>
+  <div class="score-badge" id="scoreBadge">⭐ 0</div>
+</header>
+
+<main>
+  <h1>Финальный тест!</h1>
+  <p class="subtitle">Проверь все знания курса WebAcademy</p>
+
+  <div id="quizScreen">
+    <div class="timer" id="timer">⏱ 30</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar" style="width:0%"></div>
+    </div>
+
+    <div class="quiz-card" id="quizCard">
+      <div class="question-num" id="qNum">Вопрос 1 из 5</div>
+      <div class="question-text" id="qText"></div>
+      <div class="options" id="qOptions"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+  </div>
+
+  <div id="resultScreen">
+    <span class="star" id="resultStar">⭐</span>
+    <h2 id="resultTitle">Результаты</h2>
+    <div class="final-score" id="finalScore"></div>
+    <p id="resultMsg" style="color:#94A3B8;margin-top:10px"></p>
+    <button class="restart-btn" onclick="startQuiz()">🔄 Пройти снова</button>
+  </div>
+</main>
+
+<script>
+const questions = [
+  { q: "Какой тег создаёт заголовок 1-го уровня?", opts: ["&lt;h2&gt;", "&lt;title&gt;", "&lt;h1&gt;", "&lt;header&gt;"], correct: 2 },
+  { q: "Какое CSS-свойство делает элементы в строку?", opts: ["display: grid", "display: flex", "position: row", "flex: row"], correct: 1 },
+  { q: "Что делает localStorage.setItem('key', 'val')?", opts: ["Читает данные", "Удаляет данные", "Сохраняет данные в браузере", "Отправляет на сервер"], correct: 2 },
+  { q: "border-radius: 50% делает элемент...", opts: ["Прозрачным", "Квадратным", "Невидимым", "Круглым"], correct: 3 },
+  { q: "Как добавить обработчик нажатия кнопки?", opts: ["btn.onClick = fn", "btn.click(fn)", "btn.addEventListener('click', fn)", "btn.on('click', fn)"], correct: 2 }
+];
+
+let current = 0;
+let score = 0;
+let timer = null;
+let timeLeft = 30;
+let answered = false;
+
+function startQuiz() {
+  current = 0; score = 0; answered = false;
+  document.getElementById('quizScreen').style.display = 'block';
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('scoreBadge').textContent = '⭐ 0';
+  showQuestion();
+}
+
+function showQuestion() {
+  clearInterval(timer);
+  timeLeft = 30;
+  answered = false;
+
+  const q = questions[current];
+  document.getElementById('qNum').textContent = `Вопрос ${current + 1} из ${questions.length}`;
+  document.getElementById('qText').innerHTML = q.q;
+  document.getElementById('progressBar').style.width = `${(current / questions.length) * 100}%`;
+  document.getElementById('nextBtn').style.display = 'none';
+
+  const optsDiv = document.getElementById('qOptions');
+  optsDiv.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = opt;
+    btn.onclick = () => selectAnswer(i, btn);
+    optsDiv.appendChild(btn);
+  });
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById('timer').textContent = `⏱ ${timeLeft}`;
+    if (timeLeft <= 0) { clearInterval(timer); selectAnswer(-1, null); }
+  }, 1000);
+}
+
+function selectAnswer(idx, btn) {
+  if (answered) return;
+  answered = true;
+  clearInterval(timer);
+  const correct = questions[current].correct;
+  const options = document.querySelectorAll('.option');
+  options.forEach((o, i) => {
+    o.style.pointerEvents = 'none';
+    if (i === correct) o.classList.add('correct');
+    else if (i === idx && idx !== correct) o.classList.add('wrong');
+  });
+  if (idx === correct) {
+    score++;
+    document.getElementById('scoreBadge').textContent = `⭐ ${score}`;
+  }
+  document.getElementById('nextBtn').style.display = 'block';
+  if (current === questions.length - 1) {
+    document.getElementById('nextBtn').textContent = '🏆 Показать результат';
+  }
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  clearInterval(timer);
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+  const pct = Math.round((score / questions.length) * 100);
+  const stars = pct === 100 ? "🏆" : pct >= 80 ? "⭐" : pct >= 60 ? "👍" : "💪";
+  document.getElementById('resultStar').textContent = stars;
+  document.getElementById('resultTitle').textContent = pct === 100 ? "Идеально!" : pct >= 80 ? "Отлично!" : pct >= 60 ? "Хорошо!" : "Нужно повторить!";
+  document.getElementById('finalScore').textContent = `${score} из ${questions.length} правильных (${pct}%)`;
+  document.getElementById('resultMsg').textContent = pct === 100 ? "Ты настоящий эксперт WebAcademy! Иди получай сертификат!" : "Пройди курс ещё раз и ты всё запомнишь!";
+  localStorage.setItem('finalQuizScore', score);
+  document.getElementById('progressBar').style.width = '100%';
+}
+
+startQuiz();
+</script>
+</body>
+</html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Это полноценная игра-викторина! Ты создал мини-приложение на JavaScript!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Финальный проект</h2>
+    <p>Создай свой мини-сайт «Портфолио ученика»:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай <code>portfolio.html</code> с правильной семантической структурой</li>
+      <li><span class="task-num">2</span>Добавь информацию о себе (имя, класс, город, хобби)</li>
+      <li><span class="task-num">3</span>Сделай раздел «Мои проекты» с карточками и hover-эффектами</li>
+      <li><span class="task-num">4</span>Добавь кнопку «Тёмная/Светлая тема» которая переключает через classList</li>
+      <li><span class="task-num">5</span>Сохрани выбор темы в localStorage, чтобы он помнился при перезагрузке</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Финальный тест курса</h2><p class="quiz-subtitle">10 финальных вопросов по всему курсу!</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Что такое localStorage?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Серверная база данных</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Хранилище данных в браузере</label>
+      <label class="quiz-option" data-q="q1" data-v="c">JavaScript-переменная</label>
+      <label class="quiz-option" data-q="q1" data-v="d">CSS-свойство</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. setTimeout(fn, 3000) вызовет fn через...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">3 минуты</label>
+      <label class="quiz-option" data-q="q2" data-v="b">3 секунды</label>
+      <label class="quiz-option" data-q="q2" data-v="c">0.3 секунды</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Мгновенно</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. JSON.stringify нужен для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Парсинга строки</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Преобразования объекта в строку JSON</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Создания объекта</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Удаления данных</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Как остановить setInterval?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">stopInterval(id)</label>
+      <label class="quiz-option" data-q="q4" data-v="b">clearInterval(id)</label>
+      <label class="quiz-option" data-q="q4" data-v="c">interval.stop()</label>
+      <label class="quiz-option" data-q="q4" data-v="d">removeInterval(id)</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Что значит display: flex?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Элемент невидим</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Включает Flexbox для дочерних элементов</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Элемент занимает всю строку</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Создаёт Grid</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. @keyframes используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Определения CSS-переменных</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Медиа-запросов</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Создания CSS-анимации</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Импорта шрифтов</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Семантический тег &lt;article&gt; используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Навигации</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Самостоятельного контента (статья, пост)</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Боковой панели</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Шапки сайта</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. arr.filter(n => n > 5) для [3,6,2,8,4]...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">[3,2,4]</label>
+      <label class="quiz-option" data-q="q8" data-v="b">[6,8]</label>
+      <label class="quiz-option" data-q="q8" data-v="c">[8]</label>
+      <label class="quiz-option" data-q="q8" data-v="d">[6,2,8]</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. rgba(0,0,0,0) — это...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Чёрный цвет</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Белый цвет</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Полностью прозрачный</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Серый цвет</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Из каких трёх технологий состоит веб-разработка?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Python, SQL, PHP</label>
+      <label class="quiz-option" data-q="q10" data-v="b">HTML, CSS, JavaScript</label>
+      <label class="quiz-option" data-q="q10" data-v="c">React, Vue, Angular</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Node.js, MySQL, Docker</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Завершить курс!</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>🏆 Завершить весь курс!</button>
+    <a href="../../certificate.html" class="lesson-next-btn" style="background: linear-gradient(135deg,#F59E0B,#EF4444)">🎓 Получить сертификат →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(19, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'c', q7:'b', q8:'b', q9:'c', q10:'b' });
+  initCompleteButton('js-5', '../../certificate.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 6: Формы — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:31%"></div></div>
+  <span class="lesson-progress-label">6 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 6: HTML Формы</h1>
+    <div class="lesson-meta"><span>⏱ 45 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 6 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📋 Что такое HTML-форма?</h2>
+    <p>Формы — это способ получить данные от пользователя. Когда ты вводишь логин и пароль на сайте, заполняешь анкету или делаешь заказ — ты используешь HTML-форму!</p>
+    <p>Основной тег — <code>&lt;form&gt;</code>. Внутри него — различные поля ввода.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📋 Базовая форма</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;!-- поля формы --&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+    <p>Атрибуты тега form:</p>
+    <ul>
+      <li><code>action</code> — URL, куда отправляются данные</li>
+      <li><code>method</code> — способ отправки: <code>GET</code> (данные в URL) или <code>POST</code> (данные скрыты)</li>
+    </ul>
+  </div>
+
+  <div class="theory-block">
+    <h2>⌨️ Поля ввода &lt;input&gt;</h2>
+    <p>Тег <code>&lt;input&gt;</code> — главный элемент формы. Тип поля задаётся атрибутом <code>type</code>:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">⌨️ Типы полей input</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Текстовое поле --&gt;
+&lt;input type="text" placeholder="Введи имя"&gt;
+
+&lt;!-- Email --&gt;
+&lt;input type="email" placeholder="email@mail.com"&gt;
+
+&lt;!-- Пароль --&gt;
+&lt;input type="password" placeholder="Пароль"&gt;
+
+&lt;!-- Число --&gt;
+&lt;input type="number" min="0" max="100"&gt;
+
+&lt;!-- Дата --&gt;
+&lt;input type="date"&gt;
+
+&lt;!-- Чекбокс --&gt;
+&lt;input type="checkbox"&gt; Я согласен с условиями
+
+&lt;!-- Радио-кнопка --&gt;
+&lt;input type="radio" name="gender" value="male"&gt; Мальчик
+&lt;input type="radio" name="gender" value="female"&gt; Девочка
+
+&lt;!-- Файл --&gt;
+&lt;input type="file"&gt;
+
+&lt;!-- Скрытое поле --&gt;
+&lt;input type="hidden" value="secret_value"&gt;
+
+&lt;!-- Кнопка отправки --&gt;
+&lt;input type="submit" value="Отправить"&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📝 Другие элементы форм</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📝 textarea, select, button</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Многострочное поле --&gt;
+&lt;textarea rows="5" cols="40" placeholder="Напиши сообщение..."&gt;&lt;/textarea&gt;
+
+&lt;!-- Выпадающий список --&gt;
+&lt;select&gt;
+  &lt;option value=""&gt;-- Выбери --&lt;/option&gt;
+  &lt;option value="html"&gt;HTML&lt;/option&gt;
+  &lt;option value="css"&gt;CSS&lt;/option&gt;
+  &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Метка (label) привязывает текст к полю --&gt;
+&lt;label for="name"&gt;Твоё имя:&lt;/label&gt;
+&lt;input type="text" id="name" name="name"&gt;
+
+&lt;!-- Кнопка --&gt;
+&lt;button type="submit"&gt;🚀 Отправить&lt;/button&gt;
+&lt;button type="reset"&gt;🔄 Сбросить&lt;/button&gt;</code></pre>
+    </div>
+    <div class="success-box">✅ Атрибут <code>required</code> делает поле обязательным. Атрибут <code>disabled</code> делает поле неактивным.</div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Полная форма регистрации</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; padding: 30px; max-width: 500px; margin: 0 auto; background: #f5f5f5; }
+  h1 { color: #7C3AED; text-align: center; }
+  .form-card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  label { display: block; font-weight: bold; margin: 15px 0 5px; color: #333; }
+  input, select, textarea {
+    width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px;
+    font-size: 15px; box-sizing: border-box; outline: none; transition: border 0.2s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: #7C3AED; }
+  .btn { width: 100%; padding: 12px; background: #7C3AED; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn:hover { background: #5B21B6; }
+</style>
+</head>
+<body>
+  <h1>🚀 Регистрация на WebAcademy</h1>
+  <div class="form-card">
+    <form>
+      <label for="name">Полное имя</label>
+      <input type="text" id="name" placeholder="Алишер Каримов" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="alisher@mail.com" required>
+
+      <label for="grade">Класс</label>
+      <select id="grade">
+        <option value="">— Выбери класс —</option>
+        <option>1 класс</option><option>2 класс</option><option>3 класс</option>
+        <option>4 класс</option><option>5 класс</option><option>6 класс</option>
+        <option>7 класс</option><option>8 класс</option><option>9 класс</option>
+        <option>10 класс</option><option>11 класс</option>
+      </select>
+
+      <label for="password">Пароль</label>
+      <input type="password" id="password" placeholder="Минимум 6 символов" required>
+
+      <label>Какой курс тебя интересует?</label>
+      <input type="checkbox" id="html" checked> <label for="html" style="display:inline;font-weight:normal">HTML</label><br>
+      <input type="checkbox" id="css"> <label for="css" style="display:inline;font-weight:normal">CSS</label><br>
+      <input type="checkbox" id="js"> <label for="js" style="display:inline;font-weight:normal">JavaScript</label>
+
+      <label for="about">О себе</label>
+      <textarea id="about" rows="3" placeholder="Расскажи немного о себе..."></textarea>
+
+      <button class="btn" type="submit">✅ Зарегистрироваться</button>
+    </form>
+  </div>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Попробуй добавить новые поля или изменить стили!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Создай форму «Запись на курс» для WebAcademy:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Добавь поля: имя, фамилия, возраст (число), email, телефон</li>
+      <li><span class="task-num">2</span>Добавь выпадающий список выбора города</li>
+      <li><span class="task-num">3</span>Добавь радио-кнопки «Уровень: Новичок / Средний / Продвинутый»</li>
+      <li><span class="task-num">4</span>Добавь textarea для вопросов</li>
+      <li><span class="task-num">5</span>Добавь чекбокс «Согласен с условиями» и кнопку отправки</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест</h2><p class="quiz-subtitle">Вопросы по HTML-формам</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Какой тег создаёт форму?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">&lt;input&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="b">&lt;form&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="c">&lt;field&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="d">&lt;submit&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Какой type создаёт поле пароля?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">type="secret"</label>
+      <label class="quiz-option" data-q="q2" data-v="b">type="hidden"</label>
+      <label class="quiz-option" data-q="q2" data-v="c">type="password"</label>
+      <label class="quiz-option" data-q="q2" data-v="d">type="private"</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Для чего нужен тег &lt;label&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Для создания кнопки</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Для привязки текста к полю ввода</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Для создания списка</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Для стилизации</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Что делает атрибут required?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Делает поле только для чтения</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Делает поле необязательным</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Делает поле обязательным для заполнения</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Добавляет подсказку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Какой тег создаёт многострочное поле ввода?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">&lt;input type="multi"&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="b">&lt;textarea&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="c">&lt;multiline&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="d">&lt;input type="text" multi&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что означает method="POST" в форме?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Данные отправляются в URL</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Данные отправляются скрыто в теле запроса</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Форма не отправляется</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Данные сохраняются локально</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Какой тег создаёт выпадающий список?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">&lt;dropdown&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="b">&lt;list&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="c">&lt;select&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="d">&lt;choose&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Radio-кнопки с одинаковым name...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Все выбираются вместе</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Образуют группу — можно выбрать только одну</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Не работают</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Превращаются в чекбоксы</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Для чего нужен атрибут placeholder?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Задаёт значение по умолчанию</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Показывает подсказку внутри пустого поля</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Делает поле обязательным</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Скрывает поле</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Атрибут action в &lt;form&gt; указывает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Тип формы</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Куда отправляются данные формы</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Кнопку отправки</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Имя формы</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="7-semantic.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(6, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'c', q5:'b', q6:'b', q7:'c', q8:'b', q9:'b', q10:'b' });
+  initCompleteButton('html-6', '7-semantic.html');
+</script>
+</body>
+</html>

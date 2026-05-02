@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Урок 3: Функции — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:89%"></div></div>
+  <span class="lesson-progress-label">17 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge js">⚡ JS</div>
+    <h1>Урок 3: Функции</h1>
+    <div class="lesson-meta"><span>⏱ 45 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 3 из 5</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔧 Что такое функция?</h2>
+    <p><strong>Функция</strong> — это именованный блок кода, который можно вызвать несколько раз. Функции помогают избежать повторения кода и делают программу структурированной.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔧 Способы создания функций</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// 1. Function Declaration (обычная функция)
+function greet(name) {
+  return `Привет, ${name}! 👋`;
+}
+console.log(greet("Алишер"));  // "Привет, Алишер! 👋"
+
+// 2. Function Expression (функция в переменной)
+const add = function(a, b) {
+  return a + b;
+};
+console.log(add(3, 5));  // 8
+
+// 3. Arrow Function (стрелочная функция — современный стиль)
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 5));  // 20
+
+// Стрелка с блоком кода
+const getGrade = (score) => {
+  if (score >= 90) return "A";
+  if (score >= 75) return "B";
+  return "C";
+};
+
+// Функция без параметров
+const sayHello = () => console.log("Привет!");
+
+// Параметры по умолчанию
+function welcome(name = "Студент", course = "WebAcademy") {
+  return `Добро пожаловать, ${name}! Курс: ${course}`;
+}
+welcome();            // "Добро пожаловать, Студент! Курс: WebAcademy"
+welcome("Малика");    // "Добро пожаловать, Малика! Курс: WebAcademy"</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📦 Область видимости</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📦 Scope (область видимости)</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// Глобальная переменная — доступна везде
+let globalVar = "Я глобальная";
+
+function myFunc() {
+  // Локальная — доступна только внутри функции
+  let localVar = "Я локальная";
+  console.log(globalVar);  // ✅ доступна
+  console.log(localVar);   // ✅ доступна
+}
+
+console.log(globalVar);    // ✅ доступна
+console.log(localVar);     // ❌ Ошибка! ReferenceError
+
+// Замыкание (closure)
+function makeCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
+}
+const counter = makeCounter();
+console.log(counter());  // 1
+console.log(counter());  // 2
+console.log(counter());  // 3</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🛠️ Встроенные методы строк и массивов</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🛠️ Полезные методы</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// Строки
+let str = "WebAcademy";
+str.length;          // 10
+str.toUpperCase();   // "WEBACADEMY"
+str.toLowerCase();   // "webacademy"
+str.includes("Web"); // true
+str.replace("Web", "JS"); // "JSAcademy"
+str.split("");       // ["W","e","b","A"...]
+str.trim();          // убирает пробелы по краям
+
+// Массивы
+let arr = [3, 1, 4, 1, 5, 9];
+arr.length;          // 6
+arr.push(2);         // добавить в конец
+arr.pop();           // удалить с конца
+arr.unshift(0);      // добавить в начало
+arr.shift();         // удалить с начала
+arr.indexOf(4);      // 2 (индекс)
+arr.includes(5);     // true
+arr.sort();          // сортировка
+arr.reverse();       // перевернуть
+arr.join(", ");      // "3, 1, 4, 1, 5, 9"
+
+// map, filter, find
+let nums = [1, 2, 3, 4, 5];
+let doubled = nums.map(n => n * 2);       // [2,4,6,8,10]
+let evens = nums.filter(n => n % 2 === 0); // [2,4]
+let found = nums.find(n => n > 3);        // 4</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Функции</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; background: #0D0D1A; color: white; padding: 20px; }
+  h1 { color: #A78BFA; }
+  .section { background: #1A1A38; border-radius: 12px; padding: 20px; margin: 15px 0; border-left: 3px solid #7C3AED; }
+  h3 { color: #F59E0B; margin-bottom: 10px; }
+  input { padding: 8px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1); color: white; width: 120px; margin: 5px; }
+  button { background: #7C3AED; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin: 5px; }
+  .result { color: #86EFAC; font-family: monospace; margin-top: 10px; line-height: 1.8; }
+</style>
+</head>
+<body>
+  <h1>🔧 Функции в JavaScript</h1>
+
+  <div class="section">
+    <h3>Калькулятор</h3>
+    <input type="number" id="num1" value="10">
+    <input type="number" id="num2" value="5">
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">×</button>
+    <button onclick="calculate('/')">÷</button>
+    <div class="result" id="calcResult"></div>
+  </div>
+
+  <div class="section">
+    <h3>Обработка строки</h3>
+    <input type="text" id="strInput" value="webacademy" style="width:200px">
+    <button onclick="transformString()">Обработать</button>
+    <div class="result" id="strResult"></div>
+  </div>
+
+  <div class="section">
+    <h3>Работа с массивом</h3>
+    <button onclick="showArrayDemo()">Показать массив</button>
+    <div class="result" id="arrResult"></div>
+  </div>
+
+  <script>
+    // Функция-калькулятор (arrow function)
+    const calculate = (op) => {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+      let result;
+      switch(op) {
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
+        case '/': result = b !== 0 ? (a / b).toFixed(2) : 'Ошибка: деление на ноль!'; break;
+      }
+      document.getElementById('calcResult').textContent = `${a} ${op} ${b} = ${result}`;
+    };
+
+    // Функция обработки строки
+    function transformString() {
+      const str = document.getElementById('strInput').value;
+      const res = document.getElementById('strResult');
+      res.innerHTML = `
+        Оригинал: "${str}"<br>
+        Заглавные: "${str.toUpperCase()}"<br>
+        Длина: ${str.length} символов<br>
+        Содержит "web": ${str.includes('web')}<br>
+        Перевёрнутая: "${str.split('').reverse().join('')}"
+      `;
+    }
+
+    // Функция с массивом
+    function showArrayDemo() {
+      const scores = [85, 92, 71, 68, 95, 88, 76];
+      const avg = scores => scores.reduce((a, b) => a + b, 0) / scores.length;
+      const passing = scores.filter(s => s >= 75);
+      const stars = scores.map(s => s >= 90 ? '⭐' : s >= 75 ? '✅' : '❌');
+
+      document.getElementById('arrResult').innerHTML = `
+        Все оценки: [${scores.join(', ')}]<br>
+        Средняя: ${avg(scores).toFixed(1)}<br>
+        Зачёт (≥75): [${passing.join(', ')}]<br>
+        Результаты: ${stars.join(' ')}<br>
+        Максимум: ${Math.max(...scores)}<br>
+        Минимум: ${Math.min(...scores)}
+      `;
+    }
+  </script>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Введи числа, нажми операции и изучи функции в действии!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Напиши функцию <code>gradeStudent(score)</code>, возвращающую оценку (5,4,3,2)</li>
+      <li><span class="task-num">2</span>Создай стрелочную функцию <code>formatName</code>, которая делает первую букву заглавной</li>
+      <li><span class="task-num">3</span>Используй <code>map()</code> для создания массива имён учеников в заглавном регистре</li>
+      <li><span class="task-num">4</span>Используй <code>filter()</code> для выбора учеников с оценкой выше 80</li>
+      <li><span class="task-num">5</span>Создай функцию с параметром по умолчанию для приветствия</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест по функциям</h2><p class="quiz-subtitle">10 вопросов о функциях в JavaScript</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Как правильно объявить стрелочную функцию?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">function => (a, b) { return a + b; }</label>
+      <label class="quiz-option" data-q="q1" data-v="b">const add = (a, b) => a + b;</label>
+      <label class="quiz-option" data-q="q1" data-v="c">const add = function arrow(a, b) { }</label>
+      <label class="quiz-option" data-q="q1" data-v="d">arrow function add(a, b) { }</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Что возвращает функция без return?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">0</label>
+      <label class="quiz-option" data-q="q2" data-v="b">null</label>
+      <label class="quiz-option" data-q="q2" data-v="c">undefined</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Ошибку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. arr.map(n => n * 2) для [1,2,3] вернёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">[1,2,3]</label>
+      <label class="quiz-option" data-q="q3" data-v="b">[2,4,6]</label>
+      <label class="quiz-option" data-q="q3" data-v="c">6</label>
+      <label class="quiz-option" data-q="q3" data-v="d">[2,2,2]</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. arr.filter(n => n > 2) для [1,2,3,4] вернёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">[1,2]</label>
+      <label class="quiz-option" data-q="q4" data-v="b">[2,3,4]</label>
+      <label class="quiz-option" data-q="q4" data-v="c">[3,4]</label>
+      <label class="quiz-option" data-q="q4" data-v="d">[2]</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Параметр по умолчанию объявляется как...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">function f(a, b = 10) { }</label>
+      <label class="quiz-option" data-q="q5" data-v="b">function f(a, default b = 10) { }</label>
+      <label class="quiz-option" data-q="q5" data-v="c">function f(a, b) { default = 10; }</label>
+      <label class="quiz-option" data-q="q5" data-v="d">function f(a, b || 10) { }</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. str.split("") для "abc" вернёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">"abc"</label>
+      <label class="quiz-option" data-q="q6" data-v="b">["abc"]</label>
+      <label class="quiz-option" data-q="q6" data-v="c">["a","b","c"]</label>
+      <label class="quiz-option" data-q="q6" data-v="d">3</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. arr.push("x") делает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Добавляет "x" в начало массива</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Добавляет "x" в конец массива</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Удаляет последний элемент</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Создаёт новый массив</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Что такое область видимости (scope)?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Размер переменной</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Область, в которой переменная доступна</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Тип переменной</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Имя функции</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. arr.join(", ") для ["a","b","c"] вернёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">["a", "b", "c"]</label>
+      <label class="quiz-option" data-q="q9" data-v="b">"a,b,c"</label>
+      <label class="quiz-option" data-q="q9" data-v="c">"a, b, c"</label>
+      <label class="quiz-option" data-q="q9" data-v="d">3</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Math.max(1, 5, 3, 9, 2) вернёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">1</label>
+      <label class="quiz-option" data-q="q10" data-v="b">5</label>
+      <label class="quiz-option" data-q="q10" data-v="c">2</label>
+      <label class="quiz-option" data-q="q10" data-v="d">9</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="4-dom.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(17, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'c', q5:'a', q6:'c', q7:'b', q8:'b', q9:'c', q10:'d' });
+  initCompleteButton('js-3', '4-dom.html');
+</script>
+</body>
+</html>

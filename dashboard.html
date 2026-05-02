@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — WebAcademy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="dashboard">
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><span class="logo-icon">🚀</span><span>WebAcademy</span></a>
+  <div class="nav-links">
+    <a href="certificate.html" class="btn btn-sm btn-gold">🏆 Сертификат</a>
+    <button onclick="WA.logout()" class="btn btn-sm btn-secondary">Выйти</button>
+  </div>
+</nav>
+
+<div class="dash-header">
+  <div class="dash-welcome">Добро пожаловать в твой кабинет 👋</div>
+  <h1 id="dash-name">Загрузка...</h1>
+  <div class="dash-stats">
+    <div class="dash-stat">
+      <span class="dash-stat-icon">📚</span>
+      <div><div class="dash-stat-val" id="stat-total">19</div><div class="dash-stat-label">Всего уроков</div></div>
+    </div>
+    <div class="dash-stat">
+      <span class="dash-stat-icon">✅</span>
+      <div><div class="dash-stat-val" id="stat-done">0</div><div class="dash-stat-label">Пройдено</div></div>
+    </div>
+    <div class="dash-stat">
+      <span class="dash-stat-icon">📊</span>
+      <div><div class="dash-stat-val" id="stat-pct">0%</div><div class="dash-stat-label">Прогресс</div></div>
+    </div>
+    <div class="dash-stat">
+      <span class="dash-stat-icon">🏆</span>
+      <div><div class="dash-stat-val" id="stat-cert">—</div><div class="dash-stat-label">Сертификат</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="dash-body">
+  <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:0.5rem">Твои курсы</h2>
+  <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1.5rem">Проходи уроки по порядку, чтобы лучше усвоить материал</p>
+
+  <div class="dash-grid" id="tracks-grid">
+    <!-- filled by JS -->
+  </div>
+
+  <div style="margin-top:2.5rem;padding:1.5rem;background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(124,58,237,0.05));border:1px solid rgba(245,158,11,0.15);border-radius:16px;text-align:center">
+    <div style="font-size:2rem;margin-bottom:0.5rem">🏆</div>
+    <h3 style="font-weight:800;margin-bottom:0.4rem">Получи сертификат!</h3>
+    <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1rem">Пройди 15 или больше уроков и получи именной сертификат от Музаффара Хаётова</p>
+    <a href="certificate.html" class="btn btn-gold">🏆 Получить сертификат</a>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const user = WA.requireAuth();
+  if (!user) return;
+
+  document.getElementById('dash-name').textContent = '👋 Привет, ' + user.name + '!';
+
+  const done = WA.getTotalCompleted();
+  const total = WA.getTotalLessons();
+  const pct = Math.round((done / total) * 100);
+
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-pct').textContent = pct + '%';
+  document.getElementById('stat-cert').textContent = WA.canGetCertificate() ? '✅ Готов!' : done + '/15';
+
+  // Render tracks
+  const grid = document.getElementById('tracks-grid');
+  WA.courses.forEach(course => {
+    const completedInCourse = course.lessons.filter(l => user.progress[l.id]?.completed).length;
+    const coursePct = Math.round((completedInCourse / course.lessons.length) * 100);
+
+    const card = document.createElement('div');
+    card.className = 'track-card';
+    card.innerHTML = `
+      <div class="track-header">
+        <span class="track-icon">${course.icon}</span>
+        <h3>${course.label}</h3>
+        <span style="color:var(--text2);font-size:0.85rem">${completedInCourse}/${course.lessons.length} уроков</span>
+      </div>
+      <div class="track-progress">
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:var(--text2)">
+          <span>Прогресс</span><span>${coursePct}%</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:${coursePct}%"></div>
+        </div>
+        <ul class="track-lessons">
+          ${course.lessons.map(l => {
+            const done = user.progress[l.id]?.completed;
+            return `<li class="${done ? 'completed' : ''}" onclick="window.location.href='${l.file}'">
+              <span class="lesson-check ${done ? 'done' : ''}">${done ? '✓' : ''}</span>
+              ${l.title}
+              <span style="margin-left:auto;font-size:0.78rem;opacity:0.6">${l.duration}</span>
+            </li>`;
+          }).join('')}
+        </ul>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+});
+</script>
+</body>
+</html>

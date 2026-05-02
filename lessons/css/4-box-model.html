@@ -1,128 +1,290 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 4: Границы и Отступы (Box Model)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .no-spacing {
-            background-color: #3A86FF;
-            color: white;
-            /* No padding, no border, no margin */
-        }
-        
-        .with-spacing {
-            background-color: #3A86FF;
-            color: white;
-            padding: 20px; /* Внутренний отступ */
-            border: 5px solid #FF006E; /* Граница */
-            margin: 20px; /* Внешний отступ */
-            border-radius: 12px;
-        }
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Урок 4: Блочная модель — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:57%"></div></div>
+  <span class="lesson-progress-label">11 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge css">🎨 CSS</div>
+    <h1>Урок 4: Блочная модель CSS</h1>
+    <div class="lesson-meta"><span>⏱ 40 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 4 из 7</span></div>
+  </div>
 
-        .demo-container {
-            background-color: #E2E8F0;
-            border: 1px dashed #A6ACCD;
-        }
-    </style>
+  <div class="theory-block">
+    <h2>📦 Что такое Box Model?</h2>
+    <p>Каждый HTML-элемент в CSS представлен как <strong>прямоугольная коробка (box)</strong>. Эта модель состоит из четырёх уровней (снаружи внутрь):</p>
+    <ol>
+      <li><strong>Margin</strong> (внешний отступ) — пространство вокруг элемента</li>
+      <li><strong>Border</strong> (рамка) — граница элемента</li>
+      <li><strong>Padding</strong> (внутренний отступ) — пространство внутри рамки</li>
+      <li><strong>Content</strong> (содержимое) — сам текст или изображение</li>
+    </ol>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📦 Box Model пример</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>.box {
+  /* Содержимое */
+  width: 200px;
+  height: 100px;
+
+  /* Внутренний отступ */
+  padding: 20px;           /* со всех сторон */
+  padding: 10px 20px;      /* верх-низ | лево-право */
+  padding: 10px 15px 20px 25px; /* верх | право | низ | лево */
+  padding-top: 10px;       /* только сверху */
+
+  /* Рамка */
+  border: 2px solid #7C3AED;
+  border-width: 2px;
+  border-style: solid;     /* solid | dashed | dotted | none */
+  border-color: purple;
+  border-radius: 12px;     /* скруглённые углы */
+
+  /* Внешний отступ */
+  margin: 20px;
+  margin: 0 auto;          /* центровка по горизонтали */
+  margin-top: 30px;
+}</code></pre>
+    </div>
+    <div class="info-box">💡 <strong>Важно!</strong> По умолчанию <code>width</code> и <code>height</code> — это размер только содержимого. Padding и border добавляются поверх. Чтобы это исправить, используй: <code>box-sizing: border-box</code></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔧 box-sizing: border-box</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔧 box-sizing</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* Лучшая практика — всегда добавляй в начало CSS */
+* {
+  box-sizing: border-box;
+}
+
+/* Теперь width включает padding и border!
+   Без border-box: width=200px + padding=40px = 240px итого
+   С border-box:   width=200px (уже включает padding) */
+
+.card {
+  width: 300px;     /* это ИТОГОВАЯ ширина */
+  padding: 20px;    /* уже включена в 300px */
+  border: 2px solid #ccc;  /* тоже включена */
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🌟 Тени и визуальные эффекты</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🌟 Box Shadow</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* box-shadow: x y blur spread color */
+box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+box-shadow: 0 0 30px rgba(124,58,237,0.4); /* свечение */
+
+/* Несколько теней */
+box-shadow: 0 2px 8px rgba(0,0,0,0.2),
+            0 0 20px rgba(124,58,237,0.15);
+
+/* Внутренняя тень */
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+
+/* outline — контур вне рамки (не влияет на layout) */
+outline: 2px solid #7C3AED;
+outline-offset: 3px;</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Box Model</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial;
+    background: #f0f0f5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  /* Базовая карточка */
+  .card {
+    width: 350px;
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7C3AED;
+    margin-bottom: 8px;
+  }
+
+  .card-text {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  /* Кнопки с разными padding */
+  .btn-sm { padding: 6px 14px; font-size: 13px; }
+  .btn-md { padding: 10px 20px; font-size: 15px; }
+  .btn-lg { padding: 14px 28px; font-size: 17px; }
+
+  .btn {
+    background: #7C3AED;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+    font-weight: bold;
+  }
+
+  /* Демонстрация margin */
+  .margin-demo {
+    background: #fef3c7;
+    border: 3px dashed #f59e0b;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px;  /* попробуй изменить! */
+    text-align: center;
+  }
+</style>
 </head>
 <body>
+  <h1>📦 Блочная модель CSS</h1>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+  <div class="card">
+    <div class="card-title">WebAcademy</div>
+    <p class="card-text">Платформа Музаффара Хаётова для детей.
+    Эта карточка: width=350px, padding=25px, border-radius=16px.</p>
+    <button class="btn btn-sm">Маленькая</button>
+    <button class="btn btn-md">Средняя</button>
+    <button class="btn btn-lg">Большая</button>
+  </div>
 
-        <div class="nav-section">
-            <h3>CSS – Стилизация (Уровни)</h3>
-            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
-            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
-            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
-            <a href="4-box-model.html" class="nav-link active"><span class="status-icon"></span> 4. Границы и Отступы</a>
-            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
-            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
-            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
-        </div>
-    </aside>
+  <div class="margin-demo">
+    <strong>margin: 30px</strong><br>
+    Эти отступы — снаружи блока<br>
+    <small>Измени margin в CSS!</small>
+  </div>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Измени padding, margin и border-radius — наблюдай за изменениями!</div>
+  </div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 4: Коробки и Отступы 📦</h1>
-            <p>Узнаем про магию Margin, Padding и Border (Box Model).</p>
-        </div>
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Добавь <code>* { box-sizing: border-box; }</code> в начало CSS</li>
+      <li><span class="task-num">2</span>Создай карточку профиля: avatar + имя + описание</li>
+      <li><span class="task-num">3</span>Задай точные padding (не менее 20px) и margin</li>
+      <li><span class="task-num">4</span>Добавь красивую тень box-shadow к карточке</li>
+      <li><span class="task-num">5</span>Центрируй карточку на странице через <code>margin: 0 auto</code></li>
+    </ul>
+  </div>
 
-        <div class="explanation">
-            <h3>Все элементы — это коробки</h3>
-            <p>Чтобы элементы на сайте не слипались друг с другом, у нас есть три волшебных свойства:</p>
-            <ul>
-                <li><code class="code-inline">padding</code> (внутренний отступ) — пространство внутри коробки, между текстом и стенками.</li>
-                <li><code class="code-inline">border</code> (рамка/граница) — стенки самой коробки.</li>
-                <li><code class="code-inline">margin</code> (внешний отступ) — пространство снаружи коробки, до соседних элементов.</li>
-            </ul>
-        </div>
+  <div class="quiz-section">
+    <h2>🧠 Тест по Box Model</h2><p class="quiz-subtitle">10 вопросов о блочной модели</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Что находится в самом центре Box Model?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Margin</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Border</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Content (содержимое)</label>
+      <label class="quiz-option" data-q="q1" data-v="d">Padding</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Что делает margin: 0 auto?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Убирает все отступы</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Центрирует блочный элемент по горизонтали</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Добавляет автоматическую высоту</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Центрирует по вертикали</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Зачем нужен box-sizing: border-box?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Убирает рамку</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Чтобы width/height включали padding и border</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Добавляет автоматические отступы</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Делает элемент круглым</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. padding: 10px 20px означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">10px слева, 20px справа</label>
+      <label class="quiz-option" data-q="q4" data-v="b">10px сверху и снизу, 20px слева и справа</label>
+      <label class="quiz-option" data-q="q4" data-v="c">10px везде кроме низа, где 20px</label>
+      <label class="quiz-option" data-q="q4" data-v="d">20px сверху, 10px снизу</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. border: 2px solid red означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Пунктирная красная рамка 2px</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Сплошная красная рамка 2px</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Красный фон 2px</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Внешний отступ 2px</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что такое Margin?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Внутренний отступ</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Рамка элемента</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Внешний отступ от других элементов</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Размер содержимого</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. box-shadow: 0 0 20px red создаёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Красный фон</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Красное свечение вокруг элемента</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Красную рамку</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Ошибку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. border-radius: 50% делает элемент...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Полупрозрачным</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Круглым</label>
+      <label class="quiz-option" data-q="q8" data-v="c">В два раза меньше</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Невидимым</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Порядок значений в padding: A B C D — это...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Лево, право, верх, низ</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Верх, право, низ, лево (по часовой стрелке)</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Верх, низ, лево, право</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Право, лево, верх, низ</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Что делает outline в отличие от border?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">То же самое</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Outline не влияет на layout (не занимает место)</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Outline всегда внутри элемента</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Outline только для текста</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
 
-        <div class="code-block">
-            <code>
-div {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;padding: 20px; /* Текст не липнет к краю */<br>
-&nbsp;&nbsp;&nbsp;&nbsp;border: 5px solid red; /* Толстая красная сплошная рамка */<br>
-&nbsp;&nbsp;&nbsp;&nbsp;margin: 20px; /* Отталкивает соседние элементы на 20px */<br>
-}<br>
-            </code>
-        </div>
-
-        <div class="comparison-container">
-            <div class="comparison-box">
-                <div class="box-header">ДО (Слипшийся блок)</div>
-                <div class="box-content demo-container">
-                    <div class="no-spacing">
-                        Я задыхаюсь в своей коробке!
-                    </div>
-                </div>
-            </div>
-            
-            <div class="comparison-box after">
-                <div class="box-header">ПОСЛЕ (С Padding, Border и Margin)</div>
-                <div class="box-content demo-container">
-                    <div class="with-spacing">
-                        О, теперь мне свободно!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="explanation">
-            <h3>Что тут произошло?</h3>
-            <p>Серый фон с пунктиром — это контейнер. В левом примере синий блок прилип к его краям, а текст внутри блока — к его стенкам. В правом примере блок "дышит": у него появились внутренние отступы (padding), красивые края (border) и внешние отступы (margin), которые отодвинули его от краев контейнера.</p>
-        </div>
-
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Создаем рамку</h3>
-            <p>Напиши CSS для создания черной рамки толщиной 2 пикселя вокруг картинки (<code class="code-inline">&lt;img&gt;</code>). Стиль линии сделай сплошным (<code class="code-inline">solid</code>).</p>
-            
-            <button class="answer-toggle" data-target="task4-answer">Показать ответ</button>
-            <div id="task4-answer" class="answer-content">
-                <code>
-img {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid black;<br>
-}
-                </code>
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between;">
-            <a href="3-text-fonts.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
-            <a href="5-display-flex.html" class="btn-primary">Следующий: Сетка и Flexbox ➡️</a>
-        </div>
-    </main>
-
-    <script src="../../assets/js/main.js"></script>
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="5-display-flex.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(11, 19);
+  initQuiz({ q1:'c', q2:'b', q3:'b', q4:'b', q5:'b', q6:'c', q7:'b', q8:'b', q9:'b', q10:'b' });
+  initCompleteButton('css-4', '5-display-flex.html');
+</script>
 </body>
 </html>

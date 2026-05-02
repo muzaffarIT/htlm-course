@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Войти — WebAcademy | Музаффар Хаётов</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="logo-big">🔑</div>
+      <h1>Добро пожаловать!</h1>
+      <p>Войди в свой аккаунт <strong>WebAcademy</strong></p>
+    </div>
+
+    <div class="form-error" id="login-error"></div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" id="login-email" type="email" placeholder="твой@email.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Пароль</label>
+        <input class="form-input" id="login-pass" type="password" placeholder="Твой пароль" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg">🚀 Войти</button>
+    </form>
+
+    <p class="auth-switch">Нет аккаунта? <a href="register.html">Зарегистрироваться бесплатно</a></p>
+    <p style="text-align:center;margin-top:1rem"><a href="index.html" style="color:var(--text3);font-size:0.85rem;text-decoration:none">← На главную</a></p>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  hideError('login-error');
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const result = WA.login(email, pass);
+  if (!result.ok) return showError('login-error', result.msg);
+  window.location.href = 'dashboard.html';
+});
+</script>
+</body>
+</html>

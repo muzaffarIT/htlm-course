@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 3: Текст и заголовки — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:15%"></div></div>
+  <span class="lesson-progress-label">3 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 3: Текст, абзацы и форматирование</h1>
+    <div class="lesson-meta"><span>⏱ 35 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 3 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📝 Работа с текстом в HTML</h2>
+    <p>Текст — основа любого сайта. HTML предлагает множество способов оформить и структурировать текст. Главное правило: <strong>каждый текст должен находиться внутри какого-либо тега</strong>.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📝 Полный пример текстовых тегов</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Моя статья о программировании&lt;/h1&gt;
+  &lt;p&gt;Программирование — это &lt;strong&gt;создание инструкций&lt;/strong&gt;
+  для компьютера. Это &lt;em&gt;увлекательно&lt;/em&gt; и &lt;mark&gt;перспективно&lt;/mark&gt;.&lt;/p&gt;
+
+  &lt;h2&gt;Зачем учиться программированию?&lt;/h2&gt;
+  &lt;p&gt;Первая причина: &lt;abbr title="Информационные технологии"&gt;IT&lt;/abbr&gt;
+  — одна из самых высокооплачиваемых сфер!&lt;/p&gt;
+
+  &lt;p&gt;Ты можешь создать:&lt;br&gt;
+  — Веб-сайты&lt;br&gt;
+  — Мобильные приложения&lt;br&gt;
+  — Игры&lt;/p&gt;
+
+  &lt;hr&gt;
+  &lt;p&gt;&lt;small&gt;Автор: Музаффар Хаётов, 2025&lt;/small&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔤 Специальные символы</h2>
+    <p>Некоторые символы нельзя писать прямо в HTML — например, угловые скобки <code>&lt;</code> и <code>&gt;</code> воспринимаются как теги. Для них используют <strong>HTML-сущности</strong>:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔤 HTML-сущности</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&amp;lt;   → &lt;   (меньше)
+&amp;gt;   → &gt;   (больше)
+&amp;amp;  → &amp;   (амперсанд)
+&amp;quot; → "   (кавычки)
+&amp;nbsp; →     (неразрывный пробел)
+&amp;copy; → ©   (авторское право)
+&amp;reg;  → ®   (зарегистрированный знак)
+&amp;mdash;→ —   (длинное тире)</code></pre>
+    </div>
+    <div class="info-box">💡 Использование HTML-сущностей обязательно, когда символ может быть воспринят браузером как часть кода.</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📋 Предварительно отформатированный текст</h2>
+    <p>Тег <code>&lt;pre&gt;</code> сохраняет все пробелы и переносы строк как есть. Он часто используется для отображения кода или стихов:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📋 Тег pre</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;pre&gt;
+  function hello() {
+    console.log("Привет!");
+  }
+&lt;/pre&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Форматирование текста</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Georgia, serif; max-width: 600px; margin: 30px auto; padding: 20px; line-height: 1.8; }
+  h1 { color: #5B21B6; }
+  h2 { color: #7C3AED; margin-top: 30px; }
+  hr { border: none; border-top: 2px dashed #ddd; margin: 25px 0; }
+  pre { background: #f5f5f5; padding: 15px; border-radius: 8px; }
+</style>
+</head>
+<body>
+  <h1>WebAcademy &mdash; Твой путь в IT</h1>
+  <p>Добро пожаловать на лучшую платформу для изучения
+  <strong>веб-разработки</strong>!
+  Автор курса &mdash; <em>Музаффар Хаётов</em>.</p>
+
+  <h2>Что ты изучишь?</h2>
+  <p>Курс состоит из трёх блоков:<br>
+  1. HTML &mdash; структура сайта<br>
+  2. CSS &mdash; оформление<br>
+  3. JavaScript &mdash; логика</p>
+
+  <hr>
+
+  <pre>
+  Пример кода:
+  &lt;h1&gt;Привет!&lt;/h1&gt;
+  </pre>
+
+  <p><small>&copy; 2025 WebAcademy by Музаффар Хаётов</small></p>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Попробуй добавить свои абзацы и заголовки!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Создай страницу — статью на любую тему (спорт, животные, кино...):</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Напиши заголовок <code>&lt;h1&gt;</code> и 2-3 подзаголовка <code>&lt;h2&gt;</code></li>
+      <li><span class="task-num">2</span>Каждый раздел должен содержать минимум 2 абзаца</li>
+      <li><span class="task-num">3</span>Используй <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code> и <code>&lt;mark&gt;</code> для выделения</li>
+      <li><span class="task-num">4</span>Добавь разделительные линии <code>&lt;hr&gt;</code></li>
+      <li><span class="task-num">5</span>В конце укажи авторство через <code>&lt;small&gt;</code> и <code>&amp;copy;</code></li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест</h2><p class="quiz-subtitle">Проверь свои знания о работе с текстом</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Какой тег создаёт абзац текста?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">&lt;text&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="b">&lt;p&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="c">&lt;para&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="d">&lt;t&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Что делает тег &lt;pre&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Создаёт предзаголовок</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Сохраняет пробелы и переносы строк</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Делает текст жирным</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Создаёт ссылку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Как написать символ © в HTML?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">&amp;copy;</label>
+      <label class="quiz-option" data-q="q3" data-v="b">&amp;cr;</label>
+      <label class="quiz-option" data-q="q3" data-v="c">&amp;copyright;</label>
+      <label class="quiz-option" data-q="q3" data-v="d">(c)</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Что означает &amp;nbsp;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Новая строка</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Неразрывный пробел</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Жирный шрифт</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Горизонтальная линия</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Что делает тег &lt;hr&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Создаёт гиперссылку</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Создаёт горизонтальную линию</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Делает заголовок</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Добавляет отступ</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Как написать длинное тире в HTML?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">&amp;dash;</label>
+      <label class="quiz-option" data-q="q6" data-v="b">&amp;endash;</label>
+      <label class="quiz-option" data-q="q6" data-v="c">&amp;mdash;</label>
+      <label class="quiz-option" data-q="q6" data-v="d">---</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Тег &lt;abbr&gt; используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Подзаголовков</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Аббревиатур с расшифровкой</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Выделения текста маркером</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Добавления изображений</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Как перенести текст на новую строку?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">&lt;newline&gt;</label>
+      <label class="quiz-option" data-q="q8" data-v="b">&lt;nl&gt;</label>
+      <label class="quiz-option" data-q="q8" data-v="c">&lt;br&gt;</label>
+      <label class="quiz-option" data-q="q8" data-v="d">&lt;enter&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Почему важно использовать HTML-сущности для символов &lt; и &gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Для красоты</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Чтобы браузер не воспринял их как теги</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Для SEO-оптимизации</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Это не обязательно</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Тег &lt;small&gt; делает текст...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Жирным</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Курсивным</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Меньше обычного размера</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Зачёркнутым</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="4-links-images.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(3, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'a', q4:'b', q5:'b', q6:'c', q7:'b', q8:'c', q9:'b', q10:'c' });
+  initCompleteButton('html-3', '4-links-images.html');
+</script>
+</body>
+</html>

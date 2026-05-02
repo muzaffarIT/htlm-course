@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 7: Семантический HTML — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:36%"></div></div>
+  <span class="lesson-progress-label">7 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 7: Семантический HTML</h1>
+    <div class="lesson-meta"><span>⏱ 35 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 7 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🧩 Что такое семантика?</h2>
+    <p><strong>Семантика</strong> — это <em>смысл</em>. Семантические теги помогают браузеру, поисковикам и программам для людей с ограниченными возможностями понять <strong>что значит каждая часть страницы</strong>, а не просто как она выглядит.</p>
+    <div class="info-box">💡 Раньше все писали: <code>&lt;div id="header"&gt;</code>, <code>&lt;div id="nav"&gt;</code>... HTML5 добавил теги с понятными именами!</div>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🧩 Несемантический vs Семантический</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- ❌ Несемантический (старый способ) --&gt;
+&lt;div id="header"&gt;...&lt;/div&gt;
+&lt;div id="nav"&gt;...&lt;/div&gt;
+&lt;div id="main"&gt;...&lt;/div&gt;
+&lt;div id="footer"&gt;...&lt;/div&gt;
+
+&lt;!-- ✅ Семантический (правильный HTML5) --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🏗️ Основные семантические теги</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🏗️ Структура страницы</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;header&gt;   — шапка сайта (логотип, навигация)
+&lt;nav&gt;      — блок навигации (меню)
+&lt;main&gt;     — основное содержимое страницы
+&lt;section&gt;  — раздел страницы
+&lt;article&gt;  — самостоятельная статья/запись
+&lt;aside&gt;    — боковая панель
+&lt;footer&gt;   — подвал сайта
+&lt;figure&gt;   — иллюстрация с подписью
+&lt;figcaption&gt; — подпись к иллюстрации
+&lt;time&gt;     — дата/время
+&lt;address&gt;  — контактная информация</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📐 Полная структура страницы</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📐 Полный шаблон HTML5</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Описание сайта для поисковиков"&gt;
+  &lt;title&gt;WebAcademy — Обучение&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;a href="/" class="logo"&gt;🚀 WebAcademy&lt;/a&gt;
+    &lt;nav&gt;
+      &lt;a href="/courses"&gt;Курсы&lt;/a&gt;
+      &lt;a href="/about"&gt;О нас&lt;/a&gt;
+      &lt;a href="/contact"&gt;Контакты&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section id="hero"&gt;
+      &lt;h1&gt;Учись веб-разработке&lt;/h1&gt;
+      &lt;p&gt;Уроки от Музаффара Хаётова&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="articles"&gt;
+      &lt;article&gt;
+        &lt;h2&gt;Урок 1: HTML&lt;/h2&gt;
+        &lt;time datetime="2025-01-01"&gt;1 января 2025&lt;/time&gt;
+        &lt;p&gt;Изучаем основы HTML...&lt;/p&gt;
+        &lt;figure&gt;
+          &lt;img src="html.png" alt="HTML код"&gt;
+          &lt;figcaption&gt;Пример HTML-кода&lt;/figcaption&gt;
+        &lt;/figure&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+      &lt;h3&gt;Полезные ссылки&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;MDN Web Docs&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;address&gt;
+      Автор: &lt;a href="mailto:muzaffar@webacademy.uz"&gt;Музаффар Хаётов&lt;/a&gt;
+    &lt;/address&gt;
+    &lt;p&gt;&amp;copy; 2025 WebAcademy&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <div class="success-box">✅ Правильный семантический HTML улучшает SEO (поисковое продвижение), доступность и читаемость кода!</div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Семантическая страница</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>WebAcademy Blog</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial; background: #f5f5f5; }
+    header { background: #7C3AED; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header a { color: white; text-decoration: none; font-weight: bold; }
+    nav a { margin-left: 15px; color: rgba(255,255,255,0.8); text-decoration: none; }
+    main { display: flex; gap: 20px; padding: 20px; max-width: 900px; margin: 0 auto; }
+    section { flex: 1; }
+    article { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    article h2 { color: #7C3AED; margin-bottom: 8px; }
+    time { color: #888; font-size: 0.85em; }
+    aside { width: 220px; background: white; border-radius: 12px; padding: 15px; height: fit-content; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    aside h3 { color: #7C3AED; margin-bottom: 10px; }
+    aside li { margin: 8px 0; }
+    footer { text-align: center; padding: 20px; background: #333; color: white; font-size: 0.9em; }
+    figcaption { font-size: 0.8em; color: #888; margin-top: 5px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#">🚀 WebAcademy</a>
+    <nav>
+      <a href="#">Курсы</a>
+      <a href="#">О нас</a>
+      <a href="#">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <article>
+        <h2>Урок 1: Введение в HTML</h2>
+        <time>1 мая 2025</time>
+        <p>HTML — основа каждого сайта. В этом уроке мы познакомились с тегами и структурой страницы.</p>
+        <figure>
+          <img src="https://picsum.photos/300/150?random=5" alt="HTML" style="width:100%;border-radius:8px;margin-top:10px">
+          <figcaption>Код первой страницы</figcaption>
+        </figure>
+      </article>
+      <article>
+        <h2>Урок 2: CSS — красота сайта</h2>
+        <time>5 мая 2025</time>
+        <p>CSS делает сайты красивыми. Мы изучили цвета, шрифты и анимации!</p>
+      </article>
+    </section>
+
+    <aside>
+      <h3>📚 Курсы</h3>
+      <ul>
+        <li>🌐 HTML</li>
+        <li>🎨 CSS</li>
+        <li>⚡ JavaScript</li>
+      </ul>
+      <hr style="margin:15px 0">
+      <h3>👨‍💻 Автор</h3>
+      <p>Музаффар Хаётов</p>
+    </aside>
+  </main>
+
+  <footer>
+    <address>Автор: Музаффар Хаётов | muzaffar@webacademy.uz</address>
+    <p>&copy; 2025 WebAcademy</p>
+  </footer>
+</body>
+</html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Поздравляем! Это уже настоящая профессиональная структура сайта!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Финальное задание HTML</h2>
+    <p>Создай полноценную страницу личного блога с правильной семантикой:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай структуру: header с логотипом и nav, main, footer</li>
+      <li><span class="task-num">2</span>Внутри main добавь section с 2–3 article (твои посты)</li>
+      <li><span class="task-num">3</span>Добавь aside с виджетом «Обо мне» или «Категории»</li>
+      <li><span class="task-num">4</span>Каждый article должен содержать h2, time, p и figure с img</li>
+      <li><span class="task-num">5</span>В footer добавь address с твоим именем и email</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Финальный тест по HTML</h2><p class="quiz-subtitle">Последний тест — проверь все знания по HTML!</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Что такое семантические теги?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Теги с красивым дизайном</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Теги, передающие смысл своего содержимого</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Теги только для текста</label>
+      <label class="quiz-option" data-q="q1" data-v="d">Устаревшие теги</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Какой тег используется для шапки сайта?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">&lt;top&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="b">&lt;head&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="c">&lt;header&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="d">&lt;banner&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Тег &lt;main&gt; содержит...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Навигационное меню</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Основное уникальное содержимое страницы</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Шапку сайта</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Боковую панель</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Для чего используется тег &lt;aside&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Для навигации</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Для боковой панели или дополнительного контента</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Для статей</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Для форм</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Тег &lt;article&gt; используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Картинок</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Самостоятельной публикации (статьи, поста)</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Ссылок</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Таблиц</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Тег &lt;figcaption&gt; служит для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Создания рисунка</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Подписи к иллюстрации</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Заголовка страницы</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Добавления ссылки</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Зачем нужен тег &lt;time&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Для создания часов на странице</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Для семантического обозначения даты/времени</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Для таймера</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Для показа времени загрузки</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Чем семантический HTML помогает SEO?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Делает страницу быстрее</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Помогает поисковикам понять структуру страницы</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Добавляет рекламу</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Ничем не помогает</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Тег &lt;address&gt; содержит...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Физический адрес автора или организации</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Адрес ссылки</label>
+      <label class="quiz-option" data-q="q9" data-v="c">IP-адрес сервера</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Адрес CSS-файла</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Какой тег заменяет &lt;div id="footer"&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">&lt;bottom&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="b">&lt;end&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="c">&lt;footer&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="d">&lt;down&gt;</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="../../lessons/css/1-intro.html" class="lesson-next-btn">Начать CSS →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(7, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'b', q9:'a', q10:'c' });
+  initCompleteButton('html-7', '../../lessons/css/1-intro.html');
+</script>
+</body>
+</html>

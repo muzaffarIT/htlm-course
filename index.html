@@ -1,82 +1,239 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивный Курс: CSS и JS</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WebAcademy — онлайн-платформа для детей 1-11 класса. Учись HTML, CSS и JavaScript по интерактивным урокам от Музаффара Хаётова.">
+  <title>WebAcademy — Веб-разработка для детей | Музаффар Хаётов</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="index.html" class="nav-link active">
-                <span class="status-icon"></span> Панель управления
-            </a>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <span class="logo-icon">🚀</span>
+    <span>WebAcademy</span>
+  </a>
+  <div class="nav-links">
+    <a href="#courses" class="hide-mobile">Курсы</a>
+    <a href="#features" class="hide-mobile">О платформе</a>
+    <a href="#author" class="hide-mobile">Автор</a>
+    <a href="login.html" id="nav-login">Войти</a>
+    <a href="dashboard.html" id="nav-dash" style="display:none" class="btn btn-sm btn-secondary">Личный кабинет</a>
+    <a href="register.html" class="btn btn-sm btn-primary">Начать бесплатно</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎓 Платформа от Музаффара Хаётова</div>
+    <h1>Стань веб-разработчиком<br><span class="gradient-text">уже сегодня!</span></h1>
+    <p>Интерактивные онлайн-уроки по HTML, CSS и JavaScript<br>для школьников 1–11 класса. С нуля до первого сайта!</p>
+    <div class="hero-buttons">
+      <a href="register.html" class="btn btn-primary btn-lg">🚀 Начать бесплатно</a>
+      <a href="#courses" class="btn btn-secondary btn-lg">📚 Посмотреть курсы</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Листай вниз</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-number gradient-text" data-count="1200" data-suffix="+">0</span>
+      <span class="stat-label">👧 Студентов</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number gradient-text" data-count="19" data-suffix="">0</span>
+      <span class="stat-label">📚 Уроков</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number gradient-text" data-count="3" data-suffix="">0</span>
+      <span class="stat-label">🎯 Курса</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number gradient-text" data-count="500" data-suffix="+">0</span>
+      <span class="stat-label">🏆 Сертификатов</span>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">📖 Программа обучения</div>
+      <h2 class="section-title">Три курса для полного старта</h2>
+      <p class="section-subtitle">Каждый урок — минимум 30 минут практики с живым редактором кода и тестами</p>
+    </div>
+    <div class="courses-grid">
+      <!-- HTML -->
+      <div class="course-card">
+        <div class="course-card-header">
+          <span class="course-icon">🌐</span>
+          <h3>HTML — Основы</h3>
+          <div class="course-meta">
+            <span>📚 7 уроков</span>
+            <span>⏱ ~4 часа</span>
+            <span class="badge badge-html">Начало</span>
+          </div>
         </div>
-
-        <div class="nav-section">
-            <h3>CSS – Стилизация (Уровни)</h3>
-            <a href="lessons/css/1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
-            <a href="lessons/css/2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
-            <a href="lessons/css/3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
-            <a href="lessons/css/4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
-            <a href="lessons/css/5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
-            <a href="lessons/css/6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
-            <a href="lessons/css/7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
+        <div class="course-card-body">
+          <ul class="lesson-list">
+            <li><span class="lesson-num">1</span><a href="lessons/html/1-intro.html" style="text-decoration:none;color:inherit">Введение в HTML</a></li>
+            <li><span class="lesson-num">2</span><a href="lessons/html/2-tags.html" style="text-decoration:none;color:inherit">Теги и элементы</a></li>
+            <li><span class="lesson-num">3</span><a href="lessons/html/3-text.html" style="text-decoration:none;color:inherit">Текст и заголовки</a></li>
+            <li><span class="lesson-num">4</span><a href="lessons/html/4-links-images.html" style="text-decoration:none;color:inherit">Ссылки и изображения</a></li>
+            <li><span class="lesson-num">5</span><a href="lessons/html/5-lists-tables.html" style="text-decoration:none;color:inherit">Списки и таблицы</a></li>
+            <li><span class="lesson-num">6</span><a href="lessons/html/6-forms.html" style="text-decoration:none;color:inherit">Формы</a></li>
+            <li><span class="lesson-num">7</span><a href="lessons/html/7-semantic.html" style="text-decoration:none;color:inherit">Семантический HTML</a></li>
+          </ul>
+          <a href="lessons/html/1-intro.html" class="btn btn-secondary btn-sm" style="margin-top:1rem;width:100%;justify-content:center">Начать курс →</a>
         </div>
+      </div>
 
-        <div class="nav-section">
-            <h3>JS – Логика (Уровни)</h3>
-            <a href="lessons/js/1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
-            <a href="lessons/js/2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
-            <a href="lessons/js/3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
-            <a href="lessons/js/4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
-            <a href="lessons/js/5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
+      <!-- CSS -->
+      <div class="course-card">
+        <div class="course-card-header" style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(59,130,246,0.03))">
+          <span class="course-icon" style="animation-delay:0.5s">🎨</span>
+          <h3>CSS — Дизайн</h3>
+          <div class="course-meta">
+            <span>📚 7 уроков</span>
+            <span>⏱ ~4.5 часа</span>
+            <span class="badge badge-css">Стиль</span>
+          </div>
         </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Привет, будущий разработчик! 👋</h1>
-            <p>Добро пожаловать в продолжение твоего пути. Мы изучим, как делать сайты красивыми (CSS) и умными (JS).</p>
+        <div class="course-card-body">
+          <ul class="lesson-list">
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">1</span><a href="lessons/css/1-intro.html" style="text-decoration:none;color:inherit">Введение в CSS</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">2</span><a href="lessons/css/2-colors-bg.html" style="text-decoration:none;color:inherit">Цвета и фоны</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">3</span><a href="lessons/css/3-text-fonts.html" style="text-decoration:none;color:inherit">Текст и шрифты</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">4</span><a href="lessons/css/4-box-model.html" style="text-decoration:none;color:inherit">Блочная модель</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">5</span><a href="lessons/css/5-display-flex.html" style="text-decoration:none;color:inherit">Flexbox</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">6</span><a href="lessons/css/6-position-hover.html" style="text-decoration:none;color:inherit">Позиционирование</a></li>
+            <li><span class="lesson-num" style="background:rgba(59,130,246,0.2);color:#93C5FD">7</span><a href="lessons/css/7-animations.html" style="text-decoration:none;color:inherit">Анимации</a></li>
+          </ul>
+          <a href="lessons/css/1-intro.html" class="btn btn-secondary btn-sm" style="margin-top:1rem;width:100%;justify-content:center">Начать курс →</a>
         </div>
+      </div>
 
-        <div class="progress-card">
-            <div class="progress-header">
-                <span>Твой прогресс</span>
-                <span id="progress-text">0%</span>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="main-progress-bar"></div>
-            </div>
+      <!-- JS -->
+      <div class="course-card">
+        <div class="course-card-header" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(245,158,11,0.03))">
+          <span class="course-icon" style="animation-delay:1s">⚡</span>
+          <h3>JavaScript — Логика</h3>
+          <div class="course-meta">
+            <span>📚 5 уроков</span>
+            <span>⏱ ~3.5 часа</span>
+            <span class="badge badge-js">Код</span>
+          </div>
         </div>
-
-        <div class="explanation">
-            <h3>Как работать с курсом?</h3>
-            <p>Слева находится меню навигации. Курс разбит на два больших блока:</p>
-            <ul>
-                <li><strong>CSS</strong>: Учимся раскрашивать элементы, двигать их на экране и добавлять анимацию.</li>
-                <li><strong>JavaScript</strong>: Делаем сайт "живым". Учимся заставлять кнопки работать и менять информацию на странице.</li>
-            </ul>
-            <p style="margin-top: 15px;">Просто нажимай на первый урок и выполняй мини-задания. При каждом пройденном уроке твой <strong>прогресс-бар</strong> будет заполняться!</p>
+        <div class="course-card-body">
+          <ul class="lesson-list">
+            <li><span class="lesson-num" style="background:rgba(245,158,11,0.2);color:#FCD34D">1</span><a href="lessons/js/1-intro-vars.html" style="text-decoration:none;color:inherit">Переменные и типы данных</a></li>
+            <li><span class="lesson-num" style="background:rgba(245,158,11,0.2);color:#FCD34D">2</span><a href="lessons/js/2-conditions.html" style="text-decoration:none;color:inherit">Условия и циклы</a></li>
+            <li><span class="lesson-num" style="background:rgba(245,158,11,0.2);color:#FCD34D">3</span><a href="lessons/js/3-events.html" style="text-decoration:none;color:inherit">События</a></li>
+            <li><span class="lesson-num" style="background:rgba(245,158,11,0.2);color:#FCD34D">4</span><a href="lessons/js/4-dom.html" style="text-decoration:none;color:inherit">DOM — управление страницей</a></li>
+            <li><span class="lesson-num" style="background:rgba(245,158,11,0.2);color:#FCD34D">5</span><a href="lessons/js/5-practice-calc.html" style="text-decoration:none;color:inherit">Проект: Калькулятор</a></li>
+          </ul>
+          <a href="lessons/js/1-intro-vars.html" class="btn btn-secondary btn-sm" style="margin-top:1rem;width:100%;justify-content:center">Начать курс →</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="lessons/css/1-intro.html" class="btn-primary" style="font-size: 1.2rem; padding: 1rem 3rem;">🚀 Начать обучение</a>
-        </div>
+<!-- FEATURES -->
+<section class="section" id="features" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">✨ Преимущества</div>
+      <h2 class="section-title">Почему дети выбирают нас?</h2>
+      <p class="section-subtitle">Мы создали платформу специально для школьников — понятно, интересно и эффективно</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">💻</span>
+        <h3>Живой редактор кода</h3>
+        <p>Пиши код прямо в браузере и сразу видишь результат. Никаких лишних программ!</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🧠</span>
+        <h3>Тесты после каждого урока</h3>
+        <p>10 вопросов в конце урока помогают закрепить знания и проверить понимание.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Отслеживание прогресса</h3>
+        <p>Личный кабинет показывает, сколько уроков пройдено и что осталось изучить.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏆</span>
+        <h3>Сертификат об окончании</h3>
+        <p>После прохождения 15+ уроков получи именной сертификат от Музаффара Хаётова.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎮</span>
+        <h3>Практические задания</h3>
+        <p>В каждом уроке — реальные задачи, которые нужно выполнить самостоятельно.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🚀</span>
+        <h3>С нуля до результата</h3>
+        <p>Курс рассчитан на полных новичков. Уже после 5 уроков ты сделаешь свой первый сайт!</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </main>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label" style="margin-bottom:1rem">🎯 Начни прямо сейчас</div>
+  <h2>Готов стать разработчиком?</h2>
+  <p>Регистрация бесплатная. Никаких скачиваний — всё в браузере!</p>
+  <a href="register.html" class="btn btn-gold btn-lg">🚀 Создать аккаунт бесплатно</a>
+</section>
 
-    <script src="assets/js/main.js"></script>
+<!-- AUTHOR -->
+<section class="author-section" id="author">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">👨‍💻 Об авторе</div>
+      <h2 class="section-title">Кто создал эту платформу?</h2>
+    </div>
+    <div class="author-card">
+      <div class="author-avatar">МХ</div>
+      <div class="author-info">
+        <h3>Музаффар Хаётов</h3>
+        <div class="author-title">🎓 Преподаватель веб-разработки</div>
+        <p>Опытный разработчик и педагог, который создал WebAcademy специально для того, чтобы школьники могли освоить программирование в интересном и понятном формате. Более 1200 учеников прошли обучение под его руководством.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">🚀 <span style="background:linear-gradient(135deg,#A78BFA,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent">WebAcademy</span></div>
+  <p>Платформа веб-разработки для детей от <strong>Музаффара Хаётова</strong></p>
+  <div class="footer-links">
+    <a href="index.html">Главная</a>
+    <a href="register.html">Регистрация</a>
+    <a href="login.html">Войти</a>
+    <a href="dashboard.html">Кабинет</a>
+    <a href="certificate.html">Сертификат</a>
+  </div>
+  <p class="footer-copy">© 2025 WebAcademy by Музаффар Хаётов. Все права защищены.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

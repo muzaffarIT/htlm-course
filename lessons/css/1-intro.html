@@ -1,107 +1,318 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 1: Что такое CSS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        /* Styles for the AFTER box */
-        .styled-example {
-            color: #3A86FF;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Урок 1: Введение — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:42%"></div></div>
+  <span class="lesson-progress-label">8 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge css">🎨 CSS</div>
+    <h1>Урок 1: Введение в CSS</h1>
+    <div class="lesson-meta"><span>⏱ 35 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 1 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎨 Что такое CSS?</h2>
+    <p><strong>CSS</strong> (Cascading Style Sheets — Каскадные таблицы стилей) — это язык, который описывает <em>как выглядит</em> HTML-страница. HTML создаёт структуру, CSS — делает её красивой!</p>
+    <p>Без CSS все сайты выглядели бы как скучные текстовые документы — чёрный текст на белом фоне. CSS отвечает за цвета, шрифты, размеры, расположение элементов, анимации и многое другое.</p>
+    <div class="info-box">💡 CSS расшифровывается как <strong>Cascading</strong> (каскадный) — потому что стили «каскадируются» (наследуются) от родительских элементов к дочерним.</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📋 Три способа добавить CSS</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📋 Способы подключения CSS</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- 1. Внешний файл (ЛУЧШИЙ способ!) --&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+
+&lt;!-- 2. Внутри тега style в head --&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    h1 { color: purple; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;!-- 3. Инлайн (прямо в теге — нежелательно) --&gt;
+&lt;h1 style="color: purple; font-size: 32px;"&gt;Заголовок&lt;/h1&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎯 Синтаксис CSS — Селекторы и свойства</h2>
+    <p>CSS правило состоит из <strong>селектора</strong> и <strong>блока объявлений</strong>:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🎯 Синтаксис CSS</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>селектор {
+  свойство: значение;
+  свойство: значение;
+}
+
+/* Примеры селекторов: */
+
+/* По тегу */
+h1 { color: purple; }
+p  { font-size: 16px; }
+
+/* По классу (class="btn") */
+.btn { background: blue; color: white; }
+
+/* По id (id="header") */
+#header { background: black; }
+
+/* По атрибуту */
+input[type="email"] { border: 2px solid blue; }
+
+/* Несколько селекторов */
+h1, h2, h3 { font-family: Arial; }
+
+/* Вложенный элемент */
+nav a { color: white; text-decoration: none; }
+
+/* Все элементы */
+* { box-sizing: border-box; }</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>⚡ Основные CSS-свойства</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">⚡ Базовые свойства</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* Текст */
+color: red;              /* цвет текста */
+font-size: 18px;         /* размер шрифта */
+font-weight: bold;       /* жирность */
+text-align: center;      /* выравнивание */
+text-decoration: none;   /* подчёркивание */
+
+/* Фон */
+background-color: #f5f5f5;
+background-image: url('bg.jpg');
+
+/* Размеры */
+width: 300px;
+height: 200px;
+max-width: 100%;
+
+/* Отступы */
+margin: 20px;            /* внешний отступ */
+padding: 10px;           /* внутренний отступ */
+
+/* Рамка */
+border: 2px solid #ccc;
+border-radius: 10px;     /* скруглённые углы */</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Живой редактор CSS</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  /* === Базовые стили === */
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  h1 {
+    color: #7C3AED;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: #888;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: #f8f5ff;
+    border-left: 4px solid #7C3AED;
+  }
+
+  .lesson-num {
+    background: #7C3AED;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #7C3AED, #5B21B6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+</style>
 </head>
 <body>
+  <div class="card">
+    <h1>🎨 CSS — это магия!</h1>
+    <p class="subtitle">Посмотри, как CSS преображает HTML</p>
 
-    <!-- Sidebar will be loaded from a template in a real app, but here we just copy it for simplicity -->
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+    <div class="lesson-item">
+      <div class="lesson-num">1</div>
+      <span>Введение в CSS — ты здесь!</span>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-num">2</div>
+      <span>Цвета и фоны</span>
+    </div>
+    <div class="lesson-item">
+      <div class="lesson-num">3</div>
+      <span>Текст и шрифты</span>
+    </div>
 
-        <div class="nav-section">
-            <h3>CSS – Стилизация (Уровни)</h3>
-            <a href="1-intro.html" class="nav-link active"><span class="status-icon"></span> 1. Что такое CSS</a>
-            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
-            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
-            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
-            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
-            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
-            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
-        </div>
-    </aside>
+    <button class="btn">🚀 Продолжить обучение</button>
+  </div>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Поменяй цвета, размеры, отступы — посмотри как меняется дизайн!</div>
+  </div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 1: Что такое CSS? 🎨</h1>
-            <p>Учимся красить и стилизовать наш скучный HTML-код.</p>
-        </div>
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Стилизуй страницу «Моя визитка» с помощью CSS:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Задай фон страницы через <code>background-color</code> или <code>background: linear-gradient(...)</code></li>
+      <li><span class="task-num">2</span>Создай карточку с белым фоном, скруглёнными углами и тенью</li>
+      <li><span class="task-num">3</span>Стилизуй заголовок: размер, цвет, выравнивание</li>
+      <li><span class="task-num">4</span>Добавь класс <code>.highlight</code> с желтоватым фоном для важного текста</li>
+      <li><span class="task-num">5</span>Создай красивую кнопку с фоном, цветом и скруглением</li>
+    </ul>
+  </div>
 
-        <div class="explanation">
-            <h3>Как макияж для сайта</h3>
-            <p>HTML — это как кирпичи и стены дома. А <strong>CSS (Cascading Style Sheets)</strong> — это краска, обои и красивая мебель.</p>
-            <p>Чтобы добавить стиль, мы пишем имя элемента (например, <code class="code-inline">h1</code>), затем открываем фигурные скобки <code class="code-inline">{}</code> и внутри пишем правила. Правило состоит из названия свойства и значения.</p>
-        </div>
+  <div class="quiz-section">
+    <h2>🧠 Тест по CSS</h2><p class="quiz-subtitle">Проверь знания по основам CSS</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. CSS расшифровывается как...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Computer Style Sheets</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Cascading Style Sheets</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Colored Style System</label>
+      <label class="quiz-option" data-q="q1" data-v="d">Creative Styling Script</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Какой способ подключения CSS считается лучшим?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Инлайн (атрибут style)</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Тег &lt;style&gt; в &lt;head&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Внешний файл .css через &lt;link&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Все одинаково</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Как выбрать элемент по классу "btn"?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">#btn { }</label>
+      <label class="quiz-option" data-q="q3" data-v="b">.btn { }</label>
+      <label class="quiz-option" data-q="q3" data-v="c">btn { }</label>
+      <label class="quiz-option" data-q="q3" data-v="d">@btn { }</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Свойство color в CSS отвечает за...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Цвет фона</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Цвет текста</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Цвет рамки</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Цвет тени</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Как задать внешний отступ элемента?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">padding</label>
+      <label class="quiz-option" data-q="q5" data-v="b">spacing</label>
+      <label class="quiz-option" data-q="q5" data-v="c">margin</label>
+      <label class="quiz-option" data-q="q5" data-v="d">gap</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что делает border-radius: 50%?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Создаёт полупрозрачный элемент</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Делает элемент круглым</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Уменьшает элемент вдвое</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Добавляет рамку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Что означает selector * { } в CSS?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Выбирает все элементы с классом *</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Выбирает все элементы страницы</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Ошибка синтаксиса</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Выбирает только div</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Как выбрать элемент по id "header"?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">.header { }</label>
+      <label class="quiz-option" data-q="q8" data-v="b">header { }</label>
+      <label class="quiz-option" data-q="q8" data-v="c">#header { }</label>
+      <label class="quiz-option" data-q="q8" data-v="d">@header { }</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Padding — это...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Внешний отступ (от элемента до других)</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Внутренний отступ (от рамки до содержимого)</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Размер рамки</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Тень элемента</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Как применить стиль к нескольким селекторам сразу?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">h1 + h2 { }</label>
+      <label class="quiz-option" data-q="q10" data-v="b">h1 & h2 { }</label>
+      <label class="quiz-option" data-q="q10" data-v="c">h1, h2 { }</label>
+      <label class="quiz-option" data-q="q10" data-v="d">h1 h2 { }</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
 
-        <div class="code-block">
-            <code>
-/* Это комментарий в CSS. Он ничего не делает на странице, просто подсказка! */<br>
-h1 {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;color: blue; /* Свойство color меняет цвет текста */<br>
-}<br>
-            </code>
-        </div>
-
-        <div class="comparison-container">
-            <div class="comparison-box">
-                <div class="box-header">ДО (Только HTML)</div>
-                <div class="box-content">
-                    <h1>Привет, мир!</h1>
-                </div>
-            </div>
-            
-            <div class="comparison-box after">
-                <div class="box-header">ПОСЛЕ (С добавлением CSS)</div>
-                <div class="box-content">
-                    <h1 class="styled-example">Привет, мир!</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="explanation">
-            <h3>Как мы это сделали?</h3>
-            <p>В примере "ПОСЛЕ" мы использовали CSS-правило: <code class="code-inline">color: #3A86FF;</code> (это красивый оттенок синего). Тег <code class="code-inline">&lt;h1&gt;</code> окрасился в этот цвет, стал больше и расположился по центру!</p>
-        </div>
-
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Напиши свое первое правило</h3>
-            <p>Представь, что у тебя есть тег абзаца <code class="code-inline">&lt;p&gt;</code>. Напиши ниже код CSS, который сделает текст красным (red). Можешь просто написать это на бумажке или в голове, а потом проверить себя.</p>
-            
-            <button class="answer-toggle" data-target="task1-answer">Показать ответ</button>
-            <div id="task1-answer" class="answer-content">
-                <code>
-p {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;color: red;<br>
-}
-                </code>
-            </div>
-        </div>
-
-        <div style="text-align: right;">
-            <a href="2-colors-bg.html" class="btn-primary">Следующий урок: Цвета и Фон ➡️</a>
-        </div>
-    </main>
-
-    <script src="../../assets/js/main.js"></script>
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="2-colors-bg.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(8, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'b', q5:'c', q6:'b', q7:'b', q8:'c', q9:'b', q10:'c' });
+  initCompleteButton('css-1', '2-colors-bg.html');
+</script>
 </body>
 </html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 2: Теги и элементы — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:10%"></div></div>
+  <span class="lesson-progress-label">2 / 19</span>
+</div>
+
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 2: Теги и элементы HTML</h1>
+    <div class="lesson-meta">
+      <span>⏱ 40 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 2 из 7</span>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🏷️ Анатомия HTML-тега</h2>
+    <p>HTML-тег состоит из трёх частей: <strong>открывающий тег</strong>, <strong>содержимое</strong> и <strong>закрывающий тег</strong>. Вместе они образуют <em>элемент</em>:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔍 Структура элемента</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;тег атрибут="значение"&gt;Содержимое&lt;/тег&gt;
+
+Пример:
+&lt;p class="intro"&gt;Привет, мир!&lt;/p&gt;
+  ↑               ↑               ↑
+открывающий    содержимое     закрывающий</code></pre>
+    </div>
+    <p><strong>Атрибуты</strong> — это дополнительные настройки тега. Они пишутся внутри открывающего тега в формате <code>имя="значение"</code>. Атрибутов может быть несколько!</p>
+    <div class="info-box">💡 Теги можно <strong>вкладывать</strong> друг в друга. Это называется <em>вложенность</em>. Главное правило: закрывай теги в обратном порядке!</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📰 Теги заголовков</h2>
+    <p>HTML имеет 6 уровней заголовков — от <code>&lt;h1&gt;</code> (самый важный) до <code>&lt;h6&gt;</code> (самый маленький). На странице должен быть только <strong>один</strong> тег <code>&lt;h1&gt;</code>!</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📰 Все заголовки</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Заголовок 1 — самый главный&lt;/h1&gt;
+  &lt;h2&gt;Заголовок 2 — раздел&lt;/h2&gt;
+  &lt;h3&gt;Заголовок 3 — подраздел&lt;/h3&gt;
+  &lt;h4&gt;Заголовок 4&lt;/h4&gt;
+  &lt;h5&gt;Заголовок 5&lt;/h5&gt;
+  &lt;h6&gt;Заголовок 6 — самый маленький&lt;/h6&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>✍️ Текстовые теги</h2>
+    <p>HTML предлагает много тегов для форматирования текста:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">✍️ Форматирование текста</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;p&gt;Обычный абзац текста&lt;/p&gt;
+&lt;strong&gt;Жирный важный текст&lt;/strong&gt;
+&lt;em&gt;Курсивный акцентированный текст&lt;/em&gt;
+&lt;u&gt;Подчёркнутый текст&lt;/u&gt;
+&lt;s&gt;Зачёркнутый текст&lt;/s&gt;
+&lt;mark&gt;Выделенный маркером текст&lt;/mark&gt;
+&lt;small&gt;Маленький текст&lt;/small&gt;
+&lt;sup&gt;Верхний индекс&lt;/sup&gt; — как x²
+&lt;sub&gt;Нижний индекс&lt;/sub&gt; — как H₂O
+&lt;code&gt;Компьютерный код&lt;/code&gt;
+&lt;blockquote&gt;Длинная цитата из другого источника&lt;/blockquote&gt;</code></pre>
+    </div>
+    <div class="success-box">✅ <strong>Совет:</strong> Используй <code>&lt;strong&gt;</code> вместо <code>&lt;b&gt;</code> и <code>&lt;em&gt;</code> вместо <code>&lt;i&gt;</code> — они несут смысловую нагрузку, а не просто меняют вид.</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔳 Блочные и строчные элементы</h2>
+    <p>Все HTML-элементы делятся на два типа:</p>
+    <ul>
+      <li><strong>Блочные</strong> (block) — занимают всю ширину строки, начинаются с новой строки: <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>, <code>&lt;div&gt;</code></li>
+      <li><strong>Строчные</strong> (inline) — занимают только нужное место, не прерывают строку: <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code></li>
+    </ul>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔳 Блочные vs строчные</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- div — универсальный блочный контейнер --&gt;
+  &lt;div style="background:lightblue; padding:10px"&gt;
+    Я блочный. Занимаю всю ширину!
+  &lt;/div&gt;
+
+  &lt;!-- span — универсальный строчный контейнер --&gt;
+  &lt;p&gt;Этот текст &lt;span style="color:red"&gt;красный&lt;/span&gt; внутри абзаца.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header">
+      <h3>🚀 Живой редактор — Форматирование текста</h3>
+      <button class="run-btn">▶ Запустить</button>
+    </div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; padding: 20px; }
+  blockquote { border-left: 3px solid purple; padding-left: 15px; color: #555; }
+</style>
+</head>
+<body>
+  <h1>Музаффар Хаётов</h1>
+  <h2>Веб-разработчик и педагог</h2>
+
+  <p>Добро пожаловать на платформу <strong>WebAcademy</strong>!</p>
+  <p>Здесь ты научишься <em>создавать сайты</em> с нуля.</p>
+  <p>Курс включает: <mark>HTML</mark>, <mark>CSS</mark> и <mark>JavaScript</mark>.</p>
+
+  <blockquote>
+    "Программирование — это суперсила 21 века!"
+    <br><small>— Музаффар Хаётов</small>
+  </blockquote>
+
+  <p>Формула воды: H<sub>2</sub>O<br>
+  Степень: x<sup>2</sup></p>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Попробуй добавить новые теги форматирования из примеров выше!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Создай HTML-страницу «Моя любимая книга» с использованием разных тегов:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Добавь <code>&lt;h1&gt;</code> с названием книги и <code>&lt;h2&gt;</code> с именем автора</li>
+      <li><span class="task-num">2</span>Напиши абзац <code>&lt;p&gt;</code> с кратким описанием книги (минимум 3 предложения)</li>
+      <li><span class="task-num">3</span>Выдели <code>&lt;strong&gt;</code> самое важное слово в описании</li>
+      <li><span class="task-num">4</span>Добавь цитату из книги через <code>&lt;blockquote&gt;</code></li>
+      <li><span class="task-num">5</span>Укажи год издания маленьким шрифтом <code>&lt;small&gt;</code></li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест по уроку</h2>
+    <p class="quiz-subtitle">10 вопросов по тегам и элементам HTML</p>
+
+    <div class="quiz-question"><div class="quiz-q-text">1. Сколько уровней заголовков есть в HTML?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">3</label>
+      <label class="quiz-option" data-q="q1" data-v="b">6</label>
+      <label class="quiz-option" data-q="q1" data-v="c">9</label>
+      <label class="quiz-option" data-q="q1" data-v="d">12</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">2. Какой тег является блочным?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">&lt;span&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="b">&lt;strong&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="c">&lt;div&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="d">&lt;em&gt;</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">3. Какой тег делает текст жирным и важным?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">&lt;bold&gt;</label>
+      <label class="quiz-option" data-q="q3" data-v="b">&lt;b&gt;</label>
+      <label class="quiz-option" data-q="q3" data-v="c">&lt;strong&gt;</label>
+      <label class="quiz-option" data-q="q3" data-v="d">&lt;thick&gt;</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">4. Что такое атрибут HTML-тега?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Содержимое тега</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Дополнительная настройка тега</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Закрывающий тег</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Комментарий</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">5. Сколько тегов &lt;h1&gt; должно быть на странице?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Любое количество</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Не более двух</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Только один</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Ни одного</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">6. Какой тег используется для верхнего индекса (как в x²)?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">&lt;up&gt;</label>
+      <label class="quiz-option" data-q="q6" data-v="b">&lt;sup&gt;</label>
+      <label class="quiz-option" data-q="q6" data-v="c">&lt;sub&gt;</label>
+      <label class="quiz-option" data-q="q6" data-v="d">&lt;top&gt;</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">7. Какой тег используют для цитат?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">&lt;quote&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="b">&lt;cite&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="c">&lt;blockquote&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="d">&lt;q&gt;</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">8. Тег &lt;span&gt; является...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Блочным элементом</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Строчным элементом</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Заголовком</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Списком</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">9. Что показывает тег &lt;mark&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Зачёркнутый текст</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Подчёркнутый текст</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Текст, выделенный маркером</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Жирный текст</label>
+    </div></div>
+
+    <div class="quiz-question"><div class="quiz-q-text">10. Как правильно вложить теги?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">&lt;p&gt;&lt;strong&gt;текст&lt;/p&gt;&lt;/strong&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="b">&lt;p&gt;&lt;strong&gt;текст&lt;/strong&gt;&lt;/p&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="c">&lt;strong&gt;&lt;p&gt;текст&lt;/strong&gt;&lt;/p&gt;</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Любой порядок</label>
+    </div></div>
+
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="3-text.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(2, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'c', q4:'b', q5:'c', q6:'b', q7:'c', q8:'b', q9:'c', q10:'b' });
+  initCompleteButton('html-2', '3-text.html');
+</script>
+</body>
+</html>

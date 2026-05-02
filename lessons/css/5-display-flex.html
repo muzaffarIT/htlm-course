@@ -1,133 +1,288 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 5: Сетка и Flexbox</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .box {
-            background-color: #8338EC;
-            color: white;
-            padding: 15px;
-            margin: 5px;
-            border-radius: 8px;
-            text-align: center;
-        }
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Урок 5: Flexbox — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:63%"></div></div>
+  <span class="lesson-progress-label">12 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge css">🎨 CSS</div>
+    <h1>Урок 5: Flexbox — гибкий макет</h1>
+    <div class="lesson-meta"><span>⏱ 45 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 5 из 7</span></div>
+  </div>
 
-        .no-flex {
-            /* По умолчанию элементы <div> идут друг под другом (block) */
-            background-color: #E2E8F0;
-            padding: 10px;
-            border-radius: 8px;
-        }
+  <div class="theory-block">
+    <h2>📐 Что такое Flexbox?</h2>
+    <p><strong>Flexbox</strong> (Flexible Box) — это мощный инструмент CSS для создания гибких, отзывчивых макетов. До Flexbox расположение элементов было очень сложным. Сейчас — это всего несколько строк!</p>
+    <p>Flexbox работает с <strong>родительским контейнером</strong> (<em>flex container</em>) и его <strong>дочерними элементами</strong> (<em>flex items</em>).</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📐 Основы Flexbox</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* Включаем Flexbox у родителя */
+.container {
+  display: flex;
 
-        .with-flex {
-            display: flex;
-            justify-content: space-around; /* Распределяем свободное место */
-            align-items: center; /* Выравниваем по центру по вертикали */
-            background-color: #E2E8F0;
-            padding: 10px;
-            border-radius: 8px;
-        }
-    </style>
+  /* Направление */
+  flex-direction: row;            /* по горизонтали (умолчание) */
+  flex-direction: column;         /* по вертикали */
+  flex-direction: row-reverse;    /* горизонталь наоборот */
+
+  /* Выравнивание по главной оси (горизонталь при row) */
+  justify-content: flex-start;    /* слева */
+  justify-content: flex-end;      /* справа */
+  justify-content: center;        /* по центру */
+  justify-content: space-between; /* с пробелами между */
+  justify-content: space-around;  /* с пробелами вокруг */
+  justify-content: space-evenly;  /* равные пробелы */
+
+  /* Выравнивание по поперечной оси (вертикаль при row) */
+  align-items: flex-start;   /* наверх */
+  align-items: flex-end;     /* вниз */
+  align-items: center;       /* по центру */
+  align-items: stretch;      /* растянуть (умолчание) */
+
+  /* Перенос элементов */
+  flex-wrap: nowrap;   /* без переноса (умолчание) */
+  flex-wrap: wrap;     /* перенос на новую строку */
+
+  /* Отступы между элементами */
+  gap: 20px;
+  column-gap: 20px;
+  row-gap: 10px;
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎯 Свойства flex-элементов</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🎯 Flex Items</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* Гибкость элемента */
+.item {
+  flex-grow: 1;    /* занять свободное место (число = доля) */
+  flex-shrink: 0;  /* не сжиматься */
+  flex-basis: 200px; /* начальный размер */
+
+  /* Сокращённая запись */
+  flex: 1;           /* flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+  flex: 0 0 200px;   /* фиксированный 200px */
+
+  /* Порядок элемента */
+  order: 2;  /* изменить порядок без изменения HTML */
+
+  /* Индивидуальное выравнивание */
+  align-self: center;    /* переопределяет align-items для этого элемента */
+}</code></pre>
+    </div>
+    <div class="success-box">✅ <strong>Совет:</strong> Самый частый паттерн — <code>display: flex; align-items: center; justify-content: center;</code> — центрирует содержимое идеально!</div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Flexbox практика</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial; background: #0D0D1A; color: white; padding: 20px; }
+
+  h2 { color: #A78BFA; margin: 20px 0 10px; font-size: 16px; }
+
+  /* Навигация */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1A1A38;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logo { font-weight: bold; font-size: 18px; color: #A78BFA; }
+  nav ul { display: flex; gap: 20px; list-style: none; }
+  nav ul li a { color: #94A3B8; text-decoration: none; }
+  nav ul li a:hover { color: white; }
+  .nav-btn { background: #7C3AED; color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; }
+
+  /* Карточки */
+  .cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1;
+    min-width: 150px;
+    background: #1A1A38;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .card-icon { font-size: 2rem; }
+  .card-title { font-weight: bold; color: #A78BFA; }
+  .card-text { color: #94A3B8; font-size: 0.85rem; }
+
+  /* Центрированный блок */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(124,58,237,0.2), transparent);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 20px;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .hero h1 { font-size: 2rem; color: #A78BFA; }
+</style>
 </head>
 <body>
+  <nav>
+    <div class="logo">🚀 WebAcademy</div>
+    <ul>
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JS</a></li>
+    </ul>
+    <a href="#" class="nav-btn">Войти</a>
+  </nav>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+  <h2>Наши курсы (flex-wrap: wrap)</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">HTML</div>
+      <div class="card-text">7 уроков · 4 часа</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <div class="card-title">CSS</div>
+      <div class="card-text">7 уроков · 4.5 часа</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">JavaScript</div>
+      <div class="card-text">5 уроков · 3.5 часа</div>
+    </div>
+  </div>
 
-        <div class="nav-section">
-            <h3>CSS – Стилизация (Уровни)</h3>
-            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
-            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
-            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
-            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
-            <a href="5-display-flex.html" class="nav-link active"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
-            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
-            <a href="7-animations.html" class="nav-link"><span class="status-icon"></span> 7. Практика: Анимации</a>
-        </div>
-    </aside>
+  <div class="hero">
+    <h1>Flexbox — сила CSS!</h1>
+    <p style="color:#94A3B8">Автор: Музаффар Хаётов</p>
+    <a href="#" style="background:#7C3AED;color:white;padding:10px 25px;border-radius:8px;text-decoration:none">Начать →</a>
+  </div>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Попробуй изменить justify-content и align-items в .cards!</div>
+  </div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 5: Flexbox — Расставляем по местам 🧱</h1>
-            <p>Учимся строить элементы в ряд и делать модные сетки.</p>
-        </div>
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай навигационное меню с Flexbox (лого слева, ссылки справа)</li>
+      <li><span class="task-num">2</span>Создай сетку из 4 карточек с flex-wrap: wrap и gap</li>
+      <li><span class="task-num">3</span>Сделай hero-секцию с вертикальным flex и центровкой</li>
+      <li><span class="task-num">4</span>Используй flex: 1 чтобы карточки занимали равное место</li>
+      <li><span class="task-num">5</span>Добавь footer с justify-content: space-between</li>
+    </ul>
+  </div>
 
-        <div class="explanation">
-            <h3>Блоки или Строки?</h3>
-            <p>По умолчанию все блоки на сайте (например, <code class="code-inline">&lt;div&gt;</code>) выстраиваются один под другим. Но что, если мы хотим поставить их в один ряд, как меню сверху сайта?</p>
-            <p>Для этого мы делаем их родительский контейнер гибким: <code class="code-inline">display: flex;</code>. Теперь все элементы внутри начинают строиться в цепочку как вагончики!</p>
-        </div>
+  <div class="quiz-section">
+    <h2>🧠 Тест по Flexbox</h2><p class="quiz-subtitle">10 вопросов о гибком макете</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Как включить Flexbox?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">flex: true;</label>
+      <label class="quiz-option" data-q="q1" data-v="b">display: flex;</label>
+      <label class="quiz-option" data-q="q1" data-v="c">layout: flexbox;</label>
+      <label class="quiz-option" data-q="q1" data-v="d">position: flex;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. justify-content: center выравнивает элементы...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">По вертикали</label>
+      <label class="quiz-option" data-q="q2" data-v="b">По горизонтали (по главной оси)</label>
+      <label class="quiz-option" data-q="q2" data-v="c">По диагонали</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Только левый элемент</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. align-items: center при flex-direction: row выравнивает по...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Горизонтали</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Вертикали</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Диагонали</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Не работает</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. justify-content: space-between...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Добавляет равные отступы вокруг каждого элемента</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Распределяет элементы с пробелами между ними, крайние к краям</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Центрирует все элементы</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Скрывает элементы</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. flex-wrap: wrap означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Элементы сжимаются</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Элементы переносятся на новую строку при нехватке места</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Элементы скрываются</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Элементы располагаются вертикально</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. gap: 20px в flex-контейнере...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Добавляет внешний отступ</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Добавляет отступы между flex-элементами</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Задаёт padding</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Задаёт ширину</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. flex-direction: column означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Горизонтальное расположение</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Вертикальное расположение (сверху вниз)</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Элементы в столбик справа налево</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Диагональное расположение</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. flex: 1 означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Ширина элемента 1px</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Элемент занимает 1% от контейнера</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Элемент растягивается, занимая доступное пространство</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Только один flex-элемент</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Как идеально центрировать элемент по горизонтали и вертикали?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">margin: auto;</label>
+      <label class="quiz-option" data-q="q9" data-v="b">display: flex; justify-content: center; align-items: center;</label>
+      <label class="quiz-option" data-q="q9" data-v="c">text-align: center; vertical-align: middle;</label>
+      <label class="quiz-option" data-q="q9" data-v="d">position: center;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. order: 2 у flex-элемента...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Делает элемент в два раза больше</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Изменяет визуальный порядок без изменения HTML</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Добавляет 2 копии элемента</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Выравнивает элемент по правому краю</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
 
-        <div class="code-block">
-            <code>
-.container {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;display: flex; /* Включаем магию Flexbox */<br>
-&nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around; /* Делаем между ними одинаковые отступы */<br>
-}<br>
-            </code>
-        </div>
-
-        <div class="comparison-container">
-            <div class="comparison-box">
-                <div class="box-header">ДО (Блоки выстроены вниз)</div>
-                <div class="box-content">
-                    <div class="no-flex">
-                        <div class="box">Блок 1</div>
-                        <div class="box">Блок 2</div>
-                        <div class="box">Блок 3</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="comparison-box after">
-                <div class="box-header">ПОСЛЕ (display: flex)</div>
-                <div class="box-content">
-                    <div class="with-flex">
-                        <div class="box">Блок 1</div>
-                        <div class="box">Блок 2</div>
-                        <div class="box">Блок 3</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="explanation">
-            <h3>Сила Flexbox</h3>
-            <p>Благодаря <code class="code-inline">justify-content: space-around;</code> блоки не просто выстроились в ряд, но и равномерно распределили свободное пространство между собой. Flexbox — это самый популярный инструмент в современном веб-дизайне!</p>
-        </div>
-
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Выравниваем по центру</h3>
-            <p>Свойство <code class="code-inline">justify-content</code> отвечает за то, где стоят наши блоки по горизонтали. Какое значение (вместо <code class="code-inline">space-around</code>) нужно использовать, чтобы скомкать все блоки четко по центру?</p>
-            
-            <button class="answer-toggle" data-target="task5-answer">Показать ответ</button>
-            <div id="task5-answer" class="answer-content">
-                <code>
-.container {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center; /* Центрирует элементы */<br>
-}
-                </code>
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between;">
-            <a href="4-box-model.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
-            <a href="6-position-hover.html" class="btn-primary">Следующий: Позиция и Эффекты ➡️</a>
-        </div>
-    </main>
-
-    <script src="../../assets/js/main.js"></script>
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="6-position-hover.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(12, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'c', q9:'b', q10:'b' });
+  initCompleteButton('css-5', '6-position-hover.html');
+</script>
 </body>
 </html>

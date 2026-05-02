@@ -1,99 +1,340 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Урок 4: Работа с DOM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Урок 4: DOM — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:94%"></div></div>
+  <span class="lesson-progress-label">18 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge js">⚡ JS</div>
+    <h1>Урок 4: DOM — управление страницей</h1>
+    <div class="lesson-meta"><span>⏱ 50 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 4 из 5</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🌳 Что такое DOM?</h2>
+    <p><strong>DOM</strong> (Document Object Model) — это представление HTML-страницы в виде дерева объектов. JavaScript может читать и изменять DOM, тем самым изменяя страницу <em>без перезагрузки</em>.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🌳 Поиск элементов</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// Поиск одного элемента
+const title = document.getElementById("title");
+const btn = document.querySelector(".btn");           // первый совпавший
+const input = document.querySelector("input[type='text']");
+
+// Поиск нескольких элементов
+const items = document.querySelectorAll(".item");     // NodeList
+const links = document.querySelectorAll("nav a");
+
+// Перебор всех элементов
+items.forEach(item => {
+  console.log(item.textContent);
+});</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>✏️ Изменение DOM</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">✏️ Изменение элементов</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>const el = document.getElementById("myDiv");
+
+// Изменить текст
+el.textContent = "Новый текст";
+el.innerHTML = "&lt;strong&gt;Жирный&lt;/strong&gt; текст";
+
+// Изменить стили
+el.style.color = "purple";
+el.style.fontSize = "24px";
+el.style.display = "none";       // скрыть
+el.style.display = "block";      // показать
+
+// Работа с классами
+el.classList.add("active");      // добавить класс
+el.classList.remove("active");   // удалить класс
+el.classList.toggle("dark");     // переключить
+el.classList.contains("btn");    // проверить
+
+// Атрибуты
+el.getAttribute("href");
+el.setAttribute("href", "https://example.com");
+el.removeAttribute("disabled");
+
+// Создание и добавление элементов
+const newDiv = document.createElement("div");
+newDiv.textContent = "Я новый элемент!";
+newDiv.className = "card";
+document.body.appendChild(newDiv);      // в конец body
+el.insertBefore(newDiv, el.firstChild); // перед firstChild
+
+// Удаление
+el.remove();
+el.parentNode.removeChild(el);</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎯 События (Events)</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🎯 addEventListener</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>const btn = document.getElementById("myBtn");
+
+// Обработчик события
+btn.addEventListener("click", function() {
+  console.log("Кнопка нажата!");
+});
+
+// Стрелочная функция
+btn.addEventListener("click", () => {
+  alert("Привет!");
+});
+
+// Объект события (event)
+btn.addEventListener("click", (event) => {
+  console.log(event.target);     // элемент, на котором кликнули
+  console.log(event.type);       // "click"
+  event.preventDefault();         // отменить стандартное действие
+});
+
+// Полезные события
+el.addEventListener("click", handler);
+input.addEventListener("input", handler);    // при вводе
+input.addEventListener("change", handler);   // при изменении
+form.addEventListener("submit", handler);    // отправка формы
+window.addEventListener("scroll", handler); // прокрутка
+window.addEventListener("load", handler);   // загрузка страницы
+
+// Снять обработчик
+el.removeEventListener("click", handler);</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — DOM и события</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial; background: #0D0D1A; color: white; padding: 20px; min-height: 100vh; }
+
+  h1 { color: #A78BFA; text-align: center; margin-bottom: 25px; }
+
+  .btn { padding: 10px 20px; border: none; border-radius: 10px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-purple { background: linear-gradient(135deg, #7C3AED, #5B21B6); color: white; }
+  .btn-pink { background: linear-gradient(135deg, #EC4899, #BE185D); color: white; }
+  .btn-blue { background: linear-gradient(135deg, #3B82F6, #1D4ED8); color: white; }
+  .btn-red { background: linear-gradient(135deg, #EF4444, #B91C1C); color: white; }
+
+  .panel { background: #1A1A38; border-radius: 14px; padding: 20px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.06); }
+  .panel h3 { color: #F59E0B; margin-bottom: 12px; font-size: 15px; }
+
+  #colorBox {
+    width: 100%; height: 80px; border-radius: 12px;
+    background: linear-gradient(135deg, #7C3AED, #EC4899);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 18px; margin-bottom: 10px;
+    transition: all 0.4s ease; cursor: pointer;
+  }
+
+  input[type="text"], input[type="number"] {
+    padding: 8px 12px; border-radius: 8px; border: 2px solid rgba(124,58,237,0.3);
+    background: rgba(255,255,255,0.05); color: white; font-size: 14px; width: 200px;
+  }
+
+  #todoList { list-style: none; margin-top: 10px; }
+  #todoList li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px; background: rgba(124,58,237,0.1); border-radius: 8px;
+    margin-bottom: 6px; cursor: pointer; transition: all 0.2s;
+  }
+  #todoList li:hover { background: rgba(124,58,237,0.2); }
+  #todoList li.done { text-decoration: line-through; opacity: 0.5; }
+
+  .counter-display {
+    font-size: 48px; font-weight: bold; color: #A78BFA;
+    text-align: center; margin: 10px 0;
+  }
+
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+</style>
 </head>
 <body>
+  <h1>🌳 DOM Управление</h1>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+  <!-- Цветная коробка -->
+  <div class="panel">
+    <h3>1. Смена цвета и текста</h3>
+    <div id="colorBox">Нажми кнопки!</div>
+    <div class="btns">
+      <button class="btn btn-purple" onclick="changeBox('linear-gradient(135deg,#7C3AED,#5B21B6)', '🔮 Фиолетовый!')">Фиолет</button>
+      <button class="btn btn-pink" onclick="changeBox('linear-gradient(135deg,#EC4899,#BE185D)', '🌸 Розовый!')">Розовый</button>
+      <button class="btn btn-blue" onclick="changeBox('linear-gradient(135deg,#3B82F6,#1D4ED8)', '💙 Синий!')">Синий</button>
+    </div>
+  </div>
 
-        <div class="nav-section">
-            <h3>JS – Логика (Уровни)</h3>
-            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
-            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
-            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
-            <a href="4-dom.html" class="nav-link active"><span class="status-icon"></span> 4. Изменение страницы</a>
-            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
-        </div>
-    </aside>
+  <!-- Счётчик -->
+  <div class="panel">
+    <h3>2. Счётчик кликов</h3>
+    <div class="counter-display" id="counter">0</div>
+    <div class="btns">
+      <button class="btn btn-purple" onclick="changeCount(1)">+1</button>
+      <button class="btn btn-blue" onclick="changeCount(10)">+10</button>
+      <button class="btn btn-red" onclick="changeCount(-1)">-1</button>
+      <button class="btn" style="background:#333;color:white" onclick="resetCount()">Сброс</button>
+    </div>
+  </div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 4: Властелин Страницы (DOM) 🧙‍♂️</h1>
-            <p>Учимся менять текст и цвета на лету, не перезагружая сайт!</p>
-        </div>
+  <!-- Список дел -->
+  <div class="panel">
+    <h3>3. Список задач (DOM createElement)</h3>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <input type="text" id="todoInput" placeholder="Введи задачу...">
+      <button class="btn btn-purple" onclick="addTodo()">+ Добавить</button>
+    </div>
+    <ul id="todoList"></ul>
+  </div>
 
-        <div class="explanation">
-            <h3>Что такое DOM?</h3>
-            <p>До этого мы писали <code class="code-inline">alert(...)</code>. Но всплывающие окна раздражают! Лучше менять текст прямо на самой странице.</p>
-            <p>Для этого мы раздаем HTML-элементам уникальные Имена — <strong>ID</strong> (например <code class="code-inline">id="title"</code>). А затем с помощью JS находим их командой: <code class="code-inline">document.getElementById('title')</code>.</p>
-        </div>
+  <script>
+    // 1. Смена цвета
+    function changeBox(gradient, text) {
+      const box = document.getElementById('colorBox');
+      box.style.background = gradient;
+      box.textContent = text;
+    }
 
-        <div class="code-block">
-            <code>
-// HTML:<br>
-// &lt;p id="magic-text"&gt;Обычный текст&lt;/p&gt;<br>
-<br>
-// Внутри JS скрипта или внутри onclick:<br>
-document.getElementById('magic-text').innerHTML = "Теперь я магический!";<br>
-document.getElementById('magic-text').style.color = "red";<br>
-            </code>
-        </div>
+    // 2. Счётчик
+    let count = 0;
+    function changeCount(val) {
+      count += val;
+      const el = document.getElementById('counter');
+      el.textContent = count;
+      el.style.color = count > 0 ? '#86EFAC' : count < 0 ? '#F87171' : '#A78BFA';
+    }
+    function resetCount() { count = 0; changeCount(0); count = 0; document.getElementById('counter').textContent = '0'; document.getElementById('counter').style.color = '#A78BFA'; }
 
-        <div class="comparison-container">
-            <div class="comparison-box">
-                <div class="box-header">Эксперимент</div>
-                <div class="box-content">
-                    <h3 id="test-header">Я скучный заголовок</h3>
-                    <p id="test-paragraph">Ничего не происходит.</p>
-                    <button class="interactive-btn" style="background: #8338EC; color: white;" onclick="
-                        document.getElementById('test-header').innerHTML = 'Я СТАЛ КРУТЫМ!';
-                        document.getElementById('test-header').style.color = '#FF006E';
-                        document.getElementById('test-paragraph').innerHTML = 'Вот это да! Текст изменился с помощью JS!';
-                    ">Применить магию JS ✨</button>
-                </div>
-            </div>
-        </div>
+    // 3. Список задач
+    function addTodo() {
+      const input = document.getElementById('todoInput');
+      const text = input.value.trim();
+      if (!text) return;
 
-        <div class="explanation">
-            <h3>Как это работает?</h3>
-            <ul>
-                <li><code class="code-inline">innerHTML</code> — меняет содержимое (текст) элемента.</li>
-                <li><code class="code-inline">style.color</code> — меняет CSS цвет этого элемента!</li>
-            </ul>
-        </div>
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${text}</span><button onclick="this.parentElement.remove()" style="background:#EF4444;border:none;color:white;padding:3px 8px;border-radius:5px;cursor:pointer">×</button>`;
+      li.addEventListener('click', (e) => {
+        if (e.target.tagName !== 'BUTTON') li.classList.toggle('done');
+      });
 
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Сделай фон синим</h3>
-            <p>У нас есть блок <code class="code-inline">&lt;div id="box"&gt;&lt;/div&gt;</code>. Какая команда в JS сделает его цвет фона (<code class="code-inline">backgroundColor</code>) синим (blue)?</p>
-            
-            <button class="answer-toggle" data-target="task4-js-answer">Показать ответ</button>
-            <div id="task4-js-answer" class="answer-content">
-                <code>
-/* Заметь, в CSS мы пишем background-color, а в JS свойства пишутся слитно с большой буквы: backgroundColor */<br>
-document.getElementById('box').style.backgroundColor = "blue";
-                </code>
-            </div>
-        </div>
+      document.getElementById('todoList').appendChild(li);
+      input.value = '';
+      input.focus();
+    }
 
-        <div style="display: flex; justify-content: space-between;">
-            <a href="3-events.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
-            <a href="5-practice-calc.html" class="btn-primary">Следующий: Практика (Калькулятор) ➡️</a>
-        </div>
-    </main>
+    document.getElementById('todoInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') addTodo();
+    });
+  </script>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Добавляй задачи и нажимай кнопки — это полноценное JS-приложение!</div>
+  </div>
 
-    <script src="../../assets/js/main.js"></script>
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай кнопку «Переключить тему» которая меняет background страницы</li>
+      <li><span class="task-num">2</span>Сделай поле ввода и абзац, который обновляется при вводе (event: input)</li>
+      <li><span class="task-num">3</span>Создай список из 5 элементов через createElement в цикле</li>
+      <li><span class="task-num">4</span>Добавь к каждому элементу списка обработчик click для удаления</li>
+      <li><span class="task-num">5</span>Сделай форму: имя + email + кнопка, которая показывает приветствие</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест по DOM</h2><p class="quiz-subtitle">10 вопросов об управлении DOM</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Как найти элемент по ID?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">document.findId("id")</label>
+      <label class="quiz-option" data-q="q1" data-v="b">document.getElementById("id")</label>
+      <label class="quiz-option" data-q="q1" data-v="c">document.getElement("id")</label>
+      <label class="quiz-option" data-q="q1" data-v="d">document.id("id")</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. element.textContent = "новый" делает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Добавляет HTML в элемент</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Изменяет текстовое содержимое</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Меняет атрибут</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Создаёт новый элемент</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. classList.toggle("dark") делает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Всегда добавляет класс "dark"</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Всегда удаляет класс "dark"</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Переключает: добавляет если нет, удаляет если есть</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Проверяет наличие класса</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. document.createElement("div") создаёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">И добавляет div в DOM</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Создаёт новый div в памяти (не добавляя в DOM)</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Находит первый div</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Удаляет div</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. addEventListener("click", handler) — это...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Проигрывание анимации</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Навешивание обработчика события</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Создание кнопки</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Проверка типа элемента</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. document.querySelector(".btn") найдёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Все элементы с классом btn</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Первый элемент с классом btn</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Элемент с id="btn"</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Тег &lt;btn&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. event.preventDefault() нужен для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Остановки анимации</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Отмены стандартного поведения браузера (напр. отправки формы)</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Удаления элемента</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Создания обработчика</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. innerHTML vs textContent — в чём разница?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Нет разницы</label>
+      <label class="quiz-option" data-q="q8" data-v="b">innerHTML интерпретирует HTML, textContent — только текст</label>
+      <label class="quiz-option" data-q="q8" data-v="c">textContent быстрее всегда</label>
+      <label class="quiz-option" data-q="q8" data-v="d">innerHTML только для изображений</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. el.appendChild(child) добавляет child...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Перед el</label>
+      <label class="quiz-option" data-q="q9" data-v="b">После el</label>
+      <label class="quiz-option" data-q="q9" data-v="c">В конец el (последним дочерним)</label>
+      <label class="quiz-option" data-q="q9" data-v="d">В начало el</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. querySelectorAll возвращает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Первый найденный элемент</label>
+      <label class="quiz-option" data-q="q10" data-v="b">NodeList всех совпавших элементов</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Обычный массив</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Строку с HTML</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="5-project.html" class="lesson-next-btn">Финальный проект →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(18, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'c', q4:'b', q5:'b', q6:'b', q7:'b', q8:'b', q9:'c', q10:'b' });
+  initCompleteButton('js-4', '5-project.html');
+</script>
 </body>
 </html>

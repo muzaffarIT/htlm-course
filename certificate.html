@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сертификат — WebAcademy | Музаффар Хаётов</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; }
+      .certificate { border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar no-print">
+  <a href="index.html" class="nav-logo"><span class="logo-icon">🚀</span><span>WebAcademy</span></a>
+  <div class="nav-links">
+    <a href="dashboard.html" class="btn btn-sm btn-secondary">← Кабинет</a>
+  </div>
+</nav>
+
+<div class="cert-page">
+  <div class="cert-container">
+    <div class="no-print" style="text-align:center;margin-bottom:2rem">
+      <div class="section-label" style="margin-bottom:1rem">🏆 Сертификат об окончании</div>
+      <h1 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;margin-bottom:0.8rem">Твой именной сертификат</h1>
+      <p style="color:var(--text2)">Пройди 15 уроков, чтобы получить сертификат. Затем распечатай или сохрани его!</p>
+      <div id="progress-warn" style="margin-top:1rem;padding:1rem;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);border-radius:12px;color:#FCD34D;display:none">
+        ⚠️ Ты прошёл <strong id="done-count">0</strong> из 15 нужных уроков. Продолжай учиться!
+      </div>
+    </div>
+
+    <div class="certificate" id="certificate">
+      <div class="cert-decoration cert-decoration-1"></div>
+      <div class="cert-decoration cert-decoration-2"></div>
+
+      <span class="cert-badge">🏆</span>
+      <div class="cert-title">WebAcademy — Образовательный центр</div>
+      <div class="cert-heading">СЕРТИФИКАТ</div>
+      <div style="color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:0.5rem">об успешном окончании курса</div>
+      <div class="cert-stars">★ ★ ★ ★ ★</div>
+
+      <div style="color:rgba(255,255,255,0.7);font-size:0.9rem">Настоящим подтверждается, что</div>
+      <div class="cert-name" id="cert-student-name">Имя Фамилия</div>
+
+      <div class="cert-text">
+        успешно прошёл(а) курс по основам <strong style="color:#fff">веб-разработки</strong><br>
+        на платформе WebAcademy, включающий уроки по<br>
+        <strong style="color:#A78BFA">HTML</strong>, <strong style="color:#93C5FD">CSS</strong> и <strong style="color:#FCD34D">JavaScript</strong>.<br><br>
+        Дата выдачи: <strong style="color:#fff" id="cert-date">—</strong>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:3rem;margin-top:1.5rem;flex-wrap:wrap">
+        <div style="text-align:center">
+          <div style="width:120px;border-top:1px solid rgba(245,158,11,0.5);margin:0 auto 0.4rem"></div>
+          <div style="color:rgba(255,255,255,0.6);font-size:0.8rem">Подпись автора</div>
+          <div style="color:var(--secondary);font-weight:700;font-size:0.9rem">Музаффар Хаётов</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:2.5rem;line-height:1">🎓</div>
+          <div style="color:rgba(255,255,255,0.6);font-size:0.8rem">WebAcademy</div>
+          <div style="color:var(--secondary);font-weight:700;font-size:0.9rem">Печать</div>
+        </div>
+      </div>
+
+      <div class="cert-author">
+        Сертификат выдан платформой<br>
+        <strong>WebAcademy by Музаффар Хаётов</strong><br>
+        <span style="font-size:0.8rem;opacity:0.6">muzaffarit.github.io/htlm-course</span>
+      </div>
+    </div>
+
+    <div class="no-print" style="text-align:center;margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button onclick="window.print()" class="btn btn-gold btn-lg">🖨️ Распечатать сертификат</button>
+      <a href="dashboard.html" class="btn btn-secondary btn-lg">← Вернуться</a>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const user = WA.getCurrentUser();
+  const done = user ? WA.getTotalCompleted() : 0;
+  const name = user ? user.name : 'Ученик';
+
+  document.getElementById('cert-student-name').textContent = name;
+  document.getElementById('cert-date').textContent = new Date().toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' });
+
+  if (!user || done < 15) {
+    const warn = document.getElementById('progress-warn');
+    warn.style.display = 'block';
+    document.getElementById('done-count').textContent = done;
+    document.querySelector('.certificate').style.filter = 'blur(4px)';
+    document.querySelector('.certificate').style.opacity = '0.5';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 1: Введение в HTML — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:5%"></div></div>
+  <span class="lesson-progress-label">1 / 19</span>
+</div>
+
+<div class="lesson-content">
+
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 1: Введение в HTML</h1>
+    <div class="lesson-meta">
+      <span>⏱ 35–40 минут</span>
+      <span>📝 10 вопросов</span>
+      <span>🔢 Урок 1 из 7</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="theory-block">
+    <h2>🌐 Что такое HTML?</h2>
+    <p><strong>HTML</strong> расшифровывается как <strong>HyperText Markup Language</strong> — Язык Разметки Гипертекста. Это основа каждой страницы в интернете. Когда ты открываешь любой сайт — Google, YouTube или ВКонтакте — браузер читает именно HTML-код и отображает его как красивую страницу.</p>
+    <p>HTML — это <strong>не язык программирования</strong>. Он не думает и не принимает решения. Это язык <em>разметки</em> — ты просто говоришь браузеру: «вот заголовок», «вот абзац», «вот картинка». Браузер понимает тебя и показывает всё красиво.</p>
+    <div class="info-box">💡 <strong>Интересный факт:</strong> Первая веб-страница в мире появилась 6 августа 1991 года. Её создал <strong>Тим Бернерс-Ли</strong> в Швейцарии. Ты можешь посмотреть её по адресу: info.cern.ch — она до сих пор работает!</div>
+    <p>Сегодня используется <strong>HTML5</strong> — пятая версия, принятая в 2014 году. Она поддерживает видео, аудио, игры и многое другое прямо в браузере.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="theory-block">
+    <h2>🔧 Как работает браузер?</h2>
+    <p>Представь, что браузер — это <strong>переводчик</strong>. Ты пишешь код на HTML, а браузер «читает» его и рисует красивую страницу. Процесс выглядит так:</p>
+    <ol>
+      <li>Ты пишешь HTML-файл на компьютере (например, <code>index.html</code>)</li>
+      <li>Открываешь его в браузере (Chrome, Firefox, Safari...)</li>
+      <li>Браузер читает код сверху вниз и строит страницу</li>
+      <li>Ты видишь готовую страницу</li>
+    </ol>
+    <div class="warning-box">⚠️ <strong>Важно:</strong> Браузер очень терпелив — даже если в коде есть ошибки, он постарается показать страницу. Но это не значит, что ошибки можно допускать!</div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="theory-block">
+    <h2>📋 Структура HTML-страницы</h2>
+    <p>Каждая правильная HTML-страница состоит из нескольких обязательных частей. Запомни их — они всегда одинаковые!</p>
+
+    <div class="code-block">
+      <div class="code-block-header">
+        <span class="code-block-title">📄 Базовая структура HTML</span>
+        <button class="copy-btn">📋 Копировать</button>
+      </div>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Моя первая страница&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это моя первая веб-страница.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <p>Разберём каждую строку:</p>
+    <ul>
+      <li><strong><code>&lt;!DOCTYPE html&gt;</code></strong> — говорит браузеру, что это HTML5. Всегда первая строка!</li>
+      <li><strong><code>&lt;html lang="ru"&gt;</code></strong> — корневой тег. Всё остальное внутри него. <code>lang="ru"</code> говорит, что страница на русском.</li>
+      <li><strong><code>&lt;head&gt;</code></strong> — «голова» страницы. Содержит настройки, которые <em>не видны</em> пользователю.</li>
+      <li><strong><code>&lt;meta charset="UTF-8"&gt;</code></strong> — поддержка русских букв и других символов.</li>
+      <li><strong><code>&lt;title&gt;</code></strong> — название вкладки в браузере.</li>
+      <li><strong><code>&lt;body&gt;</code></strong> — «тело» страницы. Всё, что видит пользователь, пишется здесь!</li>
+    </ul>
+
+    <div class="success-box">✅ <strong>Правило:</strong> Каждый тег открывается (<code>&lt;html&gt;</code>) и закрывается (<code>&lt;/html&gt;</code>). Закрывающий тег отличается косой чертой /.</div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="theory-block">
+    <h2>🏷️ Что такое теги?</h2>
+    <p>Теги — это команды для браузера. Они всегда пишутся в угловых скобках <code>&lt; &gt;</code>. Большинство тегов парные — открывающий и закрывающий:</p>
+    <div class="code-block">
+      <div class="code-block-header">
+        <span class="code-block-title">🏷️ Примеры тегов</span>
+        <button class="copy-btn">📋 Копировать</button>
+      </div>
+      <pre><code>&lt;!-- Это комментарий — браузер его не показывает --&gt;
+
+&lt;h1&gt;Это большой заголовок&lt;/h1&gt;
+&lt;h2&gt;Это заголовок поменьше&lt;/h2&gt;
+&lt;p&gt;Это абзац текста.&lt;/p&gt;
+&lt;strong&gt;Жирный текст&lt;/strong&gt;
+&lt;em&gt;Курсивный текст&lt;/em&gt;
+
+&lt;!-- Одиночные теги (без закрывающего) --&gt;
+&lt;br&gt;   — перенос строки
+&lt;hr&gt;   — горизонтальная линия</code></pre>
+    </div>
+  </div>
+
+  <!-- LIVE EDITOR -->
+  <div class="editor-section">
+    <div class="editor-header">
+      <h3>🚀 Попробуй сам! Редактор кода</h3>
+      <button class="run-btn">▶ Запустить</button>
+    </div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Моя страница</title>
+</head>
+<body>
+  <h1>Привет! Меня зовут Алишер</h1>
+  <p>Я учусь в <strong>7 классе</strong>.</p>
+  <p>Моё хобби: <em>программирование</em>!</p>
+  <hr>
+  <p>Это мой первый HTML-код! 🎉</p>
+</body>
+</html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Измени имя, класс и хобби на свои. Нажми ▶ Запустить, чтобы увидеть результат!</div>
+  </div>
+
+  <!-- EXERCISE -->
+  <div class="exercise-section">
+    <h2>📝 Практическое задание</h2>
+    <p>Создай HTML-страницу о себе. Используй редактор выше и выполни все пункты:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Добавь заголовок <code>&lt;h1&gt;</code> с твоим именем и фамилией</li>
+      <li><span class="task-num">2</span>Добавь абзац <code>&lt;p&gt;</code> с информацией о твоём классе и школе</li>
+      <li><span class="task-num">3</span>Добавь абзац с твоими 3 любимыми предметами (используй <code>&lt;strong&gt;</code> для любимого)</li>
+      <li><span class="task-num">4</span>Поставь горизонтальную линию <code>&lt;hr&gt;</code> между разделами</li>
+      <li><span class="task-num">5</span>Добавь комментарий <code>&lt;!-- ... --&gt;</code> в любом месте кода</li>
+    </ul>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="quiz-section">
+    <h2>🧠 Тест по уроку</h2>
+    <p class="quiz-subtitle">Ответь на 10 вопросов. Нужно набрать минимум 60%, чтобы пройти урок.</p>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">1. Что означает аббревиатура HTML?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q1" data-v="a"><input type="radio" name="q1">Hard Text Markup Language</label>
+        <label class="quiz-option" data-q="q1" data-v="b"><input type="radio" name="q1">HyperText Markup Language</label>
+        <label class="quiz-option" data-q="q1" data-v="c"><input type="radio" name="q1">High Tech Modern Language</label>
+        <label class="quiz-option" data-q="q1" data-v="d"><input type="radio" name="q1">HyperText Modern Links</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">2. Кто создал HTML?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q2" data-v="a"><input type="radio" name="q2">Билл Гейтс</label>
+        <label class="quiz-option" data-q="q2" data-v="b"><input type="radio" name="q2">Стив Джобс</label>
+        <label class="quiz-option" data-q="q2" data-v="c"><input type="radio" name="q2">Тим Бернерс-Ли</label>
+        <label class="quiz-option" data-q="q2" data-v="d"><input type="radio" name="q2">Марк Цукерберг</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">3. Какой тег должен быть самым первым в HTML-документе?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q3" data-v="a"><input type="radio" name="q3">&lt;html&gt;</label>
+        <label class="quiz-option" data-q="q3" data-v="b"><input type="radio" name="q3">&lt;head&gt;</label>
+        <label class="quiz-option" data-q="q3" data-v="c"><input type="radio" name="q3">&lt;!DOCTYPE html&gt;</label>
+        <label class="quiz-option" data-q="q3" data-v="d"><input type="radio" name="q3">&lt;body&gt;</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">4. Где располагается содержимое, которое видит пользователь?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q4" data-v="a"><input type="radio" name="q4">В теге &lt;head&gt;</label>
+        <label class="quiz-option" data-q="q4" data-v="b"><input type="radio" name="q4">В теге &lt;body&gt;</label>
+        <label class="quiz-option" data-q="q4" data-v="c"><input type="radio" name="q4">В теге &lt;html&gt;</label>
+        <label class="quiz-option" data-q="q4" data-v="d"><input type="radio" name="q4">В теге &lt;title&gt;</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">5. Что делает тег &lt;title&gt;?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q5" data-v="a"><input type="radio" name="q5">Показывает заголовок на странице</label>
+        <label class="quiz-option" data-q="q5" data-v="b"><input type="radio" name="q5">Задаёт название вкладки браузера</label>
+        <label class="quiz-option" data-q="q5" data-v="c"><input type="radio" name="q5">Создаёт жирный текст</label>
+        <label class="quiz-option" data-q="q5" data-v="d"><input type="radio" name="q5">Открывает новую страницу</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">6. Как выглядит закрывающий тег?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q6" data-v="a"><input type="radio" name="q6">&lt;p&gt;</label>
+        <label class="quiz-option" data-q="q6" data-v="b"><input type="radio" name="q6">&lt;/p&gt;</label>
+        <label class="quiz-option" data-q="q6" data-v="c"><input type="radio" name="q6">&lt;p/&gt;</label>
+        <label class="quiz-option" data-q="q6" data-v="d"><input type="radio" name="q6">&lt;&gt;p&lt;&gt;</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">7. Для чего нужен мета-тег charset="UTF-8"?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q7" data-v="a"><input type="radio" name="q7">Для создания заголовков</label>
+        <label class="quiz-option" data-q="q7" data-v="b"><input type="radio" name="q7">Для поддержки русских букв и символов</label>
+        <label class="quiz-option" data-q="q7" data-v="c"><input type="radio" name="q7">Для добавления изображений</label>
+        <label class="quiz-option" data-q="q7" data-v="d"><input type="radio" name="q7">Для изменения цвета текста</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">8. Какой тег делает текст курсивным?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q8" data-v="a"><input type="radio" name="q8">&lt;strong&gt;</label>
+        <label class="quiz-option" data-q="q8" data-v="b"><input type="radio" name="q8">&lt;b&gt;</label>
+        <label class="quiz-option" data-q="q8" data-v="c"><input type="radio" name="q8">&lt;em&gt;</label>
+        <label class="quiz-option" data-q="q8" data-v="d"><input type="radio" name="q8">&lt;italic&gt;</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">9. HTML является языком программирования?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q9" data-v="a"><input type="radio" name="q9">Да, HTML — это язык программирования</label>
+        <label class="quiz-option" data-q="q9" data-v="b"><input type="radio" name="q9">Нет, HTML — это язык разметки</label>
+        <label class="quiz-option" data-q="q9" data-v="c"><input type="radio" name="q9">HTML — это операционная система</label>
+        <label class="quiz-option" data-q="q9" data-v="d"><input type="radio" name="q9">HTML — это браузер</label>
+      </div>
+    </div>
+
+    <div class="quiz-question">
+      <div class="quiz-q-text">10. Что делает тег &lt;br&gt;?</div>
+      <div class="quiz-options">
+        <label class="quiz-option" data-q="q10" data-v="a"><input type="radio" name="q10">Делает текст жирным</label>
+        <label class="quiz-option" data-q="q10" data-v="b"><input type="radio" name="q10">Рисует рамку</label>
+        <label class="quiz-option" data-q="q10" data-v="c"><input type="radio" name="q10">Переносит текст на новую строку</label>
+        <label class="quiz-option" data-q="q10" data-v="d"><input type="radio" name="q10">Создаёт ссылку</label>
+      </div>
+    </div>
+
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result">
+      <div class="quiz-score" id="score"></div>
+      <div class="quiz-feedback" id="feedback"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="2-tags.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+
+</div>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(1, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'c', q4:'b', q5:'b', q6:'b', q7:'b', q8:'c', q9:'b', q10:'c' });
+  initCompleteButton('html-1', '2-tags.html');
+</script>
+</body>
+</html>

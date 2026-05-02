@@ -1,121 +1,334 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 7: Практика Анимации</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        .circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #3A86FF;
-            text-align: center;
-            line-height: 80px;
-            color: white;
-            font-weight: bold;
-        }
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Урок 7: Анимации — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:73%"></div></div>
+  <span class="lesson-progress-label">14 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge css">🎨 CSS</div>
+    <h1>Урок 7: CSS Анимации</h1>
+    <div class="lesson-meta"><span>⏱ 45 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 7 из 7</span></div>
+  </div>
 
-        .animated-circle {
-            animation: bounce 2s infinite ease-in-out;
-            background-color: #FF006E;
-        }
+  <div class="theory-block">
+    <h2>🎬 Анимации через @keyframes</h2>
+    <p>CSS-анимации создаются с помощью правила <code>@keyframes</code> — оно описывает, как элемент должен изменяться в определённые моменты времени.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🎬 @keyframes и animation</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* 1. Создать анимацию */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-40px) scale(1.1); }
-        }
-    </style>
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rainbow {
+  0%   { background: #f59e0b; }
+  25%  { background: #ec4899; }
+  50%  { background: #7C3AED; }
+  75%  { background: #3B82F6; }
+  100% { background: #f59e0b; }
+}
+
+/* 2. Применить анимацию */
+.element {
+  animation-name: fadeIn;
+  animation-duration: 1s;        /* длительность */
+  animation-timing-function: ease; /* плавность: ease, linear, ease-in, ease-out */
+  animation-delay: 0.5s;         /* задержка перед стартом */
+  animation-iteration-count: 1;  /* повторений: infinite = бесконечно */
+  animation-direction: normal;   /* normal | reverse | alternate */
+  animation-fill-mode: forwards; /* оставить конечное состояние */
+
+  /* Краткая запись */
+  animation: fadeIn 1s ease 0.5s forwards;
+  animation: spin 2s linear infinite;
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>⚡ Transform — трансформации</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">⚡ Transform функции</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>/* Перемещение */
+transform: translateX(50px);      /* вправо */
+transform: translateY(-20px);     /* вверх */
+transform: translate(20px, -10px); /* X и Y */
+
+/* Масштабирование */
+transform: scale(1.2);    /* увеличить в 1.2 раза */
+transform: scale(0.8);    /* уменьшить */
+transform: scaleX(2);     /* растянуть по X */
+
+/* Вращение */
+transform: rotate(45deg);  /* повернуть на 45° */
+transform: rotateY(180deg); /* перевернуть (3D) */
+
+/* Наклон */
+transform: skewX(20deg);  /* наклон по X */
+
+/* Комбинирование */
+transform: translateY(-5px) scale(1.05) rotate(3deg);</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Анимации</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial;
+    background: #0D0D1A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+  }
+
+  /* Анимация появления */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Пульсация */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(124,58,237,0.3); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(124,58,237,0.6); }
+  }
+
+  /* Вращение */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Волна */
+  @keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* Радуга */
+  @keyframes rainbow {
+    0%   { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+    33%  { background: linear-gradient(135deg, #7C3AED, #EC4899); }
+    66%  { background: linear-gradient(135deg, #3B82F6, #14B8A6); }
+    100% { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #A78BFA;
+    animation: fadeInUp 1s ease forwards;
+    text-align: center;
+  }
+
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.1s; animation: fadeInUp 0.8s 0.1s ease forwards, pulse 3s 1s ease-in-out infinite; background: linear-gradient(135deg, #7C3AED, #EC4899); }
+  .card:nth-child(2) { animation-delay: 0.2s; animation: fadeInUp 0.8s 0.2s ease forwards; background: linear-gradient(135deg, #3B82F6, #14B8A6); }
+  .card:nth-child(3) { animation-delay: 0.3s; animation: fadeInUp 0.8s 0.3s ease forwards; background: linear-gradient(135deg, #f59e0b, #ef4444); }
+
+  .card .emoji { font-size: 2.5rem; margin-bottom: 8px; }
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(124,58,237,0.2);
+    border-top-color: #7C3AED;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .wave-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #A78BFA;
+    animation: wave 1s ease-in-out infinite;
+  }
+
+  .dot:nth-child(2) { animation-delay: 0.15s; background: #EC4899; }
+  .dot:nth-child(3) { animation-delay: 0.3s;  background: #3B82F6; }
+  .dot:nth-child(4) { animation-delay: 0.45s; background: #14B8A6; }
+  .dot:nth-child(5) { animation-delay: 0.6s;  background: #F59E0B; }
+</style>
 </head>
 <body>
+  <h1 class="title">🎬 CSS Анимации!</h1>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🌐</div>
+      <span>HTML</span>
+    </div>
+    <div class="card">
+      <div class="emoji">🎨</div>
+      <span>CSS</span>
+    </div>
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <span>JavaScript</span>
+    </div>
+  </div>
 
-        <div class="nav-section">
-            <h3>CSS – Стилизация (Уровни)</h3>
-            <a href="1-intro.html" class="nav-link"><span class="status-icon"></span> 1. Что такое CSS</a>
-            <a href="2-colors-bg.html" class="nav-link"><span class="status-icon"></span> 2. Цвета и Фон</a>
-            <a href="3-text-fonts.html" class="nav-link"><span class="status-icon"></span> 3. Текст и Шрифты</a>
-            <a href="4-box-model.html" class="nav-link"><span class="status-icon"></span> 4. Границы и Отступы</a>
-            <a href="5-display-flex.html" class="nav-link"><span class="status-icon"></span> 5. Сетка и Flexbox</a>
-            <a href="6-position-hover.html" class="nav-link"><span class="status-icon"></span> 6. Позиция и Эффекты</a>
-            <a href="7-animations.html" class="nav-link active"><span class="status-icon"></span> 7. Практика: Анимации</a>
-        </div>
-    </aside>
+  <div class="spinner"></div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 7: Анимации 🎬</h1>
-            <p>Учим элементы прыгать, крутиться и танцевать.</p>
-        </div>
+  <div class="wave-row">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Измени animation-duration и animation-delay для разных эффектов!</div>
+  </div>
 
-        <div class="explanation">
-            <h3>Магия @keyframes</h3>
-            <p>В CSS можно делать настоящие мультики! Для этого используется правило <code class="code-inline">@keyframes</code>. В нем мы прописываем кадры нашей анимации: что происходит на <code class="code-inline">0%</code> (начало), <code class="code-inline">50%</code> (середина) и <code class="code-inline">100%</code> (конец).</p>
-            <p>Чтобы запустить анимацию, элементу нужно добавить свойство <code class="code-inline">animation: название время infinite;</code>. <strong>infinite</strong> означает, что анимация будет повторяться бесконечно!</p>
-        </div>
+  <div class="exercise-section">
+    <h2>📝 Финальное задание CSS</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай анимацию fadeIn для заголовка страницы</li>
+      <li><span class="task-num">2</span>Сделай 3+ элемента с разными animation-delay (эффект каскада)</li>
+      <li><span class="task-num">3</span>Добавь бесконечную пульсацию к кнопке через @keyframes</li>
+      <li><span class="task-num">4</span>Создай спиннер (вращающийся элемент)</li>
+      <li><span class="task-num">5</span>Добавь hover-анимацию к карточкам через transition и transform</li>
+    </ul>
+  </div>
 
-        <div class="code-block">
-            <code>
-@keyframes bounce {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: translateY(0); } /* Внизу */<br>
-&nbsp;&nbsp;&nbsp;&nbsp;50% { transform: translateY(-40px); } /* Подпрыгнул вверх на 40px */<br>
-&nbsp;&nbsp;&nbsp;&nbsp;100% { transform: translateY(0); } /* Вернулся вниз */<br>
-}<br>
-<br>
-.ball {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;animation: bounce 2s infinite;<br>
-}<br>
-            </code>
-        </div>
+  <div class="quiz-section">
+    <h2>🧠 Тест по CSS анимациям</h2><p class="quiz-subtitle">Финальный тест CSS — 10 вопросов!</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Правило @keyframes используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Задания цвета</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Создания анимации</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Создания переменных</label>
+      <label class="quiz-option" data-q="q1" data-v="d">Медиа-запросов</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. animation-iteration-count: infinite означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Анимация не воспроизводится</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Анимация воспроизводится бесконечно</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Анимация воспроизводится 1 раз</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Бесконечная задержка</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. transform: scale(2) делает элемент...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">В два раза меньше</label>
+      <label class="quiz-option" data-q="q3" data-v="b">В два раза больше</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Двойным (дублирует)</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Прозрачным на 50%</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. animation-delay: 0.5s означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Длительность анимации 0.5 секунды</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Анимация начнётся через 0.5 секунды</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Скорость замедления</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Анимация повторится через 0.5 секунды</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Что делает animation-fill-mode: forwards?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Перематывает анимацию назад</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Элемент остаётся в конечном состоянии после анимации</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Ускоряет анимацию</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Применяет анимацию к дочерним элементам</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. transform: rotate(90deg) поворачивает элемент на...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">90% от его размера</label>
+      <label class="quiz-option" data-q="q6" data-v="b">90 градусов по часовой стрелке</label>
+      <label class="quiz-option" data-q="q6" data-v="c">90 пикселей вправо</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Против часовой на 90°</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. animation-timing-function: linear означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Анимация ускоряется к концу</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Анимация с постоянной скоростью</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Анимация по прямой линии</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Анимация замедляется к концу</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Ключевое слово from в @keyframes эквивалентно...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">50%</label>
+      <label class="quiz-option" data-q="q8" data-v="b">100%</label>
+      <label class="quiz-option" data-q="q8" data-v="c">0%</label>
+      <label class="quiz-option" data-q="q8" data-v="d">-1%</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. animation-direction: alternate означает...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Анимация идёт только вперёд</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Каждый чётный цикл — в обратном направлении</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Анимация останавливается</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Случайное направление</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Чем анимация (@keyframes) отличается от transition?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Ничем</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Transition запускается событием (hover), @keyframes может запускаться автоматически</label>
+      <label class="quiz-option" data-q="q10" data-v="c">@keyframes только для цветов</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Transition работает без браузера</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
 
-        <div class="comparison-container">
-            <div class="comparison-box">
-                <div class="box-header">ДО (Статичный мяч)</div>
-                <div class="box-content" style="height: 250px;">
-                    <div class="circle">Грусть</div>
-                </div>
-            </div>
-            
-            <div class="comparison-box after">
-                <div class="box-header">ПОСЛЕ (Прыгающий мяч)</div>
-                <div class="box-content" style="height: 250px;">
-                    <div class="circle animated-circle">Радость!</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Вращение</h3>
-            <p>Чтобы крутить элементы, мы используем внутри анимации команду <code class="code-inline">transform: rotate(...)</code>. Напиши анимацию <code class="code-inline">@keyframes spin</code>, которая начинает с <code class="code-inline">0deg</code> (градусов) на 0% и заканчивает на <code class="code-inline">360deg</code> в 100%.</p>
-            
-            <button class="answer-toggle" data-target="task7-answer">Показать ответ</button>
-            <div id="task7-answer" class="answer-content">
-                <code>
-@keyframes spin {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: rotate(0deg); }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;100% { transform: rotate(360deg); }<br>
-}
-                </code>
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between;">
-            <a href="6-position-hover.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
-            <a href="../js/1-intro-vars.html" class="btn-primary">Приступить к JavaScript! 🧨 ➡️</a>
-        </div>
-    </main>
-
-    <script src="../../assets/js/main.js"></script>
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="../../lessons/js/1-intro-vars.html" class="lesson-next-btn">Начать JavaScript →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(14, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'c', q9:'b', q10:'b' });
+  initCompleteButton('css-7', '../../lessons/js/1-intro-vars.html');
+</script>
 </body>
 </html>

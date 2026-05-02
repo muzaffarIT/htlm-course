@@ -1,83 +1,288 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Урок 1: Введение и Переменные</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Урок 1: Переменные — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:78%"></div></div>
+  <span class="lesson-progress-label">15 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge js">⚡ JS</div>
+    <h1>Урок 1: Введение в JavaScript. Переменные</h1>
+    <div class="lesson-meta"><span>⏱ 45 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 1 из 5</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>⚡ Что такое JavaScript?</h2>
+    <p><strong>JavaScript</strong> (JS) — это язык программирования, который делает веб-страницы <em>интерактивными и живыми</em>. С помощью JS ты можешь:</p>
+    <ul>
+      <li>🎮 Создавать игры прямо в браузере</li>
+      <li>✅ Проверять формы перед отправкой</li>
+      <li>🌗 Переключать тёмную/светлую тему</li>
+      <li>📊 Обновлять данные без перезагрузки страницы</li>
+      <li>🎨 Создавать анимации и эффекты</li>
+    </ul>
+    <div class="info-box">💡 Как подключить JS к HTML: <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> или <code>&lt;script&gt; ... &lt;/script&gt;</code></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📦 Переменные: let, const, var</h2>
+    <p>Переменные — это «ящики» для хранения данных. В современном JS используют <code>let</code> и <code>const</code>:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📦 Объявление переменных</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// let — переменная, значение можно изменить
+let name = "Алишер";
+let age = 14;
+let isStudent = true;
+
+name = "Малика";  // ✅ можно изменить
+
+// const — константа, значение нельзя изменить
+const PI = 3.14159;
+const platformName = "WebAcademy";
+
+PI = 3; // ❌ Ошибка! Нельзя изменить const
+
+// var — старый способ (не рекомендуется в современном JS)
+var oldVariable = "устарел";
+
+// Вывод в консоль браузера
+console.log(name);         // "Малика"
+console.log("Привет,", name, "!", "Тебе", age, "лет");
+
+// Шаблонные строки (template literals)
+console.log(`Привет, ${name}! Тебе ${age} лет.`);
+// Результат: "Привет, Малика! Тебе 14 лет."</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔢 Типы данных</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔢 Типы данных JS</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// String (строка) — текст в кавычках
+let name = "Музаффар";
+let greeting = 'Привет!';
+let message = `Добро пожаловать, ${name}!`;
+
+// Number (число) — целые и дробные
+let age = 14;
+let price = 99.99;
+let negative = -5;
+
+// Boolean (булево) — true или false
+let isLoggedIn = true;
+let isAdmin = false;
+
+// Array (массив) — список значений
+let fruits = ["яблоко", "банан", "апельсин"];
+let numbers = [1, 2, 3, 4, 5];
+
+// Object (объект) — набор свойств
+let student = {
+  name: "Алишер",
+  age: 14,
+  grade: 8,
+  isActive: true
+};
+
+// Проверка типа
+console.log(typeof name);     // "string"
+console.log(typeof age);      // "number"
+console.log(typeof isLoggedIn); // "boolean"
+console.log(typeof fruits);   // "object" (массив — тоже объект)</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🧮 Операторы</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🧮 Математика и сравнения</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// Арифметические
+let a = 10, b = 3;
+console.log(a + b);   // 13
+console.log(a - b);   // 7
+console.log(a * b);   // 30
+console.log(a / b);   // 3.333...
+console.log(a % b);   // 1 (остаток от деления)
+console.log(a ** b);  // 1000 (10 в степени 3)
+
+// Строки
+let hello = "Привет" + ", " + "мир!";  // конкатенация
+
+// Сравнения (возвращают true/false)
+console.log(5 > 3);    // true
+console.log(5 < 3);    // false
+console.log(5 === 5);  // true (строгое равенство)
+console.log(5 !== 3);  // true (не равно)
+console.log(5 >= 5);   // true
+
+// Логические
+console.log(true && false);  // false (И)
+console.log(true || false);  // true  (ИЛИ)
+console.log(!true);          // false (НЕ)</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор JavaScript</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: 'Segoe UI', Arial; background: #0D0D1A; color: #E2E8F0; padding: 30px; }
+  h1 { color: #A78BFA; margin-bottom: 20px; }
+  .output { background: #1A1A38; border-radius: 12px; padding: 20px; font-family: monospace; line-height: 2; border: 1px solid rgba(255,255,255,0.08); }
+  .line { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .label { color: #64748B; font-size: 0.85em; margin-right: 8px; }
+  .string { color: #86EFAC; }
+  .number { color: #FCD34D; }
+  .bool { color: #60A5FA; }
+  .btn { background: linear-gradient(135deg, #7C3AED, #5B21B6); color: white; border: none; padding: 12px 24px; border-radius: 10px; font-size: 15px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+</style>
 </head>
 <body>
+<h1>⚡ JavaScript — переменные</h1>
+<div class="output" id="output"></div>
+<button class="btn" onclick="runDemo()">▶ Запустить код</button>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+<script>
+function runDemo() {
+  // === ПЕРЕМЕННЫЕ ===
+  let studentName = "Алишер Каримов";  // строка
+  const courseName = "WebAcademy";      // константа
+  let grade = 8;                         // число
+  let isLoggedIn = true;                 // булево
+  let score = 0;
 
-        <div class="nav-section">
-            <h3>JS – Логика (Уровни)</h3>
-            <a href="1-intro-vars.html" class="nav-link active"><span class="status-icon"></span> 1. Переменные JS</a>
-            <a href="2-conditions.html" class="nav-link"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
-            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
-            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
-            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
-        </div>
-    </aside>
+  // Математика
+  let a = 25, b = 7;
+  let sum = a + b;
+  let product = a * b;
+  let remainder = a % b;
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 1: Привет, JavaScript! 🧠</h1>
-            <p>Делаем сайт умным. Учимся сохранять данные в переменные.</p>
-        </div>
+  // Шаблонная строка
+  let greeting = `Привет, ${studentName}! Ты учишься в ${grade} классе.`;
 
-        <div class="explanation">
-            <h3>Что такое JavaScript (JS)?</h3>
-            <p>Если HTML — это дом, а CSS — покраска стен, то JavaScript у нас отвечает за проводку и электричество. Именно JS заставляет кнопки нажиматься, всплывать окнам и двигаться объектам от действий пользователя!</p>
-            <p>В JS мы пишем код внутри тега <code class="code-inline">&lt;script&gt;</code> прямо перед закрывающимся тегом <code class="code-inline">&lt;/body&gt;</code> в нашей HTML странице.</p>
-        </div>
+  // Массив
+  let courses = ["HTML", "CSS", "JavaScript"];
 
-        <div class="explanation">
-            <h3>Переменные - это коробочки</h3>
-            <p>В программировании нам часто нужно что-то запомнить: имя игрока, количество кликов или цвет. Для этого мы создаем "переменные" (коробочки с именами). Мы создаем их с помощью слова <code class="code-inline">let</code>.</p>
-        </div>
+  // Вывод
+  const out = document.getElementById('output');
+  out.innerHTML = `
+    <div class="line"><span class="label">let studentName =</span><span class="string">"${studentName}"</span></div>
+    <div class="line"><span class="label">const courseName =</span><span class="string">"${courseName}"</span></div>
+    <div class="line"><span class="label">let grade =</span><span class="number">${grade}</span></div>
+    <div class="line"><span class="label">let isLoggedIn =</span><span class="bool">${isLoggedIn}</span></div>
+    <div class="line"><span class="label">${a} + ${b} =</span><span class="number">${sum}</span></div>
+    <div class="line"><span class="label">${a} * ${b} =</span><span class="number">${product}</span></div>
+    <div class="line"><span class="label">${a} % ${b} =</span><span class="number">${remainder}</span></div>
+    <div class="line"><span class="label">greeting =</span><span class="string">"${greeting}"</span></div>
+    <div class="line"><span class="label">courses =</span><span class="string">[${courses.map(c => '"' + c + '"').join(', ')}]</span></div>
+  `;
+}
+runDemo();
+</script>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Измени значения переменных и нажми «Запустить»!</div>
+  </div>
 
-        <div class="code-block">
-            <code>
-// Создаем переменную для имени<br>
-let myName = "Максим";<br>
-<br>
-// Переменная для очков в игре (числа пишем без кавычек)<br>
-let score = 100;<br>
-<br>
-// Если мы хотим вывести это на экран (всплывающее окно), мы используем alert()<br>
-alert(myName);<br>
-            </code>
-        </div>
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Создай переменные: имя (let), возраст (let), любимый язык (const)</li>
+      <li><span class="task-num">2</span>Выведи их через шаблонную строку: <code>`Меня зовут ${name}...`</code></li>
+      <li><span class="task-num">3</span>Вычисли год рождения: <code>let birthYear = 2025 - age;</code></li>
+      <li><span class="task-num">4</span>Создай массив твоих хобби и выведи его</li>
+      <li><span class="task-num">5</span>Используй <code>typeof</code> для проверки типов</li>
+    </ul>
+  </div>
 
-        <div class="task-section">
-            <h3>🔥 Домашнее задание 1 уровня</h3>
-            <p>Создай переменную <code class="code-inline">age</code> (возраст) и положи в неё число 12. После этого используй команду <code class="code-inline">alert(age);</code> чтобы показать это число в окошке.</p>
-            
-            <button class="answer-toggle" data-target="task1-js-answer">Показать ответ</button>
-            <div id="task1-js-answer" class="answer-content">
-                <code>
-let age = 12;<br>
-alert(age);
-                </code>
-            </div>
-        </div>
+  <div class="quiz-section">
+    <h2>🧠 Тест по JS переменным</h2><p class="quiz-subtitle">10 вопросов о JavaScript и переменных</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Что такое const?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">Переменная, значение которой можно изменить</label>
+      <label class="quiz-option" data-q="q1" data-v="b">Константа — значение нельзя переопределить</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Устаревший тип переменной</label>
+      <label class="quiz-option" data-q="q1" data-v="d">Контейнер для массивов</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Как вывести текст в консоль браузера?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">print("текст")</label>
+      <label class="quiz-option" data-q="q2" data-v="b">echo "текст"</label>
+      <label class="quiz-option" data-q="q2" data-v="c">console.log("текст")</label>
+      <label class="quiz-option" data-q="q2" data-v="d">write("текст")</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Что вернёт: 10 % 3?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">3</label>
+      <label class="quiz-option" data-q="q3" data-v="b">0.33</label>
+      <label class="quiz-option" data-q="q3" data-v="c">1</label>
+      <label class="quiz-option" data-q="q3" data-v="d">10</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Как написать шаблонную строку в JS?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">"Привет, ${name}"</label>
+      <label class="quiz-option" data-q="q4" data-v="b">'Привет, ${name}'</label>
+      <label class="quiz-option" data-q="q4" data-v="c">`Привет, ${name}`</label>
+      <label class="quiz-option" data-q="q4" data-v="d">«Привет, ${name}»</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Тип данных true/false называется...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">String</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Number</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Boolean</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Null</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что возвращает typeof "hello"?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">"number"</label>
+      <label class="quiz-option" data-q="q6" data-v="b">"string"</label>
+      <label class="quiz-option" data-q="q6" data-v="c">"text"</label>
+      <label class="quiz-option" data-q="q6" data-v="d">"char"</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Что такое массив в JS?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Одно значение</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Список значений в квадратных скобках []</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Функция</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Объект с методами</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Оператор === проверяет...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Присваивание</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Строгое равенство (значение И тип)</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Нестрогое равенство</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Больше или равно</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Что будет: "5" + 3 в JS?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">8</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Ошибка</label>
+      <label class="quiz-option" data-q="q9" data-v="c">"53"</label>
+      <label class="quiz-option" data-q="q9" data-v="d">NaN</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Зачем нужен let вместо var?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">let быстрее</label>
+      <label class="quiz-option" data-q="q10" data-v="b">let имеет блочную область видимости, var — функциональную</label>
+      <label class="quiz-option" data-q="q10" data-v="c">var устарел</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Нет разницы</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
 
-        <div style="display: flex; justify-content: space-between;">
-            <a href="../css/7-animations.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад к CSS</a>
-            <a href="2-conditions.html" class="btn-primary">Следующий: Условия ➡️</a>
-        </div>
-    </main>
-
-    <script src="../../assets/js/main.js"></script>
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="2-conditions.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(15, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'c', q4:'c', q5:'c', q6:'b', q7:'b', q8:'b', q9:'c', q10:'b' });
+  initCompleteButton('js-1', '2-conditions.html');
+</script>
 </body>
 </html>

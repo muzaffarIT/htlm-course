@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация — WebAcademy | Музаффар Хаётов</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="logo-big">🚀</div>
+      <h1>Создай аккаунт</h1>
+      <p>Присоединяйся к <strong>WebAcademy</strong> от Музаффара Хаётова</p>
+    </div>
+
+    <div class="form-error" id="reg-error"></div>
+
+    <form id="reg-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Имя *</label>
+          <input class="form-input" id="reg-first" type="text" placeholder="Алишер" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Фамилия *</label>
+          <input class="form-input" id="reg-last" type="text" placeholder="Каримов" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email *</label>
+        <input class="form-input" id="reg-email" type="email" placeholder="alisher@mail.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Класс</label>
+        <select class="form-input" id="reg-grade">
+          <option value="">— Выбери класс —</option>
+          <option>1 класс</option><option>2 класс</option><option>3 класс</option>
+          <option>4 класс</option><option>5 класс</option><option>6 класс</option>
+          <option>7 класс</option><option>8 класс</option><option>9 класс</option>
+          <option>10 класс</option><option>11 класс</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Пароль *</label>
+        <input class="form-input" id="reg-pass" type="password" placeholder="Минимум 6 символов" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Повтори пароль *</label>
+        <input class="form-input" id="reg-pass2" type="password" placeholder="Повтори пароль" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg">🚀 Зарегистрироваться</button>
+    </form>
+
+    <p class="auth-switch">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+    <p style="text-align:center;margin-top:1rem"><a href="index.html" style="color:var(--text3);font-size:0.85rem;text-decoration:none">← На главную</a></p>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('reg-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  hideError('reg-error');
+  const first = document.getElementById('reg-first').value.trim();
+  const last = document.getElementById('reg-last').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const grade = document.getElementById('reg-grade').value;
+  const pass = document.getElementById('reg-pass').value;
+  const pass2 = document.getElementById('reg-pass2').value;
+
+  if (!first || !last) return showError('reg-error', 'Введи имя и фамилию');
+  if (pass !== pass2) return showError('reg-error', 'Пароли не совпадают');
+  if (pass.length < 6) return showError('reg-error', 'Пароль должен быть минимум 6 символов');
+
+  const result = WA.register(first + ' ' + last, email, pass, grade);
+  if (!result.ok) return showError('reg-error', result.msg);
+  window.location.href = 'dashboard.html';
+});
+</script>
+</body>
+</html>

@@ -1,93 +1,295 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Урок 2: Условия</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Урок 2: Условия — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:84%"></div></div>
+  <span class="lesson-progress-label">16 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge js">⚡ JS</div>
+    <h1>Урок 2: Условия и ветвления</h1>
+    <div class="lesson-meta"><span>⏱ 40 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 2 из 5</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔀 if / else — условный оператор</h2>
+    <p>Условный оператор позволяет программе <strong>принимать решения</strong> — выполнять разный код в зависимости от условия.</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔀 if / else if / else</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>let score = 85;
+
+// Простое условие
+if (score >= 90) {
+  console.log("Отлично! 🏆");
+} else if (score >= 75) {
+  console.log("Хорошо! 👍");
+} else if (score >= 60) {
+  console.log("Удовлетворительно 😐");
+} else {
+  console.log("Нужно больше практики! 💪");
+}
+
+// Краткая форма (тернарный оператор)
+let status = score >= 90 ? "Отличник" : "Хорошист";
+// Читать: условие ? если_да : если_нет
+
+// Проверка нескольких условий
+let age = 14;
+let hasPermission = true;
+
+if (age >= 13 && hasPermission) {
+  console.log("Добро пожаловать!");
+}
+
+if (age < 10 || age > 18) {
+  console.log("Ограниченный доступ");
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🎯 switch — переключатель</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🎯 switch/case</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>let day = "Понедельник";
+
+switch (day) {
+  case "Понедельник":
+    console.log("Начало недели 💪");
+    break;
+  case "Пятница":
+    console.log("Ура, скоро выходные! 🎉");
+    break;
+  case "Суббота":
+  case "Воскресенье":
+    console.log("Выходной! 😎");
+    break;
+  default:
+    console.log("Рабочий день");
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔁 Циклы: for и while</h2>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔁 Циклы</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>// for — когда знаем количество повторений
+for (let i = 1; i <= 5; i++) {
+  console.log(`Урок ${i}`);
+}
+// Урок 1, Урок 2, Урок 3, Урок 4, Урок 5
+
+// while — пока условие истинно
+let count = 0;
+while (count < 3) {
+  console.log("Попытка", count + 1);
+  count++;
+}
+
+// Перебор массива
+let fruits = ["яблоко", "банан", "апельсин"];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+
+// Современный способ (for...of)
+for (let fruit of fruits) {
+  console.log(`🍎 ${fruit}`);
+}
+
+// forEach
+fruits.forEach((fruit, index) => {
+  console.log(`${index + 1}. ${fruit}`);
+});</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Условия и циклы</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; background: #0D0D1A; color: #E2E8F0; padding: 25px; }
+  h1 { color: #A78BFA; margin-bottom: 20px; }
+  .block { background: #1A1A38; border-radius: 12px; padding: 20px; margin-bottom: 15px; border-left: 3px solid #7C3AED; }
+  .block h3 { color: #A78BFA; margin-bottom: 10px; font-size: 15px; }
+  .result { color: #86EFAC; font-family: monospace; line-height: 1.8; }
+  .btn { background: #7C3AED; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin: 5px; font-size: 14px; }
+  input { padding: 8px 12px; border-radius: 8px; border: 2px solid rgba(124,58,237,0.4); background: rgba(124,58,237,0.1); color: white; font-size: 15px; width: 80px; margin-right: 8px; }
+</style>
 </head>
 <body>
+  <h1>🔀 Условия и циклы</h1>
 
-    <aside class="sidebar">
-        <div class="logo">🚀 WebSchool</div>
-        
-        <div class="nav-section">
-            <h3>Главная</h3>
-            <a href="../../index.html" class="nav-link">
-                <span class="status-icon"></span> Панель управления
-            </a>
-        </div>
+  <div class="block">
+    <h3>1. Оценка за тест</h3>
+    <input type="number" id="scoreInput" value="85" min="0" max="100">
+    <button class="btn" onclick="checkScore()">Проверить</button>
+    <div class="result" id="scoreResult"></div>
+  </div>
 
-        <div class="nav-section">
-            <h3>JS – Логика (Уровни)</h3>
-            <a href="1-intro-vars.html" class="nav-link"><span class="status-icon"></span> 1. Переменные JS</a>
-            <a href="2-conditions.html" class="nav-link active"><span class="status-icon"></span> 2. Условия (Если/Иначе)</a>
-            <a href="3-events.html" class="nav-link"><span class="status-icon"></span> 3. События и Кнопки</a>
-            <a href="4-dom.html" class="nav-link"><span class="status-icon"></span> 4. Изменение страницы</a>
-            <a href="5-practice-calc.html" class="nav-link"><span class="status-icon"></span> 5. Практика: Интерактив</a>
-        </div>
-    </aside>
+  <div class="block">
+    <h3>2. Таблица умножения</h3>
+    <input type="number" id="numInput" value="7" min="1" max="9">
+    <button class="btn" onclick="multiTable()">Показать</button>
+    <div class="result" id="tableResult"></div>
+  </div>
 
-    <main class="main-content">
-        <div class="page-header">
-            <h1>Часть 2: Если / Иначе (Условия) 🤔</h1>
-            <p>Учим компьютер принимать решения!</p>
-        </div>
+  <div class="block">
+    <h3>3. Список курсов</h3>
+    <button class="btn" onclick="showCourses()">Показать курсы</button>
+    <div class="result" id="coursesResult"></div>
+  </div>
 
-        <div class="explanation">
-            <h3>Как работает if/else?</h3>
-            <p>Часто в играх или программах нам нужно спросить: <strong>ЕСЛИ</strong> человек ввел правильный пароль — пусти его, <strong>ИНАЧЕ</strong> (если неправильный) — покажи ошибку.</p>
-            <p>Для этого в JavaScript существует конструкция <code class="code-inline">if</code> (если) и <code class="code-inline">else</code> (иначе).</p>
-        </div>
+  <script>
+    function checkScore() {
+      let score = parseInt(document.getElementById('scoreInput').value);
+      let msg = "";
 
-        <div class="code-block">
-            <code>
-let score = 90;<br>
-<br>
-if (score >= 50) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;// Этот блок выполнится, если счет больше или равен 50<br>
-&nbsp;&nbsp;&nbsp;&nbsp;alert("Ты выиграл! 🎉");<br>
-} else {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;// Этот блок выполнится, если счет меньше 50<br>
-&nbsp;&nbsp;&nbsp;&nbsp;alert("Попробуй еще раз! 💔");<br>
-}<br>
-            </code>
-        </div>
-        
-        <div class="explanation">
-            <h3>Математика в JS</h3>
-            <p>Мы используем значки для сравнения:</p>
-            <ul>
-                <li><code class="code-inline">></code> — больше</li>
-                <li><code class="code-inline"><</code> — меньше</li>
-                <li><code class="code-inline">===</code> — строго равно (да, в JS нужно ставить сразу три "равно"!)</li>
-                <li><code class="code-inline">!==</code> — не равно</li>
-            </ul>
-        </div>
+      if (score >= 90) {
+        msg = "🏆 Отлично! Ты молодец!";
+      } else if (score >= 75) {
+        msg = "👍 Хорошо! Продолжай в том же духе!";
+      } else if (score >= 60) {
+        msg = "😐 Удовлетворительно. Можешь лучше!";
+      } else {
+        msg = "💪 Нужно больше практики!";
+      }
 
-        <div class="task-section">
-            <h3>🔥 Мини-задание: Пароль</h3>
-            <p>У тебя есть переменная <code class="code-inline">let password = "123";</code>. Напиши условие <code class="code-inline">if</code>: если <code class="code-inline">password</code> равен <code class="code-inline">"123"</code>, сказать <code class="code-inline">alert("Доступ открыт");</code>.</p>
-            
-            <button class="answer-toggle" data-target="task2-js-answer">Показать ответ</button>
-            <div id="task2-js-answer" class="answer-content">
-                <code>
-let password = "123";<br>
-<br>
-if (password === "123") {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;alert("Доступ открыт");<br>
-}
-                </code>
-            </div>
-        </div>
+      let emoji = score >= 90 ? "🌟" : score >= 75 ? "✅" : "📚";
+      document.getElementById('scoreResult').innerHTML =
+        `Твой балл: ${score}/100<br>${emoji} ${msg}`;
+    }
 
-        <div style="display: flex; justify-content: space-between;">
-            <a href="1-intro-vars.html" class="btn-primary" style="background: #E2E8F0; color: #2B2D42;">⬅️ Назад</a>
-            <a href="3-events.html" class="btn-primary">Следующий: События и Кнопки ➡️</a>
-        </div>
-    </main>
+    function multiTable() {
+      let n = parseInt(document.getElementById('numInput').value);
+      let result = `<strong style="color:#F59E0B">Таблица умножения на ${n}:</strong><br>`;
+      for (let i = 1; i <= 10; i++) {
+        result += `${n} × ${i} = ${n * i}<br>`;
+      }
+      document.getElementById('tableResult').innerHTML = result;
+    }
 
-    <script src="../../assets/js/main.js"></script>
+    function showCourses() {
+      let courses = [
+        { name: "HTML", lessons: 7, icon: "🌐" },
+        { name: "CSS", lessons: 7, icon: "🎨" },
+        { name: "JavaScript", lessons: 5, icon: "⚡" }
+      ];
+      let result = "<strong style='color:#F59E0B'>Доступные курсы:</strong><br>";
+      courses.forEach((course, i) => {
+        result += `${i + 1}. ${course.icon} ${course.name} — ${course.lessons} уроков<br>`;
+      });
+      document.getElementById('coursesResult').innerHTML = result;
+    }
+
+    checkScore();
+    showCourses();
+  </script>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Введи разные значения и нажми кнопки, чтобы увидеть результат!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Напиши функцию, которая по возрасту определяет класс ученика (7лет=1кл, 17=11кл)</li>
+      <li><span class="task-num">2</span>Используй switch для перевода числа дня недели (1-7) в название</li>
+      <li><span class="task-num">3</span>Создай цикл for, который выводит числа от 1 до 10 и помечает чётные</li>
+      <li><span class="task-num">4</span>Перебери массив из 5 стран с for...of и выведи на страницу</li>
+      <li><span class="task-num">5</span>Напиши тернарный оператор: если score > 80 — "Отличник", иначе "Хорошист"</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест по условиям</h2><p class="quiz-subtitle">10 вопросов об управлении потоком в JS</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Что выполнится при: if (5 > 3) { A } else { B }?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">B</label>
+      <label class="quiz-option" data-q="q1" data-v="b">A</label>
+      <label class="quiz-option" data-q="q1" data-v="c">Ничего</label>
+      <label class="quiz-option" data-q="q1" data-v="d">A и B</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Что такое тернарный оператор?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">Цикл с тремя итерациями</label>
+      <label class="quiz-option" data-q="q2" data-v="b">Краткая форма if/else: условие ? да : нет</label>
+      <label class="quiz-option" data-q="q2" data-v="c">Три условия одновременно</label>
+      <label class="quiz-option" data-q="q2" data-v="d">Функция с тремя параметрами</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Для чего нужен break в switch?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Для ускорения кода</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Чтобы остановить выполнение следующих case</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Для ввода данных</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Для перехода к следующей итерации</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. for (let i = 0; i < 5; i++) повторится...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">4 раза</label>
+      <label class="quiz-option" data-q="q4" data-v="b">6 раз</label>
+      <label class="quiz-option" data-q="q4" data-v="c">5 раз</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Бесконечно</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Оператор && (И) вернёт true когда...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">Хотя бы одно условие true</label>
+      <label class="quiz-option" data-q="q5" data-v="b">Оба условия true</label>
+      <label class="quiz-option" data-q="q5" data-v="c">Оба условия false</label>
+      <label class="quiz-option" data-q="q5" data-v="d">Никогда</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что такое fruits.length?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Последний элемент массива</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Количество элементов массива</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Длина первого элемента</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Максимальное значение</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. for...of используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Создания массива</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Перебора элементов итерируемого объекта (массива)</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Объявления переменных</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Проверки типа</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Что такое default в switch?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Первый case</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Блок выполняется, если ни один case не совпал</label>
+      <label class="quiz-option" data-q="q8" data-v="c">Обязательный параметр</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Выход из switch</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. while (condition) повторяется...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Один раз</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Пока condition истинно (true)</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Только при нажатии кнопки</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Фиксированное число раз</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. || (ИЛИ) вернёт true когда...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Оба условия false</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Оба условия true</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Хотя бы одно условие true</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Никогда</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="3-functions.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(16, 19);
+  initQuiz({ q1:'b', q2:'b', q3:'b', q4:'c', q5:'b', q6:'b', q7:'b', q8:'b', q9:'b', q10:'c' });
+  initCompleteButton('js-2', '3-functions.html');
+</script>
 </body>
 </html>

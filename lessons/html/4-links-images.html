@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 4: Ссылки и изображения — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:20%"></div></div>
+  <span class="lesson-progress-label">4 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 4: Ссылки и изображения</h1>
+    <div class="lesson-meta"><span>⏱ 40 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 4 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔗 Гиперссылки — тег &lt;a&gt;</h2>
+    <p>Ссылки — это то, что делает интернет <strong>интернетом</strong>! Без ссылок мы не смогли бы переходить между страницами. Тег для ссылок — <code>&lt;a&gt;</code> (от англ. <em>anchor</em> — якорь).</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔗 Типы ссылок</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Внешняя ссылка --&gt;
+&lt;a href="https://google.com"&gt;Открыть Google&lt;/a&gt;
+
+&lt;!-- Открыть в новой вкладке --&gt;
+&lt;a href="https://youtube.com" target="_blank"&gt;YouTube (новая вкладка)&lt;/a&gt;
+
+&lt;!-- Ссылка на другую страницу сайта (относительная) --&gt;
+&lt;a href="about.html"&gt;О нас&lt;/a&gt;
+
+&lt;!-- Ссылка на email --&gt;
+&lt;a href="mailto:muzaffar@example.com"&gt;Написать нам&lt;/a&gt;
+
+&lt;!-- Якорная ссылка (на раздел той же страницы) --&gt;
+&lt;a href="#contacts"&gt;Перейти к контактам&lt;/a&gt;
+&lt;section id="contacts"&gt;Контакты...&lt;/section&gt;</code></pre>
+    </div>
+    <div class="info-box">💡 Атрибут <code>href</code> (HyperText Reference) — адрес, куда ведёт ссылка. Без него тег <code>&lt;a&gt;</code> не работает!</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🖼️ Изображения — тег &lt;img&gt;</h2>
+    <p>Тег <code>&lt;img&gt;</code> — одиночный (не имеет закрывающего тега). У него два обязательных атрибута:</p>
+    <ul>
+      <li><strong><code>src</code></strong> — путь к изображению (URL или имя файла)</li>
+      <li><strong><code>alt</code></strong> — текст, который показывается если изображение не загрузилось (также важен для SEO)</li>
+    </ul>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🖼️ Изображения</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Изображение из интернета --&gt;
+&lt;img src="https://picsum.photos/400/200" alt="Случайное фото"&gt;
+
+&lt;!-- Изображение с указанием размера --&gt;
+&lt;img src="photo.jpg" alt="Моё фото" width="300" height="200"&gt;
+
+&lt;!-- Изображение-ссылка (картинка кликабельна!) --&gt;
+&lt;a href="https://google.com"&gt;
+  &lt;img src="logo.png" alt="Перейти на Google"&gt;
+&lt;/a&gt;
+
+&lt;!-- Картинка из другой папки --&gt;
+&lt;img src="images/photo.jpg" alt="Описание"&gt;</code></pre>
+    </div>
+    <div class="warning-box">⚠️ <strong>Важно:</strong> Всегда заполняй атрибут <code>alt</code>! Это помогает людям с нарушением зрения и улучшает поисковое продвижение сайта.</div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📁 Относительные и абсолютные пути</h2>
+    <p>Пути к файлам бывают двух видов:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📁 Пути к файлам</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Абсолютный путь — полный URL --&gt;
+&lt;img src="https://example.com/images/photo.jpg" alt="Фото"&gt;
+
+&lt;!-- Относительный путь от текущей папки --&gt;
+&lt;img src="photo.jpg" alt="В той же папке"&gt;
+&lt;img src="images/photo.jpg" alt="В папке images"&gt;
+&lt;img src="../photo.jpg" alt="На уровень выше"&gt;
+&lt;img src="../../photo.jpg" alt="На два уровня выше"&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Ссылки и картинки</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; padding: 20px; }
+  a { color: #7C3AED; }
+  img { border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+  .card { border: 2px solid #ddd; border-radius: 12px; padding: 15px; display: inline-block; }
+</style>
+</head>
+<body>
+  <h1>Полезные сайты</h1>
+
+  <p>
+    <a href="https://google.com" target="_blank">🔍 Google</a> |
+    <a href="https://youtube.com" target="_blank">▶ YouTube</a> |
+    <a href="mailto:hello@webacademy.uz">✉️ Написать нам</a>
+  </p>
+
+  <h2>Картинка дня</h2>
+  <div class="card">
+    <img src="https://picsum.photos/350/200?random=1"
+         alt="Красивое фото" width="350"><br>
+    <small>Случайное фото из интернета</small>
+  </div>
+
+  <h2>Кликабельная картинка</h2>
+  <a href="https://webacademy.uz" target="_blank">
+    <img src="https://picsum.photos/200/100?random=2"
+         alt="WebAcademy" width="200">
+  </a>
+
+  <h2>Якорные ссылки</h2>
+  <a href="#section2">Перейти к разделу 2 ↓</a>
+
+  <div style="height: 200px; background: #f0f0f0; margin: 20px 0; display: flex; align-items: center; justify-content: center;">
+    ... большой блок ...
+  </div>
+
+  <h2 id="section2">Раздел 2</h2>
+  <p>Ты попал сюда по якорной ссылке!</p>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Попробуй изменить URL изображений и ссылок!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Создай страницу «Мои любимые сайты» с картинками и ссылками:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Добавь 3 ссылки на твои любимые сайты с атрибутом <code>target="_blank"</code></li>
+      <li><span class="task-num">2</span>Вставь 2 изображения из интернета (используй picsum.photos)</li>
+      <li><span class="task-num">3</span>Сделай одну картинку кликабельной ссылкой</li>
+      <li><span class="task-num">4</span>Добавь ссылку на email</li>
+      <li><span class="task-num">5</span>У каждого изображения заполни атрибут alt с описанием</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест</h2><p class="quiz-subtitle">Вопросы по ссылкам и изображениям</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Какой атрибут тега &lt;a&gt; указывает адрес ссылки?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">src</label>
+      <label class="quiz-option" data-q="q1" data-v="b">href</label>
+      <label class="quiz-option" data-q="q1" data-v="c">url</label>
+      <label class="quiz-option" data-q="q1" data-v="d">link</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Как открыть ссылку в новой вкладке?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">target="new"</label>
+      <label class="quiz-option" data-q="q2" data-v="b">open="new"</label>
+      <label class="quiz-option" data-q="q2" data-v="c">target="_blank"</label>
+      <label class="quiz-option" data-q="q2" data-v="d">window="new"</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Тег &lt;img&gt; является...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Парным (требует закрывающего тега)</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Одиночным (не требует закрывающего тега)</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Блочным элементом</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Устаревшим тегом</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Для чего нужен атрибут alt в теге &lt;img&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Задаёт размер изображения</label>
+      <label class="quiz-option" data-q="q4" data-v="b">Указывает путь к файлу</label>
+      <label class="quiz-option" data-q="q4" data-v="c">Описание изображения (для доступности и SEO)</label>
+      <label class="quiz-option" data-q="q4" data-v="d">Добавляет рамку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Как создать ссылку на email?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">href="email:mail@mail.com"</label>
+      <label class="quiz-option" data-q="q5" data-v="b">href="mail:mail@mail.com"</label>
+      <label class="quiz-option" data-q="q5" data-v="c">href="mailto:mail@mail.com"</label>
+      <label class="quiz-option" data-q="q5" data-v="d">href="send:mail@mail.com"</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Что означает "../" в пути к файлу?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Перейти в подпапку</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Перейти на уровень выше</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Абсолютный путь</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Ссылка на другой сайт</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Как сделать изображение кликабельной ссылкой?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Добавить href к &lt;img&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Обернуть &lt;img&gt; в тег &lt;a&gt;</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Использовать атрибут link</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Это невозможно</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Якорная ссылка href="#section" ведёт...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">На другой сайт</label>
+      <label class="quiz-option" data-q="q8" data-v="b">К элементу с id="section" на той же странице</label>
+      <label class="quiz-option" data-q="q8" data-v="c">На файл section.html</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Ни куда</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Какой атрибут &lt;img&gt; указывает путь к изображению?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">href</label>
+      <label class="quiz-option" data-q="q9" data-v="b">path</label>
+      <label class="quiz-option" data-q="q9" data-v="c">src</label>
+      <label class="quiz-option" data-q="q9" data-v="d">url</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Что такое абсолютный путь?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Путь относительно текущей папки</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Полный URL с указанием протокола (https://...)</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Путь с двумя точками (../)</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Путь к локальному файлу</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="5-lists-tables.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(4, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'c', q5:'c', q6:'b', q7:'b', q8:'b', q9:'c', q10:'b' });
+  initCompleteButton('html-4', '5-lists-tables.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Урок 5: Списки и таблицы — WebAcademy</title>
+  <link rel="stylesheet" href="../../assets/css/lesson.css">
+</head>
+<body class="lesson-page">
+<div class="lesson-topbar">
+  <a href="../../dashboard.html" class="lesson-back">← Кабинет</a>
+  <div class="lesson-progress-track"><div class="lesson-progress-fill" style="width:26%"></div></div>
+  <span class="lesson-progress-label">5 / 19</span>
+</div>
+<div class="lesson-content">
+  <div class="lesson-header-block">
+    <div class="lesson-track-badge html">🌐 HTML</div>
+    <h1>Урок 5: Списки и таблицы</h1>
+    <div class="lesson-meta"><span>⏱ 40 минут</span><span>📝 10 вопросов</span><span>🔢 Урок 5 из 7</span></div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📋 Маркированный список &lt;ul&gt;</h2>
+    <p><strong>ul</strong> (unordered list — неупорядоченный список) создаёт список с маркерами (точки, кружки, квадраты). Каждый пункт — тег <code>&lt;li&gt;</code> (list item).</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📋 Маркированные списки</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;HTML — структура&lt;/li&gt;
+  &lt;li&gt;CSS — оформление&lt;/li&gt;
+  &lt;li&gt;JavaScript — логика&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Вложенный список --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Фронтенд
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+      &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Бэкенд
+    &lt;ul&gt;
+      &lt;li&gt;Python&lt;/li&gt;
+      &lt;li&gt;Node.js&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>🔢 Нумерованный список &lt;ol&gt;</h2>
+    <p><strong>ol</strong> (ordered list — упорядоченный список) создаёт нумерованный список. Можно настроить начало нумерации и тип:</p>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">🔢 Нумерованные списки</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;!-- Обычный список 1, 2, 3... --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Первый шаг&lt;/li&gt;
+  &lt;li&gt;Второй шаг&lt;/li&gt;
+  &lt;li&gt;Третий шаг&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Буквы: a, b, c --&gt;
+&lt;ol type="a"&gt;
+  &lt;li&gt;Вариант А&lt;/li&gt;
+  &lt;li&gt;Вариант Б&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Начать с 5 --&gt;
+&lt;ol start="5"&gt;
+  &lt;li&gt;Пятый пункт&lt;/li&gt;
+  &lt;li&gt;Шестой пункт&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="theory-block">
+    <h2>📊 Таблицы</h2>
+    <p>Таблицы используются для отображения данных в строках и столбцах. Основные теги:</p>
+    <ul>
+      <li><code>&lt;table&gt;</code> — контейнер таблицы</li>
+      <li><code>&lt;thead&gt;</code> — шапка таблицы</li>
+      <li><code>&lt;tbody&gt;</code> — тело таблицы</li>
+      <li><code>&lt;tr&gt;</code> — строка (table row)</li>
+      <li><code>&lt;th&gt;</code> — заголовочная ячейка (жирная, по центру)</li>
+      <li><code>&lt;td&gt;</code> — обычная ячейка (table data)</li>
+    </ul>
+    <div class="code-block">
+      <div class="code-block-header"><span class="code-block-title">📊 Полная таблица</span><button class="copy-btn">📋 Копировать</button></div>
+      <pre><code>&lt;table border="1" cellpadding="8" style="border-collapse: collapse;"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Язык&lt;/th&gt;
+      &lt;th&gt;Назначение&lt;/th&gt;
+      &lt;th&gt;Сложность&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HTML&lt;/td&gt;
+      &lt;td&gt;Структура&lt;/td&gt;
+      &lt;td&gt;⭐ Лёгкий&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CSS&lt;/td&gt;
+      &lt;td&gt;Оформление&lt;/td&gt;
+      &lt;td&gt;⭐⭐ Средний&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JavaScript&lt;/td&gt;
+      &lt;td&gt;Логика&lt;/td&gt;
+      &lt;td&gt;⭐⭐⭐ Сложный&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+    </div>
+    <div class="info-box">💡 Атрибуты <code>colspan</code> и <code>rowspan</code> позволяют объединять ячейки по горизонтали и вертикали.</div>
+  </div>
+
+  <div class="editor-section">
+    <div class="editor-header"><h3>🚀 Редактор — Списки и таблицы</h3><button class="run-btn">▶ Запустить</button></div>
+    <div class="editor-split">
+      <textarea class="code-textarea"><!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body { font-family: Arial; padding: 20px; }
+  table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+  th { background: #7C3AED; color: white; padding: 12px; }
+  td { padding: 10px; border: 1px solid #ddd; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+  ul, ol { line-height: 2; }
+</style>
+</head>
+<body>
+  <h1>Мой план обучения</h1>
+
+  <h2>Курсы (по порядку):</h2>
+  <ol>
+    <li>HTML — основа всего</li>
+    <li>CSS — красота сайта</li>
+    <li>JavaScript — интерактивность</li>
+    <li>React — современный фронтенд</li>
+  </ol>
+
+  <h2>Что я умею:</h2>
+  <ul>
+    <li>Создавать HTML-страницы</li>
+    <li>Форматировать текст
+      <ul>
+        <li>Жирный, курсив</li>
+        <li>Заголовки</li>
+      </ul>
+    </li>
+    <li>Добавлять ссылки и картинки</li>
+  </ul>
+
+  <h2>Прогресс по урокам</h2>
+  <table>
+    <thead>
+      <tr><th>Урок</th><th>Тема</th><th>Статус</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Введение в HTML</td><td>✅ Пройден</td></tr>
+      <tr><td>2</td><td>Теги и элементы</td><td>✅ Пройден</td></tr>
+      <tr><td>3</td><td>Текст</td><td>✅ Пройден</td></tr>
+      <tr><td>4</td><td>Ссылки и картинки</td><td>✅ Пройден</td></tr>
+      <tr><td>5</td><td>Списки и таблицы</td><td>🔄 В процессе</td></tr>
+    </tbody>
+  </table>
+</body></html></textarea>
+      <iframe class="preview-frame"></iframe>
+    </div>
+    <div class="editor-hint">✏️ Добавь свои строки в таблицу или пункты в список!</div>
+  </div>
+
+  <div class="exercise-section">
+    <h2>📝 Задание</h2>
+    <p>Создай страницу «Расписание уроков» используя списки и таблицы:</p>
+    <ul class="exercise-tasks">
+      <li><span class="task-num">1</span>Сделай маркированный список любимых предметов</li>
+      <li><span class="task-num">2</span>Сделай нумерованный список «Мой распорядок дня»</li>
+      <li><span class="task-num">3</span>Создай таблицу расписания на неделю (5 столбцов — дни, 6 строк — уроки)</li>
+      <li><span class="task-num">4</span>Оформи заголовки таблицы через &lt;th&gt; и добавь стиль</li>
+      <li><span class="task-num">5</span>Сделай вложенный список: предмет → темы в предмете</li>
+    </ul>
+  </div>
+
+  <div class="quiz-section">
+    <h2>🧠 Тест</h2><p class="quiz-subtitle">Вопросы по спискам и таблицам</p>
+    <div class="quiz-question"><div class="quiz-q-text">1. Какой тег создаёт маркированный список?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q1" data-v="a">&lt;ol&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="b">&lt;ul&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="c">&lt;list&gt;</label>
+      <label class="quiz-option" data-q="q1" data-v="d">&lt;ml&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">2. Какой тег обозначает пункт списка?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q2" data-v="a">&lt;item&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="b">&lt;point&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="c">&lt;li&gt;</label>
+      <label class="quiz-option" data-q="q2" data-v="d">&lt;p&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">3. Что такое &lt;tr&gt; в таблице?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q3" data-v="a">Ячейка данных</label>
+      <label class="quiz-option" data-q="q3" data-v="b">Строка таблицы</label>
+      <label class="quiz-option" data-q="q3" data-v="c">Заголовок таблицы</label>
+      <label class="quiz-option" data-q="q3" data-v="d">Тело таблицы</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">4. Чем &lt;th&gt; отличается от &lt;td&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q4" data-v="a">Ничем</label>
+      <label class="quiz-option" data-q="q4" data-v="b">&lt;th&gt; — заголовок (жирный, центр), &lt;td&gt; — обычная ячейка</label>
+      <label class="quiz-option" data-q="q4" data-v="c">&lt;td&gt; — это заголовок</label>
+      <label class="quiz-option" data-q="q4" data-v="d">&lt;th&gt; создаёт строку</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">5. Как создать нумерованный список с буквами (a, b, c)?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q5" data-v="a">&lt;ul type="a"&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="b">&lt;ol type="a"&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="c">&lt;ol letters="true"&gt;</label>
+      <label class="quiz-option" data-q="q5" data-v="d">&lt;list type="abc"&gt;</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">6. Для чего нужен тег &lt;thead&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q6" data-v="a">Для создания заголовка страницы</label>
+      <label class="quiz-option" data-q="q6" data-v="b">Для обозначения шапки таблицы</label>
+      <label class="quiz-option" data-q="q6" data-v="c">Для добавления строки</label>
+      <label class="quiz-option" data-q="q6" data-v="d">Для объединения ячеек</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">7. Атрибут colspan используется для...</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q7" data-v="a">Задания ширины столбца в пикселях</label>
+      <label class="quiz-option" data-q="q7" data-v="b">Объединения нескольких столбцов в одну ячейку</label>
+      <label class="quiz-option" data-q="q7" data-v="c">Объединения строк</label>
+      <label class="quiz-option" data-q="q7" data-v="d">Добавления цвета</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">8. Что значит &lt;ol start="3"&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q8" data-v="a">Список из 3 элементов</label>
+      <label class="quiz-option" data-q="q8" data-v="b">Нумерация начинается с 3</label>
+      <label class="quiz-option" data-q="q8" data-v="c">3 уровня вложенности</label>
+      <label class="quiz-option" data-q="q8" data-v="d">Отступ 3 пикселя</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">9. Можно ли вкладывать список в список?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q9" data-v="a">Нет, это запрещено</label>
+      <label class="quiz-option" data-q="q9" data-v="b">Да, через тег &lt;li&gt; можно вложить &lt;ul&gt; или &lt;ol&gt;</label>
+      <label class="quiz-option" data-q="q9" data-v="c">Только маркированные</label>
+      <label class="quiz-option" data-q="q9" data-v="d">Только нумерованные</label>
+    </div></div>
+    <div class="quiz-question"><div class="quiz-q-text">10. Что содержит тег &lt;tbody&gt;?</div><div class="quiz-options">
+      <label class="quiz-option" data-q="q10" data-v="a">Заголовок таблицы</label>
+      <label class="quiz-option" data-q="q10" data-v="b">Основные данные (строки) таблицы</label>
+      <label class="quiz-option" data-q="q10" data-v="c">Нижний колонтитул</label>
+      <label class="quiz-option" data-q="q10" data-v="d">Стили таблицы</label>
+    </div></div>
+    <button class="quiz-submit-btn">✅ Проверить ответы</button>
+    <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-feedback"></div></div>
+  </div>
+
+  <div class="lesson-footer-nav">
+    <button class="lesson-complete-btn" id="completeBtn" disabled>✅ Завершить урок</button>
+    <a href="6-forms.html" class="lesson-next-btn">Следующий урок →</a>
+  </div>
+</div>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script>
+  initLessonProgress(5, 19);
+  initQuiz({ q1:'b', q2:'c', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'b', q9:'b', q10:'b' });
+  initCompleteButton('html-5', '6-forms.html');
+</script>
+</body>
+</html>
