@@ -16,30 +16,54 @@
     <span>WebAcademy</span>
   </a>
   <div class="nav-links">
-    <a href="#courses" class="hide-mobile">Курсы</a>
-    <a href="#features" class="hide-mobile">О платформе</a>
-    <a href="#author" class="hide-mobile">Автор</a>
-    <a href="login.html" id="nav-login">Войти</a>
-    <a href="dashboard.html" id="nav-dash" style="display:none" class="btn btn-sm btn-secondary">Личный кабинет</a>
-    <a href="register.html" class="btn btn-sm btn-primary">Начать бесплатно</a>
+    <a href="#courses" class="hide-mobile" data-i18n="nav.courses">Курсы</a>
+    <a href="#features" class="hide-mobile" data-i18n="nav.features">О платформе</a>
+    <a href="#author" class="hide-mobile" data-i18n="nav.author">Автор</a>
+    <a href="login.html" id="nav-login" class="hide-mobile" data-i18n="nav.login">Войти</a>
+    <a href="dashboard.html" id="nav-dash" style="display:none" class="btn btn-sm btn-secondary" data-i18n="nav.cabinet">Личный кабинет</a>
+    <a href="register.html" class="btn btn-sm btn-primary hide-mobile" data-i18n="nav.register">Начать бесплатно</a>
   </div>
+  <!-- Lang toggle — always visible -->
+  <button id="lang-toggle" onclick="i18n.setLang(i18n.lang==='ru'?'uz':'ru')" title="Switch language">
+    <span class="lang-flag">🇺🇿</span> UZ
+  </button>
+  <!-- Hamburger -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-mobile-drawer" id="nav-mobile-drawer">
+  <div class="nav-drawer-inner">
+    <a href="#courses" data-i18n="nav.courses">📚 Курсы</a>
+    <a href="#features" data-i18n="nav.features">✨ О платформе</a>
+    <a href="#author" data-i18n="nav.author">👨‍💻 Автор</a>
+    <div class="nav-drawer-divider"></div>
+    <button class="nav-drawer-lang" onclick="i18n.setLang(i18n.lang==='ru'?'uz':'ru')" id="drawer-lang">
+      <span class="lang-flag">🇺🇿</span>&nbsp;Переключить язык
+    </button>
+    <div class="nav-drawer-divider"></div>
+    <a href="login.html" data-i18n="nav.login">🔑 Войти</a>
+    <a href="register.html" class="btn-primary" data-i18n="nav.register">🚀 Начать бесплатно</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-particles"></div>
   <div class="hero-content">
-    <div class="hero-badge">🎓 Платформа от Музаффара Хаётова</div>
-    <h1>Стань веб-разработчиком<br><span class="gradient-text">уже сегодня!</span></h1>
-    <p>Интерактивные онлайн-уроки по HTML, CSS и JavaScript<br>для школьников 1–11 класса. С нуля до первого сайта!</p>
+    <div class="hero-badge" data-i18n="hero.badge">🎓 Платформа от Музаффара Хаётова</div>
+    <h1><span data-i18n="hero.title">Стань веб-разработчиком</span><br><span class="gradient-text" data-i18n="hero.title2">уже сегодня!</span></h1>
+    <p data-i18n="hero.subtitle">Интерактивные онлайн-уроки по HTML, CSS и JavaScript<br>для школьников 1–11 класса. С нуля до первого сайта!</p>
     <div class="hero-buttons">
-      <a href="register.html" class="btn btn-primary btn-lg">🚀 Начать бесплатно</a>
-      <a href="#courses" class="btn btn-secondary btn-lg">📚 Посмотреть курсы</a>
+      <a href="register.html" class="btn btn-primary btn-lg" data-i18n="hero.start">🚀 Начать бесплатно</a>
+      <a href="#courses" class="btn btn-secondary btn-lg" data-i18n="hero.courses">📚 Посмотреть курсы</a>
     </div>
   </div>
   <div class="hero-scroll-hint">
-    <span>Листай вниз</span>
+    <span data-i18n="hero.scroll">Листай вниз</span>
     <span>↓</span>
   </div>
 </section>
@@ -49,19 +73,19 @@
   <div class="stats-grid">
     <div class="stat-item">
       <span class="stat-number gradient-text" data-count="1200" data-suffix="+">0</span>
-      <span class="stat-label">👧 Студентов</span>
+      <span class="stat-label" data-i18n="stats.students">👧 Студентов</span>
     </div>
     <div class="stat-item">
       <span class="stat-number gradient-text" data-count="19" data-suffix="">0</span>
-      <span class="stat-label">📚 Уроков</span>
+      <span class="stat-label" data-i18n="stats.lessons">📚 Уроков</span>
     </div>
     <div class="stat-item">
       <span class="stat-number gradient-text" data-count="3" data-suffix="">0</span>
-      <span class="stat-label">🎯 Курса</span>
+      <span class="stat-label" data-i18n="stats.courses">🎯 Курса</span>
     </div>
     <div class="stat-item">
       <span class="stat-number gradient-text" data-count="500" data-suffix="+">0</span>
-      <span class="stat-label">🏆 Сертификатов</span>
+      <span class="stat-label" data-i18n="stats.certs">🏆 Сертификатов</span>
     </div>
   </div>
 </section>
@@ -70,9 +94,9 @@
 <section class="section" id="courses">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">📖 Программа обучения</div>
-      <h2 class="section-title">Три курса для полного старта</h2>
-      <p class="section-subtitle">Каждый урок — минимум 30 минут практики с живым редактором кода и тестами</p>
+      <div class="section-label" data-i18n="courses.label">📖 Программа обучения</div>
+      <h2 class="section-title" data-i18n="courses.title">Три курса для полного старта</h2>
+      <p class="section-subtitle" data-i18n="courses.subtitle">Каждый урок — минимум 30 минут практики с живым редактором кода и тестами</p>
     </div>
     <div class="courses-grid">
       <!-- HTML -->
@@ -155,9 +179,9 @@
 <section class="section" id="features" style="background:var(--bg2)">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">✨ Преимущества</div>
-      <h2 class="section-title">Почему дети выбирают нас?</h2>
-      <p class="section-subtitle">Мы создали платформу специально для школьников — понятно, интересно и эффективно</p>
+      <div class="section-label" data-i18n="features.label">✨ Преимущества</div>
+      <h2 class="section-title" data-i18n="features.title">Почему дети выбирают нас?</h2>
+      <p class="section-subtitle" data-i18n="features.subtitle">Мы создали платформу специально для школьников — понятно, интересно и эффективно</p>
     </div>
     <div class="features-grid">
       <div class="feature-card">
@@ -196,10 +220,10 @@
 
 <!-- CTA -->
 <section class="cta-section">
-  <div class="section-label" style="margin-bottom:1rem">🎯 Начни прямо сейчас</div>
-  <h2>Готов стать разработчиком?</h2>
-  <p>Регистрация бесплатная. Никаких скачиваний — всё в браузере!</p>
-  <a href="register.html" class="btn btn-gold btn-lg">🚀 Создать аккаунт бесплатно</a>
+  <div class="section-label" style="margin-bottom:1rem" data-i18n="cta.label">🎯 Начни прямо сейчас</div>
+  <h2 data-i18n="cta.title">Готов стать разработчиком?</h2>
+  <p data-i18n="cta.text">Регистрация бесплатная. Никаких скачиваний — всё в браузере!</p>
+  <a href="register.html" class="btn btn-gold btn-lg" data-i18n="cta.btn">🚀 Создать аккаунт бесплатно</a>
 </section>
 
 <!-- AUTHOR -->
@@ -234,6 +258,8 @@
   <p class="footer-copy">© 2025 WebAcademy by Музаффар Хаётов. Все права защищены.</p>
 </footer>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/ai-mentor.js"></script>
 </body>
 </html>

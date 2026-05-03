@@ -222,3 +222,66 @@ pre code {
   box-shadow: 0 4px 20px rgba(124,58,237,0.35);
 }
 .lesson-next-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,58,237,0.5); }
+
+/* ===== LESSON RESPONSIVE: TABLET ===== */
+@media (max-width: 900px) {
+  .lesson-content { padding: 5.5rem 1.2rem 3rem; }
+  .lesson-header-block { padding: 1.8rem 1.2rem; }
+  .lesson-header-block h1 { font-size: 1.5rem; }
+  .lesson-meta { gap: 0.8rem; font-size: 0.82rem; }
+}
+
+/* ===== LESSON RESPONSIVE: MOBILE ===== */
+@media (max-width: 640px) {
+  /* Topbar */
+  .lesson-topbar { padding: 0.65rem 0.9rem; gap: 0.6rem; }
+  .lesson-back { font-size: 0.78rem; }
+  .lesson-progress-label { font-size: 0.72rem; }
+
+  /* Content */
+  .lesson-content { padding: 5rem 0.9rem 3rem; }
+  .lesson-header-block { padding: 1.4rem 1rem; margin-bottom: 1.5rem; border-radius: 14px; }
+  .lesson-header-block h1 { font-size: 1.25rem; }
+  .lesson-meta { gap: 0.6rem; flex-wrap: wrap; }
+
+  /* Theory */
+  .theory-block h2 { font-size: 1.1rem; }
+  .theory-block p, .theory-block li { font-size: 0.92rem; }
+
+  /* Code */
+  .code-block { border-radius: 10px; }
+  .code-block-header { padding: 0.5rem 0.8rem; }
+  .code-block-title { font-size: 0.75rem; }
+  pre { padding: 0.9rem; }
+  pre code { font-size: 0.8rem; }
+
+  /* Editor */
+  .editor-section { border-radius: 12px; }
+  .editor-split { grid-template-columns: 1fr; }
+  .code-textarea { min-height: 180px; font-size: 0.8rem; border-right: none; border-bottom: 1px solid var(--border); }
+  .preview-frame { min-height: 220px; }
+  .editor-header { padding: 0.65rem 0.9rem; }
+  .editor-header h3 { font-size: 0.85rem; }
+  .run-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+
+  /* Exercise */
+  .exercise-section { padding: 1.2rem; border-radius: 12px; }
+  .exercise-section h2 { font-size: 1rem; }
+  .exercise-tasks li { font-size: 0.88rem; }
+  .task-num { width: 22px; height: 22px; font-size: 0.7rem; }
+
+  /* Quiz */
+  .quiz-section { padding: 1.2rem; border-radius: 12px; }
+  .quiz-section h2 { font-size: 1rem; }
+  .quiz-q-text { font-size: 0.88rem; }
+  .quiz-option { padding: 0.6rem 0.85rem; font-size: 0.84rem; }
+  .quiz-submit-btn { width: 100%; }
+  .quiz-score { font-size: 2rem; }
+
+  /* Footer nav */
+  .lesson-footer-nav { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+  .lesson-complete-btn, .lesson-next-btn {
+    width: 100%; justify-content: center;
+    padding: 0.8rem 1.2rem; font-size: 0.92rem;
+  }
+}

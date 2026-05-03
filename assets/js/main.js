@@ -35,7 +35,9 @@ const WA = {
 
   logout() {
     localStorage.removeItem(this.CURRENT_KEY);
-    window.location.href = '/login.html';
+    // Use relative path so it works on GitHub Pages subdirectory
+    const base = window.location.pathname.replace(/\/[^/]*$/, '/');
+    window.location.href = base + 'login.html';
   },
 
   getCurrentUser() {
@@ -58,7 +60,11 @@ const WA = {
 
   requireAuth() {
     const user = this.getCurrentUser();
-    if (!user) { window.location.href = '/login.html'; return null; }
+    if (!user) {
+      const base = window.location.pathname.replace(/\/[^/]*$/, '/');
+      window.location.href = base + 'login.html';
+      return null;
+    }
     return user;
   },
 
@@ -139,6 +145,41 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
     });
   }
+
+  // ─── Hamburger Menu ───
+  const hamburger = document.getElementById('nav-hamburger');
+  const drawer = document.getElementById('nav-mobile-drawer');
+  const drawerInner = drawer?.querySelector('.nav-drawer-inner');
+
+  function openDrawer() {
+    hamburger?.classList.add('open');
+    drawer?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    hamburger?.classList.remove('open');
+    drawer?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger?.addEventListener('click', () => {
+    drawer?.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+
+  // Close on backdrop click (not on drawer itself)
+  drawer?.addEventListener('click', (e) => {
+    if (!drawerInner?.contains(e.target)) closeDrawer();
+  });
+
+  // Close when a link in drawer is clicked
+  drawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
 
   // Animate numbers
   document.querySelectorAll('.stat-number[data-count]').forEach(el => {
