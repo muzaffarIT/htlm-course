@@ -296,9 +296,6 @@ const i18n = {
   init() {
     this.applyAll();
     this.updateLangButton();
-    // Watch for dynamically added elements
-    const observer = new MutationObserver(() => this.applyAll());
-    observer.observe(document.body, { childList: true, subtree: true });
   }
 };
 
