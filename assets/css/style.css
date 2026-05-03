@@ -694,6 +694,40 @@ body {
 }
 .ai-send-btn:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(124,58,237,0.4); }
 
+/* Header actions */
+.ai-header-actions { display: flex; align-items: center; gap: 0.4rem; }
+.ai-key-btn {
+  background: rgba(255,255,255,0.06); border: none; color: #94A3B8;
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+  font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.ai-key-btn:hover { background: rgba(245,158,11,0.15); color: #F59E0B; }
+
+/* API Key Panel */
+.ai-api-panel {
+  padding: 1rem; background: rgba(245,158,11,0.06);
+  border-bottom: 1px solid rgba(245,158,11,0.15);
+  font-size: 0.82rem;
+}
+.ai-api-panel p { color: #CBD5E1; margin-bottom: 0.6rem; }
+.ai-api-panel input {
+  width: 100%; padding: 0.5rem 0.8rem; border-radius: 8px;
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+  color: #E2E8F0; font-size: 0.82rem; font-family: var(--mono);
+  outline: none; margin-bottom: 0.5rem;
+}
+.ai-api-panel input:focus { border-color: rgba(245,158,11,0.4); }
+.ai-api-panel button {
+  padding: 0.4rem 0.9rem; border-radius: 8px; font-size: 0.8rem;
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #fff; border: none; cursor: pointer; font-family: var(--font);
+  font-weight: 700; transition: all 0.2s; margin-right: 0.5rem;
+}
+.ai-api-panel button:hover { opacity: 0.9; }
+.ai-api-panel a { color: #A78BFA; font-size: 0.78rem; text-decoration: none; }
+.ai-api-panel a:hover { color: #C4B5FD; text-decoration: underline; }
+
 /* Mobile */
 @media (max-width: 480px) {
   .ai-chat-window { width: calc(100vw - 2rem); right: -0.5rem; }

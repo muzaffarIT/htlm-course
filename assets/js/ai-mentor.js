@@ -1,366 +1,156 @@
 /* ==============================
    WebAcademy — AI Mentor Widget
-   Powered by smart responses
-   Музаффар Хаётов
+   Powered by Claude (Anthropic)
    ============================== */
 
+const SYSTEM_PROMPT = `You are WebAcademy's AI Mentor — an expert programming tutor built on Claude by Anthropic.
+
+## ROLE
+You are a patient, encouraging, and knowledgeable programming tutor on a full-stack coding education platform. Your mission: guide students from absolute beginners to job-ready developers across all major programming languages.
+
+## CORE TEACHING PRINCIPLES
+1. Hint before solving — Socratic method; never give the full solution immediately
+   → Ask "What do you think the first step could be?" before helping
+2. Why over how — explain the reasoning, not just the syntax
+3. Real-world analogies — functions = cooking recipes, arrays = shopping lists, classes = blueprints for houses, APIs = restaurant menus
+4. Micro-validation — end every concept with a comprehension check or mini-task
+5. Break it down — when stuck: "Let's break this into 3 smaller steps..."
+6. Celebrate milestones — every working "Hello World" is a genuine achievement
+7. Runnable examples — every explanation includes a short, working, copyable code block
+
+## PLATFORM CURRICULUM (72 weeks total)
+
+### Beginner Track — 16 weeks
+Module 1 (1 wk): PC & Internet basics — HTTP, CLI, JSON, DevTools
+Module 2 (4 wk): HTML & CSS — tags, Flexbox, Grid, responsive, animations
+Module 3 (4 wk): JavaScript basics — variables, DOM, events, arrays, localStorage
+Module 4 (4 wk): Python basics — syntax, data structures, files, modules, error handling
+Module 5 (1 wk): Git & GitHub — commits, branches, pull requests, Git Flow
+Module 6 (2 wk): Project — personal website deployed on GitHub Pages
+
+### Intermediate Track — 24 weeks
+Module 7 (3 wk): JavaScript ES6+ & async — Promises, async/await, fetch API
+Module 8 (6 wk): React.js — components, hooks, Router, context, Zustand
+Module 9 (2 wk): TypeScript
+Module 10 (3 wk): Python OOP & libraries — NumPy, Pandas
+Module 11 (4 wk): Backend Node.js + Express — REST, JWT
+Module 12 (3 wk): Databases SQL + PostgreSQL — Prisma ORM
+Module 13 (2 wk): REST API & integrations — Stripe, WebSocket, Redis
+Module 14 (3 wk): Full-stack project — React + Node.js + PostgreSQL
+
+### Advanced Track — 32 weeks
+Module 15 (8 wk): Algorithms & Data Structures — Big O, trees, graphs, DP
+Module 16 (4 wk): System Design — scaling, caching, microservices
+Module 17 (4 wk): DevOps Docker + CI/CD
+Module 18 (3 wk): Cloud AWS/GCP
+Module 19 (6 wk): AI/ML with Python — PyTorch, OpenAI API, LangChain
+Module 20 (4 wk): Final product & demo day
+Module 21 (3 wk): Interview prep — LeetCode, system design, mock interviews
+
+## RESPONSE FORMATS
+
+### Concept explanation:
+📖 Concept — clear 2-3 sentence explanation
+💡 Analogy — relatable everyday comparison
+💻 Code — short (5-15 lines), commented, runnable example
+✅ Try it! — one specific mini-challenge
+➡️ Next — what concept follows (optional)
+
+### Code review:
+✅ What you did well
+🐛 Issues — explain WHY it's a problem
+💡 Suggestions
+📊 Score: Correctness X/5 | Code style X/5 | Efficiency X/5
+
+### Coding challenge:
+📝 Problem — with 2-3 input/output examples
+🔍 Hint 1 — gentle nudge
+🔍 Hint 2 — stronger hint if requested
+💻 Solution — fully commented
+⏱️ Complexity — Time and Space O(?)
+
+## DIFFICULTY CALIBRATION
+Beginner: No jargon. Max encouragement. Code ≤ 10 lines. Explain every line.
+Intermediate: Design patterns, best practices, trade-offs.
+Advanced: Performance, architecture, production considerations.
+
+## LANGUAGE & LOCALIZATION
+- Always respond in the SAME LANGUAGE the student writes in
+- Full support: Russian (ru), English (en), Uzbek (uz)
+- Technical terms: use English term, add translation in parentheses on first use
+- Code comments: always write in the student's preferred language
+
+## IMPORTANT RULES
+✅ Never make a student feel stupid — "Great question! That's a common point of confusion"
+✅ Off-topic: gently redirect back to programming
+✅ Frustrated student: acknowledge feelings FIRST, then solve
+✅ Homework/exam help: guide through thought process, never just give the answer
+✅ Burnout signals: recommend a break first
+✅ Privacy: don't request unnecessary personal information`;
+
+/* ─── Local Fallback Patterns ─── */
 const AI_KNOWLEDGE = {
-  // ─── Pattern → response (RU) ───
   patterns_ru: [
-    {
-      match: ['html', 'тег', 'теги', 'элемент'],
-      response: `📖 **HTML** — это язык разметки, который создаёт структуру веб-страниц.
-
-💡 **Аналогия:** HTML — это как скелет тела. CSS — одежда, а JavaScript — мышцы, которые двигают тело.
-
-💻 **Пример:**
-\`\`\`html
-<h1>Заголовок страницы</h1>
-<p>Это абзац текста.</p>
-<a href="https://example.com">Ссылка</a>
-\`\`\`
-
-✅ **Попробуй сам!** Создай HTML-страницу с заголовком, двумя абзацами и ссылкой.
-
-➡️ После HTML изучи CSS — чтобы сделать страницу красивой!`
-    },
-    {
-      match: ['css', 'стиль', 'стили', 'дизайн', 'цвет', 'шрифт'],
-      response: `📖 **CSS** — это язык стилей, который делает HTML красивым.
-
-💡 **Аналогия:** Если HTML — это голые стены дома, то CSS — это обои, мебель и освещение!
-
-💻 **Пример:**
-\`\`\`css
-h1 {
-  color: purple;       /* цвет текста */
-  font-size: 32px;     /* размер шрифта */
-  text-align: center;  /* выравнивание */
-}
-\`\`\`
-
-✅ **Попробуй!** Измени цвет заголовка на \`#7C3AED\` и добавь \`font-family: Arial\`.
-
-➡️ Следующий шаг — Flexbox для расположения элементов!`
-    },
-    {
-      match: ['javascript', 'js', 'переменная', 'переменные', 'let', 'const', 'var'],
-      response: `📖 **JavaScript** — язык программирования, который делает сайты интерактивными!
-
-💡 **Аналогия:** Переменная — это ящик с этикеткой. \`let name = "Алишер"\` — ящик с именем \`name\`, внутри — "Алишер".
-
-💻 **Пример:**
-\`\`\`javascript
-let name = "Алишер";   // можно изменить
-const age = 14;         // нельзя изменить
-
-console.log(\`Привет, \${name}! Тебе \${age} лет.\`);
-// → Привет, Алишер! Тебе 14 лет.
-\`\`\`
-
-✅ **Мини-задача:** Создай переменные: твоё имя, возраст, любимый предмет. Выведи через шаблонную строку.
-
-⚠️ Используй \`let\` и \`const\` — **не** \`var\`!`
-    },
-    {
-      match: ['функция', 'функции', 'function', 'def'],
-      response: `📖 **Функция** — это именованный блок кода, который можно вызвать несколько раз.
-
-💡 **Аналогия:** Функция — это рецепт. Написал один раз — готовь сколько угодно раз с разными ингредиентами!
-
-💻 **Пример:**
-\`\`\`javascript
-// Обычная функция
-function greet(name) {
-  return \`Привет, \${name}! 👋\`;
-}
-
-// Стрелочная функция (современный стиль)
-const greet = (name) => \`Привет, \${name}! 👋\`;
-
-console.log(greet("Малика")); // Привет, Малика! 👋
-\`\`\`
-
-✅ **Попробуй!** Напиши функцию \`getGrade(score)\`, которая по оценке возвращает "Отлично", "Хорошо" или "Учись лучше".`
-    },
-    {
-      match: ['цикл', 'циклы', 'for', 'while', 'forEach'],
-      response: `📖 **Цикл** — это повторение действия много раз, пока выполняется условие.
-
-💡 **Аналогия:** Цикл — как будильник, который звонит каждый день в 7:00. Он повторяется снова и снова.
-
-💻 **Пример:**
-\`\`\`javascript
-// for — когда знаем сколько раз
-for (let i = 1; i <= 5; i++) {
-  console.log(\`Урок \${i}\`);
-}
-// Выведет: Урок 1, Урок 2, Урок 3, Урок 4, Урок 5
-
-// Перебор массива
-const lessons = ["HTML", "CSS", "JS"];
-lessons.forEach(lesson => {
-  console.log(\`📚 \${lesson}\`);
-});
-\`\`\`
-
-✅ **Задача:** Напиши цикл, выводящий таблицу умножения на 7 (от 7×1 до 7×10).`
-    },
-    {
-      match: ['условие', 'условия', 'if', 'else', 'switch'],
-      response: `📖 **Условный оператор** позволяет программе принимать решения.
-
-💡 **Аналогия:** \`if/else\` — как светофор. Зелёный — идёшь, красный — стоишь!
-
-💻 **Пример:**
-\`\`\`javascript
-let score = 85;
-
-if (score >= 90) {
-  console.log("🏆 Отлично!");
-} else if (score >= 75) {
-  console.log("👍 Хорошо!");
-} else {
-  console.log("💪 Старайся больше!");
-}
-
-// Краткий способ (тернарный оператор)
-let result = score >= 75 ? "Сдал ✅" : "Не сдал ❌";
-\`\`\`
-
-✅ **Мини-задача:** Какой результат выдаст код при \`score = 92\`? Попробуй сам!`
-    },
-    {
-      match: ['массив', 'массивы', 'array', 'список'],
-      response: `📖 **Массив** — это упорядоченный список значений в одной переменной.
-
-💡 **Аналогия:** Массив — как список покупок в магазине: [молоко, хлеб, яблоки].
-
-💻 **Пример:**
-\`\`\`javascript
-let fruits = ["яблоко", "банан", "апельсин"];
-
-console.log(fruits[0]);      // яблоко (индексы с 0!)
-console.log(fruits.length);  // 3
-
-fruits.push("виноград");     // добавить в конец
-fruits.pop();                // удалить последний
-
-// Перебор
-fruits.forEach(fruit => console.log("🍎", fruit));
-
-// map — создать новый массив
-let big = fruits.map(f => f.toUpperCase()); // ["ЯБЛОКО", ...]
-\`\`\`
-
-✅ **Попробуй!** Создай массив из 5 любимых игр и отфильтруй те, что содержат букву 'а'.`
-    },
-    {
-      match: ['dom', 'document', 'html элемент', 'найти элемент', 'изменить'],
-      response: `📖 **DOM** (Document Object Model) — это представление HTML-страницы в виде объектов, которыми управляет JavaScript.
-
-💡 **Аналогия:** DOM — как пульт от телевизора. Нажимаешь кнопки (JS) — что-то меняется на экране (HTML).
-
-💻 **Пример:**
-\`\`\`javascript
-// Найти элемент
-const title = document.getElementById("title");
-const btn = document.querySelector(".btn");
-
-// Изменить
-title.textContent = "Новый заголовок!";
-title.style.color = "purple";
-
-// Событие при нажатии
-btn.addEventListener("click", () => {
-  alert("Кнопка нажата! 🎉");
-});
-\`\`\`
-
-✅ **Задача:** Сделай кнопку, которая при клике меняет цвет фона страницы.`
-    },
-    {
-      match: ['flexbox', 'flex', 'расположение', 'выравнивание', 'по центру'],
-      response: `📖 **Flexbox** — CSS-инструмент для гибкого расположения элементов.
-
-💡 **Аналогия:** Flexbox — как организатор на полке. Ты говоришь ему правила, а он сам расставляет предметы!
-
-💻 **Пример:**
-\`\`\`css
-.container {
-  display: flex;
-  justify-content: center;  /* по горизонтали */
-  align-items: center;      /* по вертикали */
-  gap: 20px;               /* расстояние между */
-}
-\`\`\`
-
-✅ **Попробуй!** Создай 3 карточки в ряд с gap: 16px и justify-content: space-between.
-
-> 🔑 Самый частый паттерн: \`display:flex; justify-content:center; align-items:center\` — это центрирует всё идеально!`
-    },
-    {
-      match: ['ошибка', 'не работает', 'помоги', 'не понимаю', 'зачем', 'почему'],
-      response: `😊 Не переживай — ошибки это нормально! Даже опытные разработчики их делают каждый день.
-
-Давай разберёмся вместе! Расскажи мне:
-
-**1️⃣** Что именно ты пытаешься сделать?
-**2️⃣** Какой код ты написал?
-**3️⃣** Какая ошибка появляется?
-
-💡 **Совет:** Когда что-то не работает, сначала открой **DevTools** (F12) и посмотри в раздел **Console** — там будет описание ошибки красным цветом!
-
-Пиши подробнее — я помогу! 🚀`
-    },
-    {
-      match: ['сертификат', 'certificate', 'диплом'],
-      response: `🏆 **Сертификат WebAcademy** — это твоя награда за труд!
-
-Чтобы получить сертификат от Музаффара Хаётова, нужно:
-- ✅ Пройти **15+ уроков** из 19
-- ✅ Завершить хотя бы один полный курс (HTML, CSS или JS)
-- ✅ Набрать **60%+** в финальном тесте
-
-После этого перейди на страницу **Сертификат** — там можно скачать и распечатать именной документ! 📄
-
-💪 Ты уже начал — самый трудный шаг позади!`
-    },
-    {
-      match: ['привет', 'здравствуй', 'хай', 'hi', 'hello', 'salom', 'assalomu'],
-      response: `Привет! 👋 Рад тебя видеть в WebAcademy!
-
-Я твой AI Ментор — помогаю разобраться с:
-- 🌐 **HTML** — структура страниц
-- 🎨 **CSS** — красивый дизайн
-- ⚡ **JavaScript** — интерактивность
-
-О чём хочешь спросить? Задавай любой вопрос о программировании! 🚀`
-    },
-    {
-      match: ['локалстораж', 'localstorage', 'сохранить', 'данные'],
-      response: `📖 **localStorage** — это хранилище данных прямо в браузере. Данные сохраняются даже после перезагрузки!
-
-💡 **Аналогия:** localStorage — как блокнот, который лежит у пользователя. Ты пишешь в него — и он помнит написанное.
-
-💻 **Пример:**
-\`\`\`javascript
-// Сохранить
-localStorage.setItem("name", "Алишер");
-
-// Прочитать
-const name = localStorage.getItem("name"); // "Алишер"
-
-// Сохранить объект (через JSON)
-const user = { name: "Малика", age: 14 };
-localStorage.setItem("user", JSON.stringify(user));
-
-// Прочитать объект
-const user2 = JSON.parse(localStorage.getItem("user"));
-console.log(user2.name); // "Малика"
-\`\`\`
-
-✅ **Попробуй!** Сохрани своё имя в localStorage и выводи его при загрузке страницы.`
-    },
+    { match: ['привет', 'здравствуй', 'хай', 'hi', 'hello'],
+      response: `Привет! 👋 Я AI Ментор WebAcademy.\n\nМогу помочь с:\n- 🌐 **HTML** — структура страниц\n- 🎨 **CSS** — дизайн и стили\n- ⚡ **JavaScript** — интерактивность\n\nО чём хочешь спросить? 🚀` },
+    { match: ['html', 'тег', 'элемент'],
+      response: `📖 **HTML** — язык разметки, основа каждого сайта.\n\n💡 **Аналогия:** HTML — скелет, CSS — одежда, JS — мышцы.\n\n\`\`\`html\n<h1>Заголовок</h1>\n<p>Абзац текста.</p>\n<a href="#">Ссылка</a>\n\`\`\`\n\n✅ **Попробуй!** Создай страницу с заголовком, двумя абзацами и ссылкой.` },
+    { match: ['css', 'стиль', 'цвет', 'flexbox', 'flex'],
+      response: `📖 **CSS** — язык стилей, делает HTML красивым.\n\n💡 Если HTML — стены дома, CSS — обои и мебель!\n\n\`\`\`css\nh1 { color: #7C3AED; font-size: 32px; text-align: center; }\n.box { display: flex; justify-content: center; align-items: center; }\n\`\`\`\n\n✅ Измени цвет на \`#7C3AED\` и добавь \`font-family: Arial\`.` },
+    { match: ['javascript', 'js', 'переменная', 'функция', 'массив', 'цикл'],
+      response: `📖 **JavaScript** — язык программирования для интерактивности.\n\n💡 Переменная — ящик с этикеткой!\n\n\`\`\`javascript\nlet name = "Алишер";\nconst greet = (n) => \`Привет, \${n}! 👋\`;\nconsole.log(greet(name)); // Привет, Алишер! 👋\n\`\`\`\n\n✅ Напиши функцию, которая по оценке возвращает "Отлично", "Хорошо" или "Старайся!"` },
+    { match: ['ошибка', 'не работает', 'помоги', 'не понимаю'],
+      response: `😊 Не переживай — ошибки это нормально!\n\nРасскажи мне:\n1️⃣ Что хочешь сделать?\n2️⃣ Какой код написал?\n3️⃣ Какая ошибка?\n\n💡 Открой **F12 → Console** — там ошибка будет красным!` },
   ],
-
-  // ─── Uzbek patterns ───
   patterns_uz: [
-    {
-      match: ['html', 'teg', 'teglar', 'element'],
-      response: `📖 **HTML** — veb-sahifalar tuzilmasini yaratadigan belgilash tili.
-
-💡 **Qiyos:** HTML — tana skeleti kabi. CSS — kiyim, JavaScript esa harakat qiladigan muskullar!
-
-💻 **Misol:**
-\`\`\`html
-<h1>Sahifa sarlavhasi</h1>
-<p>Bu matn paragraf.</p>
-<a href="#">Havola</a>
-\`\`\`
-
-✅ **O'zingiz sinab ko'ring!** Sarlavha, ikki paragraf va havoladan iborat HTML sahifa yarating.`
-    },
-    {
-      match: ['css', 'stil', 'dizayn', 'rang', 'shrift'],
-      response: `📖 **CSS** — HTML'ni chiroyli ko'rsatadigan stil tili.
-
-💡 **Qiyos:** Agar HTML — bo'sh devorlar bo'lsa, CSS — devor qog'ozi, mebel va yoritishdir!
-
-💻 **Misol:**
-\`\`\`css
-h1 {
-  color: purple;       /* matn rangi */
-  font-size: 32px;     /* shrift o'lchami */
-  text-align: center;  /* tekislash */
-}
-\`\`\`
-
-✅ **Sinab ko'ring!** Sarlavha rangini \`#7C3AED\` ga o'zgartiring.`
-    },
-    {
-      match: ['javascript', 'js', 'o\'zgaruvchi', 'let', 'const'],
-      response: `📖 **JavaScript** — saytlarni interaktiv qiladigan dasturlash tili!
-
-💡 **Qiyos:** O'zgaruvchi — yorlig'i bo'lgan quti. \`let name = "Alisher"\` — ichida "Alisher" bo'lgan "name" qutisi.
-
-💻 **Misol:**
-\`\`\`javascript
-let name = "Alisher";  // o'zgartiriladi
-const age = 14;         // o'zgartirilmaydi
-
-console.log(\`Salom, \${name}! Yoshingiz \${age}.\`);
-\`\`\`
-
-✅ **Mini-vazifa:** O'z ismi, yoshi va sevimli fani uchun o'zgaruvchilar yarating.`
-    },
-    {
-      match: ['salom', 'assalomu', 'xayr', 'yordam'],
-      response: `Salom! 👋 WebAcademy'ga xush kelibsiz!
-
-Men sizning AI Mentoringizman — quyidagilarda yordam beraman:
-- 🌐 **HTML** — sahifalar tuzilmasi
-- 🎨 **CSS** — chiroyli dizayn
-- ⚡ **JavaScript** — interaktivlik
-
-Dasturlash haqida istalgan savol bering! 🚀`
-    },
-    {
-      match: ['xato', 'ishlamayapti', 'tushunmayapman', 'yordam'],
-      response: `😊 Xavotir olmang — xatolar odatiy holat! Tajribali dasturchilar ham har kuni xato qilishadi.
-
-Birgalikda hal qilamiz! Menga ayting:
-
-**1️⃣** Nima qilmoqchi edingiz?
-**2️⃣** Qanday kod yozdingiz?
-**3️⃣** Qanday xato chiqdi?
-
-💡 **Maslahat:** Ishlamasa, **F12** bosing va **Console** bo'limiga qarang — xato qizil rangda ko'rinadi!`
-    },
+    { match: ['salom', 'assalomu'],
+      response: `Salom! 👋 WebAcademy AI Mentoriman.\n\nYordam beraman:\n- 🌐 **HTML**\n- 🎨 **CSS**\n- ⚡ **JavaScript**\n\nNima so'ramoqchisiz? 🚀` },
+    { match: ['xato', 'ishlamayapti', 'tushunmayapman'],
+      response: `😊 Xavotir olmang! Xatolar odatiy holat.\n\nAyting:\n1️⃣ Nima qilmoqchi edingiz?\n2️⃣ Qanday kod yozdingiz?\n3️⃣ Qanday xato chiqdi?\n\n💡 F12 → Console — xato qizil rangda ko'rinadi!` },
   ],
-
-  getResponse(message, lang = 'ru') {
-    const lower = message.toLowerCase();
+  getResponse(msg, lang) {
+    const lower = msg.toLowerCase();
     const patterns = lang === 'uz' ? this.patterns_uz : this.patterns_ru;
-
-    for (const pattern of patterns) {
-      if (pattern.match.some(kw => lower.includes(kw))) {
-        return pattern.response;
-      }
+    for (const p of patterns) {
+      if (p.match.some(kw => lower.includes(kw))) return p.response;
     }
-
-    // Default response
-    if (lang === 'uz') {
-      return `🤔 Qiziqarli savol! Bu mavzu bo'yicha ko'proq ma'lumot bering, yoki quyidagilardan birini so'rang:\n\n- HTML teglari\n- CSS stillari\n- JavaScript o'zgaruvchilari\n- Funksiyalar\n- Tsikllar\n- DOM\n\nNimani o'rganmoqchisiz? 😊`;
-    }
-    return `🤔 Хороший вопрос! Расскажи подробнее, или спроси о:\n\n- HTML тегах\n- CSS стилях\n- JavaScript переменных\n- Функциях\n- Циклах\n- DOM\n- Flexbox\n- localStorage\n\nЧто именно ты хочешь изучить? 😊`;
+    return lang === 'uz'
+      ? `🤔 Savol uchun rahmat! Ko'proq ma'lumot bering yoki HTML, CSS, JS haqida so'rang. 😊`
+      : `🤔 Хороший вопрос! Расскажи подробнее или спроси об HTML, CSS, JavaScript, функциях, циклах, DOM. 😊`;
   }
 };
+
+/* ─── Claude API Call ─── */
+async function callClaude(messages, apiKey) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-opus-4-5',
+      max_tokens: 1024,
+      system: SYSTEM_PROMPT,
+      messages
+    })
+  });
+  if (!res.ok) throw new Error(`API error: ${res.status}`);
+  const data = await res.json();
+  return data.content[0].text;
+}
+
+/* ─── API Key Management ─── */
+const API_KEY_STORAGE = 'wa_claude_api_key';
+function getApiKey() { return localStorage.getItem(API_KEY_STORAGE) || ''; }
+function setApiKey(key) { localStorage.setItem(API_KEY_STORAGE, key); }
 
 /* ─── AI Mentor Widget ─── */
 window.aiMentor = {
   isOpen: false,
-  history: [],
+  messages: [],
 
   init() {
     this.injectWidget();
@@ -371,37 +161,42 @@ window.aiMentor = {
     const widget = document.createElement('div');
     widget.id = 'ai-mentor-widget';
     widget.innerHTML = `
-      <!-- Toggle Button -->
       <button class="ai-toggle-btn" id="ai-toggle-btn" aria-label="AI Ментор">
         <span class="ai-toggle-icon">🤖</span>
-        <span class="ai-toggle-label" data-i18n="ai.title">AI Ментор</span>
+        <span class="ai-toggle-label">AI Ментор</span>
         <span class="ai-badge" id="ai-badge">1</span>
       </button>
 
-      <!-- Chat Window -->
       <div class="ai-chat-window" id="ai-chat-window">
         <div class="ai-chat-header">
           <div class="ai-header-info">
             <div class="ai-avatar">🤖</div>
             <div>
-              <div class="ai-header-title" data-i18n="ai.title">AI Ментор</div>
+              <div class="ai-header-title">AI Ментор</div>
               <div class="ai-header-status">
                 <span class="ai-status-dot"></span>
-                <span data-i18n="ai.subtitle">Спроси что угодно о программировании</span>
+                <span id="ai-status-text">Спроси что угодно о программировании</span>
               </div>
             </div>
           </div>
-          <button class="ai-close-btn" id="ai-close-btn">✕</button>
+          <div class="ai-header-actions">
+            <button class="ai-key-btn" id="ai-key-btn" title="Настройки API">🔑</button>
+            <button class="ai-close-btn" id="ai-close-btn">✕</button>
+          </div>
+        </div>
+
+        <div id="ai-api-panel" class="ai-api-panel" style="display:none">
+          <p>Введи Claude API ключ для умных ответов:</p>
+          <input type="password" id="ai-api-input" placeholder="sk-ant-..." />
+          <button id="ai-api-save">💾 Сохранить</button>
+          <a href="https://console.anthropic.com" target="_blank">Получить ключ →</a>
         </div>
 
         <div class="ai-messages" id="ai-messages"></div>
-
         <div class="ai-quick-btns" id="ai-quick-btns"></div>
 
         <div class="ai-chat-input">
-          <input type="text" class="ai-input" id="ai-input"
-            data-i18n="ai.placeholder" data-i18n-attr="placeholder"
-            placeholder="Задай вопрос...">
+          <input type="text" class="ai-input" id="ai-input" placeholder="Задай вопрос...">
           <button class="ai-send-btn" id="ai-send-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -414,14 +209,25 @@ window.aiMentor = {
     document.body.appendChild(widget);
     this.addGreeting();
     this.addQuickButtons();
+    this.updateStatusIndicator();
+  },
+
+  updateStatusIndicator() {
+    const key = getApiKey();
+    const statusEl = document.getElementById('ai-status-text');
+    if (statusEl) {
+      statusEl.textContent = key
+        ? '✅ Claude AI подключён'
+        : '⚠️ Локальный режим (без API ключа)';
+    }
   },
 
   addGreeting() {
     const lang = window.i18n?.lang || localStorage.getItem('wa_lang') || 'ru';
-    const greeting = lang === 'uz'
-      ? 'Salom! Men WebAcademy AI Mentoriman. HTML, CSS va JavaScript\'ni tushunishga yordam beraman. Nima so\'ramoqchisiz? 🚀'
-      : 'Привет! Я AI Ментор WebAcademy. Помогаю разобраться с HTML, CSS и JavaScript. О чём хочешь спросить? 🚀';
-    this.addMessage(greeting, 'ai');
+    const msg = lang === 'uz'
+      ? 'Salom! 👋 Men WebAcademy AI Mentoriman. HTML, CSS va JavaScript bo\'yicha savol bering! 🚀'
+      : 'Привет! 👋 Я AI Ментор WebAcademy. Задавай любые вопросы по программированию! 🚀';
+    this.addMessage(msg, 'ai');
   },
 
   addQuickButtons() {
@@ -429,10 +235,8 @@ window.aiMentor = {
     const btns = lang === 'uz'
       ? ['HTML nima?', 'CSS qanday ishlaydi?', 'JS o\'zgaruvchilar', 'Flexbox', 'Xato tuzatish']
       : ['Что такое HTML?', 'Как работает CSS?', 'JS переменные', 'Flexbox', 'Исправить ошибку'];
-
-    const container = document.getElementById('ai-quick-btns');
-    if (!container) return;
-    container.innerHTML = btns.map(b =>
+    const c = document.getElementById('ai-quick-btns');
+    if (c) c.innerHTML = btns.map(b =>
       `<button class="ai-quick-btn" onclick="aiMentor.sendMessage('${b}')">${b}</button>`
     ).join('');
   },
@@ -441,14 +245,29 @@ window.aiMentor = {
     document.getElementById('ai-toggle-btn')?.addEventListener('click', () => this.toggle());
     document.getElementById('ai-close-btn')?.addEventListener('click', () => this.close());
     document.getElementById('ai-send-btn')?.addEventListener('click', () => this.sendFromInput());
-    document.getElementById('ai-input')?.addEventListener('keypress', (e) => {
+    document.getElementById('ai-input')?.addEventListener('keypress', e => {
       if (e.key === 'Enter') this.sendFromInput();
+    });
+    document.getElementById('ai-key-btn')?.addEventListener('click', () => {
+      const panel = document.getElementById('ai-api-panel');
+      if (panel) {
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        const inp = document.getElementById('ai-api-input');
+        if (inp) inp.value = getApiKey();
+      }
+    });
+    document.getElementById('ai-api-save')?.addEventListener('click', () => {
+      const val = document.getElementById('ai-api-input')?.value?.trim();
+      if (val) {
+        setApiKey(val);
+        document.getElementById('ai-api-panel').style.display = 'none';
+        this.updateStatusIndicator();
+        this.addMessage('✅ API ключ сохранён! Теперь я использую настоящий Claude AI.', 'ai');
+      }
     });
   },
 
-  toggle() {
-    this.isOpen ? this.close() : this.open();
-  },
+  toggle() { this.isOpen ? this.close() : this.open(); },
 
   open() {
     this.isOpen = true;
@@ -473,37 +292,52 @@ window.aiMentor = {
     this.sendMessage(text);
   },
 
-  sendMessage(text) {
+  async sendMessage(text) {
     if (!this.isOpen) this.open();
     this.addMessage(text, 'user');
 
-    // Show typing indicator
     const thinkingId = this.addThinking();
+    const lang = window.i18n?.lang || localStorage.getItem('wa_lang') || 'ru';
+    const apiKey = getApiKey();
 
-    // Simulate AI response delay (800-1800ms)
-    setTimeout(() => {
-      const lang = window.i18n?.lang || localStorage.getItem('wa_lang') || 'ru';
-      const response = AI_KNOWLEDGE.getResponse(text, lang);
+    try {
+      let response;
+      if (apiKey) {
+        // Add to conversation history
+        this.messages.push({ role: 'user', content: text });
+        // Keep last 10 messages for context
+        const recentMessages = this.messages.slice(-10);
+        response = await callClaude(recentMessages, apiKey);
+        this.messages.push({ role: 'assistant', content: response });
+      } else {
+        // Fallback to local patterns with delay
+        await new Promise(r => setTimeout(r, 600 + Math.random() * 800));
+        response = AI_KNOWLEDGE.getResponse(text, lang);
+      }
       this.removeThinking(thinkingId);
       this.addMessage(response, 'ai');
-    }, 800 + Math.random() * 1000);
+    } catch (err) {
+      this.removeThinking(thinkingId);
+      const errMsg = err.message?.includes('401')
+        ? '❌ Неверный API ключ. Нажми 🔑 и проверь ключ.'
+        : err.message?.includes('429')
+        ? '⏳ Слишком много запросов. Подожди минуту и попробуй снова.'
+        : `⚠️ Ошибка соединения. Использую локальный режим.\n\n${AI_KNOWLEDGE.getResponse(text, lang)}`;
+      this.addMessage(errMsg, 'ai');
+    }
   },
 
   addMessage(text, type) {
     const container = document.getElementById('ai-messages');
     if (!container) return;
-
     const msg = document.createElement('div');
     msg.className = `ai-message ai-message-${type}`;
-
-    // Convert markdown-like formatting
     const formatted = text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
         `<pre class="ai-code"><code>${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`)
       .replace(/\n/g, '<br>');
-
     msg.innerHTML = `
       ${type === 'ai' ? '<div class="ai-msg-avatar">🤖</div>' : ''}
       <div class="ai-msg-bubble">${formatted}</div>
@@ -532,18 +366,14 @@ window.aiMentor = {
     return id;
   },
 
-  removeThinking(id) {
-    document.getElementById(id)?.remove();
-  },
+  removeThinking(id) { document.getElementById(id)?.remove(); },
 
   scrollToBottom() {
     const c = document.getElementById('ai-messages');
     if (c) c.scrollTop = c.scrollHeight;
   },
 
-  updateLang() {
-    this.addQuickButtons();
-  }
+  updateLang() { this.addQuickButtons(); }
 };
 
 document.addEventListener('DOMContentLoaded', () => window.aiMentor.init());
